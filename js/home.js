@@ -1,6 +1,6 @@
 /*global define: false */
 define([
-    'underscore',
+    'underscore'
 ], function (_) {
     'use strict';
 
