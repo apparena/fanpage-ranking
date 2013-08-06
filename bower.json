@@ -1,0 +1,14 @@
+{
+    "name":         "fanpage-ranking",
+    "version":      "1.0.0",
+    "dependencies": {
+        "backbone.localStorage": "latest",
+        "font-awesome":          "latest",
+        "bootstrap-assets":      "latest",
+        "requirejs-text":        "latest",
+        "requirejs":             "latest",
+        "backbone-amd":          "latest",
+        "underscore-amd":        "latest",
+        "jquery":                "1.10"
+    }
+}
