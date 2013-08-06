@@ -42,41 +42,6 @@ else
     }
 }
 
-// create door classes from given date variables
-$current_date = new DateTime('now', new DateTimeZone('Europe/Berlin'));
-for($counter = 1; $counter <= __c('door_amount'); $counter++)
-{
-    // ToDo[maXus]: currently faked!!!! - 01.08.13
-    if(!empty($aa['config']['door_'. $counter .'_validity_period_start']['value']))
-    {
-        $start_date = new DateTime(__c('door_' . $counter . '_validity_period_start'), new DateTimeZone('Europe/Berlin'));
-        $end_date = new DateTime(__c('door_' . $counter . '_validity_period_end'), new DateTimeZone('Europe/Berlin'));
-    }
-    else
-    {
-        #$plus_one_day = '+' . $counter . ' days';
-        #$plus_two_day = '+' . ($counter + 1) . ' days';
-
-        $start_date = new DateTime('2013-8-' . $counter, new DateTimeZone('Europe/Berlin'));
-        //$start_date->modify($plus_one_day);
-
-        $end_date   = new DateTime('2013-8-' . $counter, new DateTimeZone('Europe/Berlin'));
-        //$end_date->modify($plus_two_day);
-        $end_date->modify('+1 days');
-    }
-
-    $door_class = 'door-past';
-    if($end_date > $current_date)
-    {
-        $door_class = 'door-post';
-    }
-    if($start_date == $current_date || ($start_date <= $current_date && $end_date >= $current_date))
-    {
-        $door_class = 'door-active';
-    }
-    $aaForJs['config']['door_' . $counter . '_class']['value'] = $door_class;
-    //pr($counter . ' - ' . $start_date->format("d-m-Y") . ' - ' . $end_date->format("d-m-Y") . ' - ' . $class);
-}
 
 // delete some important variables
 if (isset($aaForJs['instance']['aa_app_secret']))
@@ -116,8 +81,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
         <div class="nav-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#fangateModal">Open fangate</a></li>
-                <li><a href="#/page/demo">Demomodul laden</a></li>
+                <li><a href="#/page/demo">load Demomodule</a></li>
             </ul>
         </div>
     </div>
@@ -130,13 +94,6 @@ if (isset($aaForJs['instance']['fb_app_secret']))
         <?php __pc('header_custom')?>
     </header>
     <div id="content">
-        <figure id="page-background">
-            <?php if ($aa['env']['device']['type'] === 'desktop' || $aa['env']['device']['type'] === 'tablet'){ ?>
-                <img src="<?php __pc('overview_background_desktop'); ?>" title="" alt="background" />
-            <?php } else{ ?>
-                <img src="<?php __pc('overview_background_mobile'); ?>" title="" alt="background" />
-            <?php } ?>
-        </figure>
         <div id="content-wrapper" class="clearfix">
             <p>loading app</p>
         </div>
