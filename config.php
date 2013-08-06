@@ -3,9 +3,9 @@
  * Setup your app-model access credentials here
  */
 $aa_activated = true;
-$aa_app_id = 276;
-$aa_app_secret = "773c466f0d5de12f7c8620c99532b7b3";
-$aa_default_locale = "de_DE";
+$aa_app_id = 280;
+$aa_app_secret = "d91ad9e97695b1518800626eda0d7958";
+$aa_default_locale = "en_US";
 
 /**
  * Setup your database access data
