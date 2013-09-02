@@ -1,0 +1,333 @@
+
+<html>
+<head>
+    <title> Ranking Volksbanks</title>
+
+    <link type="text/css" href="css/bootstrap-3.0.0.css" rel="stylesheet"/>
+    <link type="text/css" href="css/font-awesome.css" rel="stylesheet"/>
+    <link type="text/css" href="../../css/ranking.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="js/libs/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/libs/bootstrap-3.0.0.js"></script>
+    <script type="text/javascript" src="../../js/vendor/tinysort/jquery.tinysort.js"></script>
+
+
+    <script type="text/javascript">
+        // global variables
+        //   _.aa.config.fanpage_ids.value;
+        var fansPagesIdsAsStr = '163721403669672;106479362709892;212285335468828;160805495421;173099949403228;263416953165;332236356800801;241806709206264;168513559842620;329596519636;218266734578;153048968094202';
+        var fansPagesIdsAsArray = fansPagesIdsAsStr.split(';');
+        var fansPagesNumber = fansPagesIdsAsArray.length;
+
+        // settings vars for date and time of ranking
+        var date = new Date();
+        var d = date.getDate();
+        var m =  date.getMonth(); m += 1;  // JavaScript months are 0-11
+        var y = date.getFullYear();
+        var h = date.getHours();
+        var min = date.getMinutes();
+        var dateStr = d + '/' + m + '/' + y;
+        var timeStr = h + 'h' + min + 'min';
+
+
+        // a function that takes one facebook page id and return the JSON object of its graph
+        function returnsFacebookJSONObject(pageId){
+            var jsonObject;
+            $.ajax({
+                url: 'https://graph.facebook.com/' + pageId,
+                dataType: 'json', //it returns a JSON Object
+                type: 'GET',
+                async: false,  // because this is the first thing we need to do
+                success: function(dataReturned,requestStatus, httpObject){
+                    console.log('request is: '+ requestStatus);
+                    console.log(JSON.stringify(dataReturned));  // lets display a string of the obj
+                    jsonObject = dataReturned;
+                },
+                error: function(httpObject, errorType, errorDescription){
+                    console.log('error in http request');
+                }
+            });
+            return jsonObject;
+        }
+
+
+        function returnsPageDescription(objectJSON){
+            return objectJSON.description;
+        }
+        function returnsPageTalksAbout(objectJSON){
+            return objectJSON.talking_about_count;
+        }
+        function returnsPageLikes(objectJSON){
+            return objectJSON.likes;
+        }
+        function returnsPageName(objectJSON){
+            return objectJSON.name;
+        }
+        function returnsPagePhoto(objectJSON){
+            var pageId = objectJSON.id;
+            var url = 'https://graph.facebook.com/'+ pageId + '/picture?type=square';
+            return url;
+        }
+        function returnsPageGraph1(objectJSON){
+        }
+        function returnsPageGraph2(objectJSON){
+        }
+
+
+
+
+        // the constructor create objects banks having attributes fields in grid
+        function Bank(id, rank, photo, name, likes, talksAbout, description, graph1, graph2){
+            this.appId = 280;
+            this.instId = 5471;
+            this.fanPageId = id;
+            this.fanPageRanking = rank;
+            this.fanPagePhoto = photo;
+            this.fanPageName = name;
+            this.fanPageLikes = likes;
+            this.fanPageTalksAbout = talksAbout;
+            this.fanPageDescription = description;
+            this.fanPageGraph1 = graph1;
+            this.fanPageGraph2 = graph2;
+        }
+
+        // create array containing banks and their attributes according to the num of banks
+        var banks = [];
+        var httpRequestJSONObject;
+        for(var i=0; i< fansPagesNumber; i++){
+            // http request for each facebook page id
+            httpRequestJSONObject = returnsFacebookJSONObject(fansPagesIdsAsArray[i]);
+            banks.push(new Bank(fansPagesIdsAsArray[i], 'x', returnsPagePhoto(httpRequestJSONObject), returnsPageName(httpRequestJSONObject),returnsPageLikes(httpRequestJSONObject), returnsPageTalksAbout(httpRequestJSONObject), returnsPageDescription(httpRequestJSONObject), 'graph_jkb.jpg', 'graph_kje.png'));
+            console.log(banks[i]);
+        }
+
+
+
+        // fct that set date and time
+        function showDateTimeNumOfElementsRanked(){
+            $('.date').append(dateStr);
+            $('.time').append(timeStr);
+            $('.num-elements').append(fansPagesNumber);
+        }
+
+
+        // fct building template that returns string containing HTML part of one row in the grid
+        // takes an array of objects bank
+        function createGridElements(arrayElements){
+            var gridElementsAsString = "";
+            for(var i=0; i< arrayElements.length; i++){
+                gridElementsAsString += "<a href='#' class='list-group-item'>"
+                            + "<div class='row show-grid'>"
+                            + "<div class='col-1 ranks'>"
+                            + "<p>" + arrayElements[i].fanPageRanking + "</p>"                                     // inserting rank
+                            + "</div>"
+                            + "<div class='col-1 photos'>"
+                            + "<img src=" + arrayElements[i].fanPagePhoto + ">"                                // inserting image name
+                            + "</div>"
+                            + "<div class='col-4 fans-pages-names'>"
+                            + "<p>" + arrayElements[i].fanPageName + "</p>"                        // inserting fan page name
+                            + "</div>"
+                            + "<div class='col-2 likes'>"
+                            + "<div class='badge'><p>" + arrayElements[i].fanPageLikes + "</p></div>"          // inserting likes
+                            + "<i class='icon-thumbs-up-alt icon-2'></i>"
+                            + "</div>"
+                            + "<div class='col-3 talks-about'>"
+                            + "<div class='badge'><p>" + arrayElements[i].fanPageTalksAbout + "</p></div>"           // inserting talks about
+                            + "<i class='icon-comments-alt icon-2'></i>"
+                            + "</div>"
+                            + "<div class='additional collapsed'>"
+                            + "<div>" + arrayElements[i].fanPageDescription + "</div>"               // inserting description
+                            + "<div>" + arrayElements[i].fanPageGraph1 + "</div>"                    // inserting graph 1
+                            + "<div>" + arrayElements[i].fanPageGraph2 + "</div>"                    // inserting graph 2
+                            + "</div>"
+                            + "</div>"
+                            + "</a>" ;
+            }
+            return gridElementsAsString;
+        }
+
+        // fct that fills all elements in container
+        function insertAllElements(){
+            $('.banks').append(createGridElements(banks));
+        }
+
+
+        // expanding/collapsing elements inside each row
+        function expandingCollapsingElementsEachRow(){
+            $('.list-group-item').on('click', function(){
+                if($('.additional', $(this)).hasClass('collapsed')){  // find() // $('.additional', '.list-group-item') is equivalent to $('.list-group-item').find('.additional')
+                    $('.additional', $(this)).removeClass('collapsed');
+                }
+                else {
+                    $('.additional', $(this)).addClass('collapsed');
+                }
+            });
+        }
+
+
+        // setting ordering properties to arrows of ranking
+        function setOrderingForArrows(){
+            // ordering ranks
+            $('.ranks-desc').on('click', function(){
+                $('.list-group-item').tsort('.ranks p',{order:'desc'});
+            });
+            $('.ranks-asc').on('click', function(){
+                $('.list-group-item').tsort('.ranks p',{order:'asc'});
+            });
+            // ordering images
+            $('.photos-desc').on('click', function(){
+                $('.list-group-item').tsort('.photos p',{order:'desc'});
+            });
+            $('.photos-asc').on('click', function(){
+                $('.list-group-item').tsort('.photos p',{order:'asc'});
+            });
+            // ordering fans pages names
+            $('.fans-pages-names-desc').on('click', function(){
+                $('.list-group-item').tsort('.fans-pages-names p',{order:'desc'});
+            });
+            $('.fans-pages-names-asc').on('click', function(){
+                $('.list-group-item').tsort('.fans-pages-names p',{order:'asc'});
+            });
+            // ordering likes
+            $('.likes-desc').on('click', function(){
+                $('.list-group-item').tsort('.likes p',{order:'desc'});
+            });
+            $('.likes-asc').on('click', function(){
+                $('.list-group-item').tsort('.likes p',{order:'asc'});
+            });
+            // ordering talks about
+            $('.talks-about-desc').on('click', function(){
+                $('.list-group-item').tsort('.talks-about p',{order:'desc'});
+            });
+            $('.talks-about-asc').on('click', function(){
+                $('.list-group-item').tsort('.talks-about p',{order:'asc'});
+            });
+        }
+
+
+        // function set the max number of rows to be displayed and returns it
+        function setMaxRows(){
+            var maxResults = $('select option:selected').val();  // selector point the selected option
+            if($('select option:selected').val() == 'all') {maxResults = banks.length; }
+            return maxResults;
+        }
+
+
+        // fct to show a number of rows between all
+        function showMaxRows(allRows, maxRows){
+            $('.list-group-item').removeClass('collapsed');  // to reset
+            for (var i=maxRows; i<allRows; i++){
+                // eq(n) is jquery to select element at index n
+                ($('.list-group-item').eq(i)).addClass('collapsed');
+            }
+        }
+
+        // fct that adds click event to the "ordering arrows" for showing limited number of rows in grid
+        function refreshRowsOnClickArrows(){
+            $('.ranks-desc, .ranks-asc, .photos-desc, .photos-asc, .fans-pages-names-desc, .fans-pages-names-asc, .likes-desc, .likes-asc, .talks-about-desc, .talks-about-asc').on('click', function(){
+                showMaxRows(banks.length, setMaxRows());
+            });
+        }
+
+        // fct that adds click event to the "refresh button" for showing limited number of rows in grid
+        function refreshRowsOnClickButton(){
+            $('.refresh-button').on('click', function(){
+                showMaxRows(banks.length, setMaxRows());
+            });
+        }
+
+
+        //  when document is ready
+        $(document).ready(function(){
+            showDateTimeNumOfElementsRanked();
+            insertAllElements();
+            expandingCollapsingElementsEachRow();  // event require insertAllElements() occurred before
+            setOrderingForArrows();                // event require insertAllElements() occurred before
+            refreshRowsOnClickArrows();            // event require insertAllElements() occurred before
+            refreshRowsOnClickButton();            // event require insertAllElements() occurred before
+        });
+
+
+
+    </script>
+</head>
+
+
+
+<body>
+
+<div class="container">
+    <h3>Ranking Volksbanks</h3>
+    <h12 class="num-elements" style="font-weight:bold;"></h12> Banks ranked on : <h12 class="date" style="font-weight:bold;"></h12> at: <h12 class="time" style="font-weight:bold;"></h12>
+    <br>
+            <ul class="pager">
+                <label>Display the Top / Bottom </label>
+                <select>
+                    <option value="all">all</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=5>10</option>
+                    <option value=5>15</option>
+                    <option value=5>20</option>
+                    <option value=5>25</option>
+                </select>
+                <label> Banks</label>
+                <li class="refresh-button"><a href="#">Refresh</a></li>
+            </ul>
+
+
+
+
+    <! -------------------    title of the table ------------------------------------------------->
+    <div style= "font-weight:bold; font-style: italic; background-color:#D8D8D8">
+        <div class="row show-grid">
+            <div class="col-1">
+                Rank &nbsp;
+                <i class="icon-long-arrow-down icon-3 ranks-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 ranks-asc"></i>
+            </div>
+            <div class="col-1">
+                Photo &nbsp;
+                <i class="icon-long-arrow-down icon-3 photos-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 photos-asc"></i>
+            </div>
+            <div class="col-4">
+                Fan page name &nbsp;
+                <i class="icon-long-arrow-down icon-3 fans-pages-names-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 fans-pages-names-asc"></i>
+            </div>
+            <div class="col-2">
+                Likes &nbsp;
+                <i class="icon-long-arrow-down icon-3 likes-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 likes-asc"></i>
+            </div>
+            <div class="col-3">
+                Talking about &nbsp;
+                <i class="icon-long-arrow-down icon-3 talks-about-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 talks-about-asc"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+    <! -------------------    banks ------------------------------------------------->
+    <div class="banks" id="content-wrapper">
+
+    </div>
+
+<br><br>
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

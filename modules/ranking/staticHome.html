@@ -1,0 +1,92 @@
+
+<html>
+<head>
+    <title> Ranking Volksbanks</title>
+
+    <link type="text/css" href="css/bootstrap-3.0.0.css" rel="stylesheet"/>
+    <link type="text/css" href="css/font-awesome.css" rel="stylesheet"/>
+    <link type="text/css" href="../../css/ranking.css" rel="stylesheet"/>
+
+
+
+</head>
+
+
+
+<body>
+
+<div class="container">
+    <h3>Ranking Volksbanks</h3>
+    <h12 class="num-elements" style="font-weight:bold;"></h12> Banks ranked on : <h12 class="date" style="font-weight:bold;"></h12> at: <h12 class="time" style="font-weight:bold;"></h12>
+    <br>
+            <ul class="pager">
+                <label>Display the Top / Bottom </label>
+                <select>
+                    <option value="all">all</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=5>10</option>
+                    <option value=5>15</option>
+                    <option value=5>20</option>
+                    <option value=5>25</option>
+                </select>
+                <label> Banks</label>
+                <li class="refresh-button"><a href="#">Refresh</a></li>
+            </ul>
+
+
+
+
+    <! -------------------    title of the table ------------------------------------------------->
+    <div style= "font-weight:bold; font-style: italic; background-color:#D8D8D8">
+        <div class="row show-grid">
+            <div class="col-1">
+                Rank &nbsp;
+                <i class="icon-long-arrow-down icon-3 ranks-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 ranks-asc"></i>
+            </div>
+            <div class="col-1">
+                Photo &nbsp;
+                <i class="icon-long-arrow-down icon-3 photos-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 photos-asc"></i>
+            </div>
+            <div class="col-4">
+                Fan page name &nbsp;
+                <i class="icon-long-arrow-down icon-3 fans-pages-names-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 fans-pages-names-asc"></i>
+            </div>
+            <div class="col-2">
+                Likes &nbsp;
+                <i class="icon-long-arrow-down icon-3 likes-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 likes-asc"></i>
+            </div>
+            <div class="col-3">
+                Talking about &nbsp;
+                <i class="icon-long-arrow-down icon-3 talks-about-desc"></i>&nbsp;
+                <i class="icon-long-arrow-up icon-3 talks-about-asc"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+    <! -------------------    banks ------------------------------------------------->
+    <div class="banks" id="content-wrapper">
+
+    </div>
+
+<br><br>
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

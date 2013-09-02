@@ -1,0 +1,26 @@
+<a href='#' class='list-group-item'>
+ <div class='row show-grid'>
+     <div class='col-1 ranks'>
+         <p class="insert-ranking"><% %></p>
+         </div>
+     <div class='col-1 photos'>
+         <img class="insert-image" src="<% print('https://graph.facebook.com/'+ id + '/picture?type=square'); %>" >
+         </div>
+     <div class='col-4 fans-pages-names'>
+         <p class="insert-name"><% if (typeof(name) == "undefined") {print('no data for name');} else {print(name);} %></p>
+         </div>
+     <div class='col-2 likes'>
+         <div class='badge'><p class="insert-likes"><% if (typeof(likes) == "undefined") {print('no data for likes');} else {print(likes);} %></p></div>
+         <i class='icon-thumbs-up-alt icon-2'></i>
+         </div>
+     <div class='col-3 talks-about'>
+         <div class='badge'><p class="insert-talks-about"><% if (typeof(talking_about_count) == "undefined") {print('no data for talking_about_count');} else {print(talking_about_count);} %></p></div>
+         <i class='icon-comments-alt icon-2'></i>
+         </div>
+     <div class='additional collapsed'>
+         <div class="insert-description"><% if (typeof(description) == "undefined") {print('no data for description');} else {print(description);} %></div>
+         <div class="insert-graph1">graph1</div>
+         <div class="insert-graph2">graph2</div>
+         </div>
+     </div>
+ </a>
