@@ -11,32 +11,26 @@ define([
     AppRouter = Backbone.Router.extend({
         // we'll define routes in a moment
         routes:     {
-            '': 'homeAction',
-            'page/:module': 'moduleAction',
-            'call/:module': 'callAction'
+            '':                           'homeAction',
+            'page/:module':               'moduleAction',
+            'page/:module/:filename':     'moduleAction',
+            'page/:module/:filename/*id': 'moduleAction',
+            'call/*module':               'callAction'
         },
 
         // set up default routes
         initialize: function () {
             _.bindAll(this, 'setEnv', 'homeAction', 'callAction', 'moduleAction', 'loadModule');
-            /*
-            var router = this,
-                routes = [
-                    [ /^page\/([a-z]+)$/, 'getPage', this.moduleAction ],
-                    [ /^call\/([a-z]+)$/, 'getCall', this.callAction ],
-                    [ '', 'home', this.homeAction ]
-                ];
-
-            _.each(routes, function (route) {
-                router.route.apply(router, route);
-            });
-            */
         },
 
-        loadModule: function (module) {
-            console.log('load: ', module);
+        loadModule: function (module, id) {
+            console.log('load: ', module, 'id: ', id);
             require([module], function (module) {
-                module();
+                if (id !== false) {
+                    module(id);
+                } else {
+                    module();
+                }
             }, function (err) {
                 //The errback, error callback
                 //The error has a list of modules that failed
@@ -45,18 +39,29 @@ define([
             });
         },
 
-        moduleAction: function (module) {
-            console.log('load module ', module);
-            this.setEnv(module);
-            //module = '../modules/' + module + '/js/main';
-            module = 'modulesSrc/' + module + '/js/main';
-            this.loadModule(module);
+        moduleAction: function (module, filename, id) {
+            console.log('load module', module, filename);
+            var env = module;
+
+            if (_.isUndefined(filename)) {
+                filename = 'main';
+            }
+            env += '-' + filename;
+
+            if (_.isUndefined(id)) {
+                id = false;
+            } else {
+                env += '-' + id;
+            }
+
+            this.setEnv(env);
+            this.loadModule('modulesSrc/' + module + '/js/' + filename, id);
         },
 
         callAction: function (module) {
             console.log('call action', module);
 
-            if (typeof this.lastEnvClass === 'undefined' || this.lastEnvClass === '') {
+            if (_.isUndefined(this.lastEnvClass) || this.lastEnvClass === '') {
                 this.navigate('', {trigger: true, replace: true});
             } else {
                 this.setEnv(module);
@@ -68,17 +73,16 @@ define([
             //var module = '../modules/home/js/main';
             var module = 'home';
             this.setEnv(module);
-            this.loadModule(module);
+            this.loadModule(module, false);
         },
 
         setEnv: function (envClass) {
             console.log('envClass', envClass);
 
-            var body = $('body'),
-                that = this;
+            var body = $('body');
 
-            if (typeof that.lastEnvClass !== 'undefined') {
-                body.removeClass(that.lastEnvClass);
+            if (typeof this.lastEnvClass !== 'undefined') {
+                body.removeClass(this.lastEnvClass);
             }
             body.addClass(envClass);
             this.lastEnvClass = envClass;
@@ -96,6 +100,37 @@ define([
             }
 
             app_router.navigate(loc, {trigger: trigger});
+        };
+
+        // Extend the View class to make global ajax requests with jquery
+        Backbone.View.prototype.ajax = function (data, async) {
+            console.log('ajax', data);
+            var returnData = {type: 'notReturned', data: {}};
+
+            if (typeof async === 'undefined') {
+                async = false;
+            }
+
+            // add instance id
+            data.aa_inst_id = _.aa.instance.aa_inst_id;
+
+            $.ajax({
+                url:      'ajax.php',
+                dataType: 'json',
+                type:     'POST',
+                async:    async,
+                data:     data,
+                success:  function (response) {
+                    returnData.type = 'success';
+                    returnData.data = response;
+                },
+                error:    function (response) {
+                    returnData.type = 'error';
+                    returnData.data = response;
+                }
+            });
+
+            return returnData;
         };
 
         Backbone.history.start();

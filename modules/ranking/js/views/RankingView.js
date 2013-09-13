@@ -5,9 +5,9 @@ define([
     'backbone',
     'tinysort',
     'text!modulesSrc/ranking/templates/bank.html',
-    'modulesSrc/ranking/js/collections'
+    'modulesSrc/ranking/js/collections/RankingCollection'
 
-], function ($, _, Backbone, TinySort, BankTemplate) {
+], function ($, _, Backbone, TinySort, BankTemplate, RankingCollection) {
 
     //setting global variables
     //   _.aa.config.fanpage_ids.value;
@@ -27,7 +27,7 @@ define([
         render: function () {
             //this.model.rowRequest(5618, 'all', 'rowInfo', 'min');
             //this.rowRequest(5618, 163721403669672, 'rowInfo', 'max');
-
+            console.log(this.allRowsMinInfo());
             this.setTime();
             this.setRows();
             this.expandingCollapsingElementsEachRow();  // event require insertAllElements() occurred before
@@ -36,25 +36,36 @@ define([
             this.refreshRowsOnClickButton();            // event require insertAllElements() occurred before
         },
 
-        rowRequest: function(){ // to continue
-            var json;
-            var the_Action;
-            $.ajax({
-                url: 'ajax.php',
-                data: {
-                    //aa_inst_id:_.aa.instance.aa_inst_id,
-                    action: 'allRowsMInInfo',  //mandatory  // the action must be located in the  'libs' directory of  module
-                    module: 'ranking'   //mandatory // this will takes us to the  'libs' directory of the  module
-                },
-                dataType: 'json', //it returns a JSON Object
-                type: 'POST',
-                async: false,  // because this is the first thing we need to do
-                success: function(dataReturned){
-                    json = dataReturned;
-                },
-                error: function(httpObject){
-                    console.log('error in http request' + httpObject);
-                }
+        allRowsMinInfo: function(){ // to continue
+            var response = this.ajax({  //this is s custom fct that is written in router.js line 106 that return an object having 2 attributes : data and type
+                module: 'ranking',
+                action: 'allRowsMinInfo'
+            });
+            var messageObject = response.data;            //line 124 125 in router.js
+            var messageJson = messageObject['message'];   //line 54   54  in ajax.php   // message value is set inside the called php file
+            return messageJson;
+        },
+
+
+
+        handle: function(){
+
+        },
+
+        handelRequest: function(json){
+            $.each(json, function(key, val) {
+                console.log(key, val);
+                this.collection.add({
+                    numFanPages: '',
+                    rank: '',
+                    photo: '',
+                    name: '',
+                    likes: '',
+                    talks_about: '',
+                    description: '',
+                    graph1: '',
+                    graph2: ''
+                })
             });
         },
 

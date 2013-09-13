@@ -6,7 +6,6 @@ date_default_timezone_set('Europe/Berlin'); // Set timezone
 ini_set('session.gc_probability', 0); // Disable session expired check
 header('P3P: CP=CAO PSA OUR'); // Fix IE save cookie in iframe problem
 define("ROOT_PATH", realpath(dirname(__FILE__))); // Set include path
-define('_VALID_CALL', 'true');
 set_include_path(ROOT_PATH . '/libs/' . PATH_SEPARATOR);
 
 /**
@@ -26,34 +25,14 @@ global_escape();
 $aa         = false;
 $aa_inst_id = false;
 
-/**
- * Setup mysql database connection
- */
-if ($db_activated)
-{
-    require_once ROOT_PATH . '/libs/AppArena/Utils/class.database.php';
-
-    try
-    {
-        $db = new \com\apparena\utils\database\Database($db_user, $db_host, $db_name, $db_pass, $db_option);
-        // set all returned value keys to lower cases
-        $db->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
-        // return all query requests automatically as object
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-    }
-    catch (PDOException $e)
-    {
-        echo '<pre>';
-        print_r($e->getMessage());
-        echo '</pre>';
-        exit();
-    }
-}
-
 // Try to get the instance id from GET-Parameter
-if (!empty($_REQUEST['aa_inst_id']))
+if (!empty($_GET['aa_inst_id']))
 {
-    $aa_inst_id = $_REQUEST['aa_inst_id'];
+    $aa_inst_id = $_GET['aa_inst_id'];
+}
+if (!empty($_POST['aa_inst_id']))
+{
+    $aa_inst_id = $_POST['aa_inst_id'];
 }
 // @todo Try to get instance ID from request_id
 // @todo Try to get instance ID from action_id
@@ -88,6 +67,7 @@ if (isset ($_REQUEST["signed_request"]))
     }
 }
 
+
 /* Initialize localization */
 $cur_locale = $aa_default_locale;
 if (!empty($aa['fb']['signed_request']['app_data']))
@@ -120,6 +100,7 @@ $appmanager = new AA_AppManager(array(
 
 /* Start session and initialize App-Manager content */
 $aa_instance = $appmanager->getInstance();
+
 if (empty($aa_instance['aa_inst_id']))
 {
     throw new Exception('aa_inst_id not given or wrong in ' . __FILE__ . ' in line ' . __LINE__);
@@ -136,20 +117,10 @@ $aa['instance']['page_tab_url'] = $aa['instance']['fb_page_url'] . "?sk=app_" . 
 $aa['config']                   = $appmanager->getConfig();
 $aa['locale']                   = $appmanager->getTranslation($cur_locale);
 $aa['fb']                       = $fb_temp;
-$aa['fb']['share_url']          = "https://apps.facebook.com/" . $aa['instance']['fb_app_url'] . "/libs/AppArena/Utils/fb_share.php?aa_inst_id=" . $aa['instance']['aa_inst_id'];
-
-/* Catch error, in case there is no instance */
-if ($aa['instance'] == "instance not exist")
-{
-    throw new Exception('instance not exist in ' . __FILE__ . ' in line ' . __LINE__);
-}
-if ($aa['instance'] == "instance not activated")
-{
-    throw new Exception('instance not activated in ' . __FILE__ . ' in line ' . __LINE__);
-}
-
+$aa['fb']['share_url']          = "https://apps.facebook.com/" . $aa['instance']['fb_app_url'] . "/libs/AA/fb_share.php?aa_inst_id=" . $aa['instance']['aa_inst_id'];
 
 /* Collect environment information */
+
 require_once 'libs/Mobile_Detect.php';
 $detector = new Mobile_Detect;
 if (isset($_REQUEST['signed_request']))
@@ -187,12 +158,6 @@ $aa['env']['browser'] = getBrowser();
 $aa_locale = new Zend_Translate('array', $aa['locale'], $cur_locale);
 $aa_locale->setLocale($cur_locale);
 
-$aa_translate            = new StdClass();
-$aa_translate->translate = $aa_locale;
-
-setcookie('aa_inst_locale_' . $aa_instance['aa_inst_id'], $cur_locale);
-$aa_locales = explode(',', $aa['config']['admin_locale_switch']['value']);
-
 // set global body classes
 $classbody = '';
 // set device type
@@ -213,24 +178,44 @@ if (!empty($aa['env']['browser']))
 }
 $classbody = trim($classbody);
 
-// some basic loggings, if module exists
-if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')
-{
-    // prepare data to log - key = scope, value = value
-    $log = array(
-        'user_device' => $aa['env']['device']['type'],
-        'user_browser' => $aa['env']['browser']['name'] . ' ' . $aa['env']['browser']['version'],
-        'user_os' => $aa['env']['browser']['platform'],
-        'app_page' => $aa['env']['base'],
-        'app_openings' => 'start'
-    );
+/* TODO wo kommt $aa_translate her?
+global $aa_translate;
+$aa_translate->translate = $aa_locale;
+*/
 
-    $logging_path = ROOT_PATH . '/modules/logging/libs/logAdmin.php';
-    if (file_exists($logging_path))
-    {
-        $_POST['aa_inst_id']  = $aa_inst_id;
-        $_POST['data']['log'] = $log;
-        require_once $logging_path;
-    }
+setcookie('aa_inst_locale_' . $aa_instance['aa_inst_id'], $cur_locale);
+$aa_locales = explode(',', $aa['config']['admin_locale_switch']['value']);
+
+/* Catch error, in case there is no instance */
+if ($aa['instance'] == "instance not exist")
+{
+    throw new Exception('instance not exist in ' . __FILE__ . ' in line ' . __LINE__);
+}
+if ($aa['instance'] == "instance not activated")
+{
+    throw new Exception('instance not activated in ' . __FILE__ . ' in line ' . __LINE__);
 }
 
+/**
+ * Setup mysql database connection
+ */
+if ($db_activated)
+{
+    require_once ROOT_PATH . '/libs/AppArena/Utils/class.database.php';
+
+    try
+    {
+        $db = new \com\apparena\utils\database\Database($db_user, $db_host, $db_name, $db_pass, $db_option);
+        // set all returned value keys to lower cases
+        $db->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
+        // return all query requests automatically as object
+        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+    }
+    catch (PDOException $e)
+    {
+        echo '<pre>';
+        print_r($e->getMessage());
+        echo '</pre>';
+        exit();
+    }
+}

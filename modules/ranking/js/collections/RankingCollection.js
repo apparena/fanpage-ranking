@@ -7,7 +7,7 @@
  */
 define(
     ['backbone',
-     'modulesSrc/ranking/js/models'
+     'modulesSrc/ranking/js/models/RankingModel'
     ],
     function(Backbone, RankingModel){
 

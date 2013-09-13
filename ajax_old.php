@@ -29,7 +29,7 @@ echo '</pre>';
 if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')
 {
     // Request has not been made by Ajax.
-    die('Direct Access is not allowed.');
+ #   die('Direct Access is not allowed.');
 }
 
 try
@@ -49,41 +49,25 @@ catch (Exception $e)
 
 try
 {
-    // create default return statement
-    $return = array(
-        'code' => 0,
-         'status' => 'error',
-         'message' => ''
-    );
     $path = ROOT_PATH;
 
-    if(!empty($_POST['module']))
+    if(!empty($_REQUEST['module']))
     {
-        $path .= DS . 'modules' . DS . $_POST['module'] . DS . 'libs';
+        $path .= DS . 'modules' . DS . $_REQUEST['module'] . DS . 'libs';
     }
 
-    if(empty($_POST['action']))
+    if(empty($_REQUEST['action']))
     {
         throw new Exception('action is not defined in call');
     }
 
-    $path .= DS . $_POST['action'] . '.php';
+    $path .= DS . $_REQUEST['action'] . '.php';
 
     if (!file_exists($path))
     {
         throw new Exception($path . ' not exist');
     }
     include_once($path);
-
-    // set content type to json file
-    header('Content-Type: application/json');
-    // disable browser caching
-    header("Cache-Control: no-cache");
-    header("Pragma: no-cache");
-    // attache json file as download
-    header("Content-Disposition:attachment;filename='" . $_POST['action'] . ".json'");
-
-    echo json_encode($return);
 }
 catch (Exception $e)
 {

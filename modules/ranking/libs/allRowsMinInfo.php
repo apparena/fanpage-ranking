@@ -1,26 +1,5 @@
 <?php
 
-try
-{
-    require_once("../../../init.php");
-}
-catch (Exception $e)
-{
-    echo '<pre>';
-    print_r($e->getMessage());
-    echo '</pre>';
-    echo '<pre>';
-    print_r($e->getTrace());
-    echo '</pre>';
-    exit();
-}
-
-$action = $_REQUEST['action'];
-$module = $_REQUEST['module'];
-$fb_page_id = $_REQUEST['fb_page_id'];
-
-
-
 //set today
 $today = date('Y-m-d', time());
 
@@ -30,28 +9,23 @@ $aaFansPagesIdsAsArray = explode(';',$fansPagesIdsAsStr);
 
 
 
-
-// to test http://localhost/fanpageranking0.2_backbone1/?aa_inst_id=5618&fb_page_id=163721403669672&action=allRowsMinInfo&module=ranking
-// to test http://localhost/fanpageranking0.2_backbone1/modules/ranking/libs/allRowsMinInfo.php?aa_inst_id=5618&fb_page_id=163721403669672&action=allRowsMinInfo&module=ranking
-
-
-
-
 //test
-var_dump($today);
-echo '<br><br>';
-var_dump($aa_inst_id);
-echo '<br><br>';
-var_dump($aaFansPagesIdsAsArray);
-echo '<br><br>';
+//var_dump($today);echo '<br><br>';
+//var_dump($aa_inst_id);echo '<br><br>';
+//var_dump($aaFansPagesIdsAsArray);echo '<br><br>';
 
 
 
 
 //querying the min info for all rows
-$outerArray = array();
+
+//outer array to hold inner arrays containing each bank information
+
+$keys = array();
+$values = array();
+
+$i = 0;
 foreach($aaFansPagesIdsAsArray as $id){
-    $innerArray = array();
 
     //query fanpage_basic_data
     $query1 = "SELECT name, description FROM fanpage_basic_data
@@ -61,17 +35,37 @@ foreach($aaFansPagesIdsAsArray as $id){
 
     //query fanpage_metric_data
     $query3 = "SELECT likes, talking_about_count FROM fanpage_metric_data
-                WHERE date = '$today' AND fb_page_id = '$id'";
+                WHERE fb_page_id = '$id'
+                ORDER BY date DESC
+                LIMIT 1";
     $query4 = $db->query($query3);
     $arrayTodayLikesTalkingAboutCount = $query4->fetchAll(PDO::FETCH_ASSOC);
 
-    //create arrays
-    array_push($innerArray, $id, $arrayDescriptionName[0]['name'], $arrayDescriptionName[0]['description'], $arrayTodayLikesTalkingAboutCount[0]['likes'], $arrayTodayLikesTalkingAboutCount[0]['talking_about_count']);
-    //var_dump($innerArray);echo '<br><br>';
-    array_push($outerArray, $innerArray);
-    //var_dump($outerArray);echo '<br><br>';
+    $a = json_encode(array_merge(['id'=>$id],$arrayDescriptionName[0],$arrayTodayLikesTalkingAboutCount[0]));
+    //var_dump($a);echo '<br><br>';echo '<br><br>';
+
+    array_push($values, $a);
+    array_push($keys, ('item'.$i));
+    $i++;
 }
 
-//encode to json
-$result = json_encode($outerArray);
-echo $result;
+//var_dump($values);echo '<br><br>';echo '<br><br>';
+//var_dump($keys);echo '<br><br>';echo '<br><br>';
+
+
+$outerArray = array_combine($keys, $values);
+//var_dump($outerArray);echo '<br><br>';echo '<br><br>';
+
+$json = json_encode($outerArray);
+
+//var_dump($json);echo '<br><br>';echo '<br><br>';
+
+
+// return[]  is already created in line 53 of ajax.php
+$return['message'] = $json;      // look line 53  ajax.php
+//$return['message'] = $outerArray;      // look line 53  ajax.php // i can put in description an array or a json,  both should normally work because in ajax.php line   86   we use the json_encode()  !!
+$return['status'] = 'success';  // look line 53  ajax.php
+
+
+
+
