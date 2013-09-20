@@ -20,23 +20,20 @@ define([
         el: $("#content-wrapper"),
 
         initialize: function () {
-            this.render();
             this.collection = new RankingCollection();
+            this.render();
         },
 
         render: function () {
-            //this.model.rowRequest(5618, 'all', 'rowInfo', 'min');
-            //this.rowRequest(5618, 163721403669672, 'rowInfo', 'max');
-            console.log(this.allRowsMinInfo());
+            this.handleJSON();
             this.setTime();
-            this.setRows();
             this.expandingCollapsingElementsEachRow();  // event require insertAllElements() occurred before
             this.setOrderingForArrows();                // event require insertAllElements() occurred before
             this.refreshRowsOnClickArrows();            // event require insertAllElements() occurred before
             this.refreshRowsOnClickButton();            // event require insertAllElements() occurred before
         },
 
-        allRowsMinInfo: function(){ // to continue
+        allRowsMinInfo: function(){ // ajax call
             var response = this.ajax({  //this is s custom fct that is written in router.js line 106 that return an object having 2 attributes : data and type
                 module: 'ranking',
                 action: 'allRowsMinInfo'
@@ -46,29 +43,46 @@ define([
             return messageJson;
         },
 
+        handleJSON: function(){
+            var json = this.allRowsMinInfo();
+            //console.log(json);
 
+            var obj = $.parseJSON(json);
+            var len = Object.keys(obj).length;
 
-        handle: function(){
+            //fetching values from ajax Object and sending to collection
+            for(var i=0; i<len; i++){
+                var item = 'item'+i;
+                var fieldsJson = obj[item];
+                var fieldsObj = $.parseJSON(fieldsJson);
 
-        },
-
-        handelRequest: function(json){
-            $.each(json, function(key, val) {
-                console.log(key, val);
                 this.collection.add({
-                    numFanPages: '',
-                    rank: '',
-                    photo: '',
-                    name: '',
-                    likes: '',
-                    talks_about: '',
-                    description: '',
-                    graph1: '',
-                    graph2: ''
-                })
-            });
-        },
+                    id: fieldsObj['id'],
+                    name: fieldsObj['name'],
+                    description: fieldsObj['description'],
+                    likes: fieldsObj['likes'],
+                    talking_about_count: fieldsObj['talking_about_count']
+                });
+            }
 
+            // fetching data from collection.js  and using in view
+            var len = this.collection.length;
+            for(var i= 0;i<len; i++){
+                console.log(this.collection.at(i).get('id'));
+                console.log(this.collection.at(i).get('name'));
+                console.log(this.collection.at(i).get('description'));
+                console.log(this.collection.at(i).get('likes'));
+                console.log(this.collection.at(i).get('talking_about_count'));
+
+                var data = this.collection.at(i);
+                console.log(data);
+                if(typeof data === 'object') {
+                    var compiledTemplate = _.template(BankTemplate, data);
+                    this.$el.append(compiledTemplate);
+                }
+            }
+
+        },
 
         setTime: function(){
             // settings vars for date and time of ranking
@@ -86,35 +100,6 @@ define([
             $('.num-elements').append(fansPagesNumber);
         },
 
-        setRows: function(){
-            //sending data to the template
-            for(var i=0;i<fansPagesNumber;i++){
-                var data = this.returnsFacebookJSONObject(fansPagesIdsAsArray[i]); //it creates every time an object
-                if(typeof data === 'object') {
-                    var compiledTemplate = _.template(BankTemplate, data);
-                    this.$el.append(compiledTemplate);
-                }
-            }
-        },
-
-        returnsFacebookJSONObject: function(pageId){
-            var jsonObject;
-            $.ajax({
-                url: 'https://graph.facebook.com/' + pageId,
-                dataType: 'json', //it returns a JSON Object
-                type: 'GET',
-                async: false,  // because this is the first thing we need to do
-                success: function(dataReturned,requestStatus, httpObject){
-                    console.log('request is: '+ requestStatus);
-                    //console.log(JSON.stringify(dataReturned));  // lets display a string of the obj
-                    jsonObject = dataReturned;
-                },
-                error: function(httpObject, errorType, errorDescription){
-                    console.log('error in http request');
-                }
-            });
-            return jsonObject;
-        },
 
         expandingCollapsingElementsEachRow: function(){
             $('.list-group-item').on('click', function(){
