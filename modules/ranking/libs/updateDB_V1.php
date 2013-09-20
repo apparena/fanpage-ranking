@@ -1,6 +1,20 @@
 <?php
 
 
+
+
+
+
+//now sebastian needs to implement this file without passing a parameter of aa_inst_id
+// also in fanpage_metric_data i must add a condition to not allow insert of rows having the same date and the same fanpage_id,
+//but allow insert of rows having same dates, not a problem
+
+// use like this:
+//WHERE   NOT EXISTS(   SELECT  0FROM    matable WHERE   maclefprimaire = 1);
+// or this:
+//WHERE NOT EXISTS (SELECT * FROM CHANGE WHERE CHANGE.currency = 'dollar');
+//WHERE NOT EXISTS (SELECT * FROM fanpage_metric_data WHERE date = TODAY  AND fanpage_id = $fp_id);    // if argument inside NOT EXIST() is empty, then my condition will work
+
 try
 {
     require_once("../../../init.php");

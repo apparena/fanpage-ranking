@@ -1,10 +1,13 @@
 <?php
 
+
+
 //set today
 $today = date('Y-m-d', time());
 
 $aa_inst_id = $aa['instance']['aa_inst_id'];
 $fansPagesIdsAsStr = $aa['config']['fanpage_ids']['value'];
+//$fansPagesIdsAsStr = '163721403669672;106479362709892;212285335468828;160805495421;173099949403228;263416953165;332236356800801;241806709206264;168513559842620;329596519636;218266734578;153048968094202';
 $aaFansPagesIdsAsArray = explode(';',$fansPagesIdsAsStr);
 
 
@@ -62,9 +65,9 @@ $json = json_encode($outerArray);
 
 
 // return[]  is already created in line 53 of ajax.php
-$return['message'] = $json;      // look line 53  ajax.php
+$return['message'] = $json;              // look line 53  ajax.php
 //$return['message'] = $outerArray;      // look line 53  ajax.php // i can put in description an array or a json,  both should normally work because in ajax.php line   86   we use the json_encode()  !!
-$return['status'] = 'success';  // look line 53  ajax.php
+$return['status'] = 'success';           // look line 53  ajax.php
 
 
 
