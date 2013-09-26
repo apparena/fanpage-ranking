@@ -18,7 +18,7 @@ $today = date('Y-m-d', time());
 switch ($type_of_time) {
     //query all last 30 days before today, including today
     case '30days':
-        $where_time = "date < '$today' AND date > DATE_ADD('$today', INTERVAL -30 DAY)";
+        $where_time = "date <= '$today' AND date > DATE_ADD('$today', INTERVAL -30 DAY)";
         break;
     //query 10 days same day as today in each week, during the last 10 weeks
     case '10weeks':
