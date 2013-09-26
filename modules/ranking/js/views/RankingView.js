@@ -156,7 +156,7 @@ define([
             });
             this.renderGraph({
                 'target':'#chart_talking_about_count_' + id,
-                'data_label':'Talking about count',
+                'data_label':'Talking about',
                 'data_point_caption': '',
                 'graph_color':'#941ce1',
                 'data':arrayTalksAbout
@@ -344,8 +344,8 @@ define([
                         var date = new Date(parseInt(x));
                         console.log(x);
                         console.log(date);
-                        var strDate = "" + date.getDate() + "." + (date.getMonth()+1) + "." + date.getFullYear();
-                        showTooltip(item.pageX, item.pageY, item.series.label + " - " + strDate + " = " + y);
+                        var strDate = "" + date.getDate() + "." + (date.getMonth()+1) + ".";
+                        showTooltip(item.pageX, item.pageY, "  " + item.series.label + " =" + y + " (" + strDate + ")" );
                         //showTooltip(item.pageX, item.pageY, y + data_point_caption );
                     }
 
