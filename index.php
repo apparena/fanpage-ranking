@@ -79,7 +79,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 </head>
 
 <body class="<?=$classbody?>">
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top" style="display:none">
     <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
@@ -103,49 +103,69 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 
 <div class="container">
-    <h3>Ranking Volksbanks</h3>
-    <h12 class="num-elements" style="font-weight:bold;"></h12> Banks ranked on : <h12 class="date" style="font-weight:bold;"></h12> at: <h12 class="time" style="font-weight:bold;"></h12>
-    <br>
-            <ul class="pager">
-                <label>Display the Top / Bottom </label>
-                <select>
-                    <option value="all">all</option>
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                    <option value=5>5</option>
-                    <option value=5>10</option>
-                    <option value=5>15</option>
-                    <option value=5>20</option>
-                    <option value=5>25</option>
-                </select>
-                <label> Banks</label>
-                <li class="refresh-button"><a href="#">Refresh</a></li>
-            </ul>
 
+<br>
+<div class='list-group-item' style= "font-weight:bold">
+
+    <div>
+        <h3>Ranking Volksbanks</h3>
+        <h12 class="num-elements"></h12> Banks ranked on : <h12 class="date"></h12> at: <h12 class="time"></h12>
+        <br><br>
+    </div>
+
+    <div style="float:left">
+        <p>Choose time scale of Graphs <i class='icon-spinner icon-spin icon-large updateTimeGraph collapsed'></i></p>
+        <label class="radio-inline">
+          <input type="radio" id="days" name="typeOfTime" value="30days" checked> last 30 days
+        </label>
+        <label class="radio-inline">
+          <input type="radio" id="weeks" name="typeOfTime" value="10weeks"> last 10 weeks
+        </label>
+        <br>
+        <label class="radio-inline">
+          <input type="radio" id="months" name="typeOfTime" value="6months">  last 6 months
+        </label>
+        <label class="radio-inline">
+          <input type="radio" id="months" name="typeOfTime" value="12months">  last 12 months
+        </label>
+    </div>
+
+    <div>
+        <ul class="pager">
+            <label>Display the Top / Bottom </label>
+            <select id="max-rows">
+                <option value="all">all</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=5>10</option>
+                <option value=5>15</option>
+                <option value=5>20</option>
+                <option value=5>25</option>
+            </select>
+            <label> Banks</label>
+        </ul>
+    </div>
+</div>
+
+<br>
 
 
 
     <! -------------------    title of the table ------------------------------------------------->
-    <div style= "font-weight:bold; font-style: italic; background-color:#D8D8D8">
+    <div class='list-group-item' style= "font-weight:bold; font-style: italic; background-color:#e3dfa5">
         <div class="row show-grid">
             <div class="col-1">
-                Rank &nbsp;
-                <i class="icon-long-arrow-down icon-3 ranks-desc"></i>&nbsp;
-                <i class="icon-long-arrow-up icon-3 ranks-asc"></i>
-            </div>
-            <div class="col-1">
                 Photo &nbsp;
-                <i class="icon-long-arrow-down icon-3 photos-desc"></i>&nbsp;
-                <i class="icon-long-arrow-up icon-3 photos-asc"></i>
             </div>
             <div class="col-4">
                 Fan page name &nbsp;
                 <i class="icon-long-arrow-down icon-3 fans-pages-names-desc"></i>&nbsp;
                 <i class="icon-long-arrow-up icon-3 fans-pages-names-asc"></i>
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 Likes &nbsp;
                 <i class="icon-long-arrow-down icon-3 likes-desc"></i>&nbsp;
                 <i class="icon-long-arrow-up icon-3 likes-asc"></i>
@@ -171,13 +191,13 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 
 <?php
-unset($aa['config']['css_bootstrap']);
-unset($aa['config']['css_app']);
-unset($aa['config']['tac']);
+//unset($aa['config']['css_bootstrap']);
+//unset($aa['config']['css_app']);
+//unset($aa['config']['tac']);
 
-echo '<pre class="debug">';
-print_r($aa);
-echo '</pre>';
+//echo '<pre class="debug">';
+//print_r($aa);
+//echo '</pre>';
 ?>
 
 <script>

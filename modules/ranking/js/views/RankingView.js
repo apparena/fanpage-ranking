@@ -1,25 +1,35 @@
 /*global define: false */
+
+
 define([
     'jquery',
     'underscore',
     'backbone',
     'tinysort',
     'text!modulesSrc/ranking/templates/bank.html',
-    'modulesSrc/ranking/js/collections/RankingCollection'
+    'modulesSrc/ranking/js/collections/RankingCollection',
+    'jquery.flot.resize.min',
+    'jquery.flot.time',
+    'imperio.general'
+
+
 
 ], function ($, _, Backbone, TinySort, BankTemplate, RankingCollection) {
 
     //setting global variables
     //   _.aa.config.fanpage_ids.value;
-    var fansPagesIdsAsStr = '163721403669672;106479362709892;212285335468828;160805495421;173099949403228;263416953165;332236356800801;241806709206264;168513559842620;329596519636;218266734578;153048968094202';
-    var fansPagesIdsAsArray = fansPagesIdsAsStr.split(';');
-    var fansPagesNumber = fansPagesIdsAsArray.length;
+
+    var fansPagesNumber;  //to be set later from the php response
+    var typeOfTime = $("input[name='typeOfTime']:checked").val(); // in html is set checked as 'days'
+    console.log(typeOfTime);
 
     var RankingView = Backbone.View.extend({
 
         el: $("#content-wrapper"),
 
         initialize: function () {
+            //console.log('bernard');
+            //console.log(this);
             this.collection = new RankingCollection();
             this.render();
         },
@@ -31,6 +41,7 @@ define([
             this.setOrderingForArrows();                // event require insertAllElements() occurred before
             this.refreshRowsOnClickArrows();            // event require insertAllElements() occurred before
             this.refreshRowsOnClickButton();            // event require insertAllElements() occurred before
+            this.updateTimeGraph();
         },
 
         allRowsMinInfo: function(){ // ajax call
@@ -46,16 +57,14 @@ define([
         handleJSON: function(){
             var json = this.allRowsMinInfo();
             //console.log(json);
-
             var obj = $.parseJSON(json);
-            var len = Object.keys(obj).length;
-
+            fansPagesNumber = Object.keys(obj).length;
             //fetching values from ajax Object and sending to collection
-            for(var i=0; i<len; i++){
+            for(var i=0; i<fansPagesNumber; i++){
                 var item = 'item'+i;
                 var fieldsJson = obj[item];
                 var fieldsObj = $.parseJSON(fieldsJson);
-
+                //add to collection
                 this.collection.add({
                     id: fieldsObj['id'],
                     name: fieldsObj['name'],
@@ -64,25 +73,181 @@ define([
                     talking_about_count: fieldsObj['talking_about_count']
                 });
             }
-
             // fetching data from collection.js  and using in view
-            var len = this.collection.length;
-            for(var i= 0;i<len; i++){
-                console.log(this.collection.at(i).get('id'));
-                console.log(this.collection.at(i).get('name'));
-                console.log(this.collection.at(i).get('description'));
-                console.log(this.collection.at(i).get('likes'));
-                console.log(this.collection.at(i).get('talking_about_count'));
-
+            fansPagesNumber = this.collection.length;
+            for(var i= 0;i<fansPagesNumber; i++){
+                //console.log(this.collection.at(i).get('id'));
+                //console.log(this.collection.at(i).get('name'));
+                //console.log(this.collection.at(i).get('description'));
+                //console.log(this.collection.at(i).get('likes'));
+                //console.log(this.collection.at(i).get('talking_about_count'));
                 var data = this.collection.at(i);
-                console.log(data);
+                //console.log(data);
                 if(typeof data === 'object') {
                     var compiledTemplate = _.template(BankTemplate, data);
                     this.$el.append(compiledTemplate);
                 }
             }
-
         },
+
+
+        expandingCollapsingElementsEachRow: function(view){
+            view = this;  // the save 'this' before changing context
+            $('.manipulate').on('click', function(){
+                var rowId = this.id;
+                if($('.additional', $(this)).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
+                    $('.additional', $(this)).removeClass('collapsed');
+                }
+                else {
+                    $('.additional', $(this)).addClass('collapsed');
+                }
+                view.showGraph(rowId);
+            });
+        },
+
+
+        updateTimeGraph: function(){;
+            view = this;  // the save 'this' before changing context
+            // typeOfTime is global and in html (index.php) is already set checked as 'days'
+            $("input[name='typeOfTime']").change(function(){
+                typeOfTime = $("input[name='typeOfTime']:checked").val(); //overriding global variable on change
+                console.log(typeOfTime);
+                $('.insert-graph1:not(.collapsed)').each(function(key, elmt){
+                    var chart_likes_id = this.id;
+                    var id = chart_likes_id.replace('chart_likes_','');
+                    console.log(id);
+                    view.showGraph(id);
+                });
+            });
+        },
+
+        showGraph: function(id){
+            var data = this.additionalInfo(id, typeOfTime);  //id must be string
+            //console.log(data);
+            var obj = $.parseJSON(data);
+            //console.log(obj);
+            var len = Object.keys(obj).length;
+            //console.log(len);
+            var arrayLikes = new Array();
+            var arrayTalksAbout = new Array();
+            for(var i=0;i<len;i++){
+                var row = obj[i];
+                //console.log(row);
+                var dateString = row.date;
+                var date = new Date(dateString.concat('T00:00:00'));
+                //console.log(date);
+                var timestamp = date.getTime();
+                //console.log(timestamp);
+                var arrayInnerLikes = new Array();
+                var arrayInnerTalksAbout = new Array();
+                arrayInnerLikes.push(timestamp, row.likes);
+                arrayInnerTalksAbout.push(timestamp, row.talking_about_count);
+                arrayLikes.push(arrayInnerLikes);
+                arrayTalksAbout.push(arrayInnerTalksAbout);
+                //console.log(arrayLikes);
+                //console.log(arrayTalksAbout);
+            }
+            this.renderGraph({
+                'target':'#chart_likes_' + id,
+                'data_label':'Likes',
+                'data_point_caption': '',
+                'graph_color':'#e11c8c',
+                'data':arrayLikes
+            });
+            this.renderGraph({
+                'target':'#chart_talking_about_count_' + id,
+                'data_label':'Talking about count',
+                'data_point_caption': '',
+                'graph_color':'#941ce1',
+                'data':arrayTalksAbout
+            });
+        },
+
+
+        additionalInfo: function(id,typeOfTime){ // ajax call
+            var response = this.ajax({  //this is s custom fct that is written in router.js line 106 that return an object having 2 attributes : data and type
+                module: 'ranking',
+                action: 'additionalInfo',
+                typeOfTime: typeOfTime,
+                id: id
+            });
+            var messageObject = response.data;            //line 124 125 in router.js
+            var messageJson = messageObject['message'];   //line 54   54  in ajax.php   // message value is set inside the called php file
+            return messageJson;
+        },
+
+
+        setOrderingForArrows: function(){
+            // ordering ranks
+            $('.ranks-desc').on('click', function(){
+                $('.manipulate').tsort('.ranks p',{order:'desc'});
+            });
+            $('.ranks-asc').on('click', function(){
+                $('.manipulate').tsort('.ranks p',{order:'asc'});
+            });
+            // ordering images
+            $('.photos-desc').on('click', function(){
+                $('.manipulate').tsort('.photos p',{order:'desc'});
+            });
+            $('.photos-asc').on('click', function(){
+                $('.manipulate').tsort('.photos p',{order:'asc'});
+            });
+            // ordering fans pages names
+            $('.fans-pages-names-desc').on('click', function(){
+                $('.manipulate').tsort('.fans-pages-names p',{order:'desc'});
+            });
+            $('.fans-pages-names-asc').on('click', function(){
+                $('.manipulate').tsort('.fans-pages-names p',{order:'asc'});
+            });
+            // ordering likes
+            $('.likes-desc').on('click', function(){
+                $('.manipulate').tsort('.likes p',{order:'desc'});
+            });
+            $('.likes-asc').on('click', function(){
+                $('.manipulate').tsort('.likes p',{order:'asc'});
+            });
+            // ordering talks about
+            $('.talks-about-desc').on('click', function(){
+                $('.manipulate').tsort('.talks-about p',{order:'desc'});
+            });
+            $('.talks-about-asc').on('click', function(){
+                $('.manipulate').tsort('.talks-about p',{order:'asc'});
+            });
+        },
+
+        // function set the max number of rows to be displayed and returns it
+        setMaxRows: function(){
+            var maxResults = $('select option:selected').val();  // selector point the selected option
+            if($('select option:selected').val() == 'all') {maxResults = fansPagesNumber; }
+            return maxResults;
+        },
+
+        // fct to show a number of rows between all
+        showMaxRows: function(allRows, maxRows){
+            $('.manipulate').removeClass('collapsed');  // to reset
+            for (var i=maxRows; i<allRows; i++){
+                // eq(n) is jquery to select element at index n
+                ($('.manipulate').eq(i)).addClass('collapsed');
+                console.log(($('.manipulate').eq(i)).attr('class')); //
+            }
+        },
+
+        // fct that adds click event to the "ordering arrows" for showing limited number of rows in grid
+        refreshRowsOnClickArrows: function(){
+            var view = this;
+            $('.fans-pages-names-desc, .fans-pages-names-asc, .likes-desc, .likes-asc, .talks-about-desc, .talks-about-asc').on('click', function(){
+                view.showMaxRows(fansPagesNumber, view.setMaxRows());
+            });
+        },
+
+        // fct that adds click event to the "refresh button" for showing limited number of rows in grid
+        refreshRowsOnClickButton: function(){
+            var view = this;
+            $('#max-rows').change(function(){
+                view.showMaxRows(fansPagesNumber, view.setMaxRows());
+            });
+        },
+
 
         setTime: function(){
             // settings vars for date and time of ranking
@@ -101,85 +266,94 @@ define([
         },
 
 
-        expandingCollapsingElementsEachRow: function(){
-            $('.list-group-item').on('click', function(){
-                if($('.additional', $(this)).hasClass('collapsed')){  // find() // $('.additional', '.list-group-item') is equivalent to $('.list-group-item').find('.additional')
-                    $('.additional', $(this)).removeClass('collapsed');
+
+
+        renderGraph: function(params, callback){
+            /* Check data param */
+            if ( typeof( params ) != 'undefined' ) {
+                if ( !params.hasOwnProperty('target') ) {
+                    target = '#chart';
+                }else {
+                    target = params['target'];
                 }
-                else {
-                    $('.additional', $(this)).addClass('collapsed');
+                if ( !params.hasOwnProperty('data') ) { // Set data
+                    data = [[0,8], [1,5], [2,3], [3,8], [4,5], [5,6], [6,12], [7,4], [8,8], [9,3], [10,1]];
+                }else {
+                    data = params['data'];
                 }
-            });
-        },
-
-        setOrderingForArrows: function(){
-            // ordering ranks
-            $('.ranks-desc').on('click', function(){
-                $('.list-group-item').tsort('.ranks p',{order:'desc'});
-            });
-            $('.ranks-asc').on('click', function(){
-                $('.list-group-item').tsort('.ranks p',{order:'asc'});
-            });
-            // ordering images
-            $('.photos-desc').on('click', function(){
-                $('.list-group-item').tsort('.photos p',{order:'desc'});
-            });
-            $('.photos-asc').on('click', function(){
-                $('.list-group-item').tsort('.photos p',{order:'asc'});
-            });
-            // ordering fans pages names
-            $('.fans-pages-names-desc').on('click', function(){
-                $('.list-group-item').tsort('.fans-pages-names p',{order:'desc'});
-            });
-            $('.fans-pages-names-asc').on('click', function(){
-                $('.list-group-item').tsort('.fans-pages-names p',{order:'asc'});
-            });
-            // ordering likes
-            $('.likes-desc').on('click', function(){
-                $('.list-group-item').tsort('.likes p',{order:'desc'});
-            });
-            $('.likes-asc').on('click', function(){
-                $('.list-group-item').tsort('.likes p',{order:'asc'});
-            });
-            // ordering talks about
-            $('.talks-about-desc').on('click', function(){
-                $('.list-group-item').tsort('.talks-about p',{order:'desc'});
-            });
-            $('.talks-about-asc').on('click', function(){
-                $('.list-group-item').tsort('.talks-about p',{order:'asc'});
-            });
-        },
-
-        // function set the max number of rows to be displayed and returns it
-        setMaxRows: function(){
-            var maxResults = $('select option:selected').val();  // selector point the selected option
-            if($('select option:selected').val() == 'all') {maxResults = fansPagesNumber; }
-            return maxResults;
-        },
-
-        // fct to show a number of rows between all
-        showMaxRows: function(allRows, maxRows){
-            $('.list-group-item').removeClass('collapsed');  // to reset
-            for (var i=maxRows; i<allRows; i++){
-                // eq(n) is jquery to select element at index n
-                ($('.list-group-item').eq(i)).addClass('collapsed');
-                console.log(($('.list-group-item').eq(i)).attr('class')); //
+                if ( !params.hasOwnProperty('data_label') ) { // Set data
+                    data_label = AAInsights.fb_page_name;
+                }else {
+                    data_label = params['data_label'];
+                }
+                if ( !params.hasOwnProperty('data_point_caption') ) { // Set data
+                    data_point_caption = ' Votes';
+                }else {
+                    data_point_caption = params['data_point_caption'];
+                }
+                if ( !params.hasOwnProperty('graph_color') ) { // Set data
+                    graph_color = '#000000';
+                }else {
+                    graph_color = params['graph_color'];
+                }
+            } else {
+                return false;
             }
-        },
 
-        // fct that adds click event to the "ordering arrows" for showing limited number of rows in grid
-        refreshRowsOnClickArrows: function(){
-            var view = this;
-            $('.ranks-desc, .ranks-asc, .photos-desc, .photos-asc, .fans-pages-names-desc, .fans-pages-names-asc, .likes-desc, .likes-asc, .talks-about-desc, .talks-about-asc').on('click', function(){
-                view.showMaxRows(fansPagesNumber, view.setMaxRows());
+            /* Normalize data */
+            var d1 = data;
+            var max = 0;
+            $.each( data, function(index, value) {
+                max = value[1];
             });
-        },
 
-        // fct that adds click event to the "refresh button" for showing limited number of rows in grid
-        refreshRowsOnClickButton: function(){
-            var view = this;
-            $('.refresh-button').on('click', function(){
-                view.showMaxRows(fansPagesNumber, view.setMaxRows());
+            var plot = $.plot( $( target ),
+                [ { data: d1, label: data_label, color: graph_color} ], {
+                    series: {
+                        lines: { show: true, fill: true, fillColor: { colors: [ { opacity: 0.05 }, { opacity: 0.15 } ] } },
+                        points: { show: true }
+                    },
+                    legend: { position: 'nw'},
+                    grid: { hoverable: true, clickable: true, borderColor: '#ccc', borderWidth: 1, labelMargin: 10 },
+                    yaxis: { min: 0, max: max*1.05 },
+                    xaxis: { mode: "time", timeformat: "%d.%m." }
+                });
+
+            function showTooltip(x, y, contents) {
+                jQuery('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css( {
+                    position: 'absolute',
+                    display: 'none',
+                    top: y + 5,
+                    left: x + 5
+                }).appendTo("body").fadeIn(200);
+            }
+
+            jQuery( target ).bind("plothover", function (event, pos, item) {
+                jQuery("#x").text(pos.x.toFixed(2));
+                jQuery("#y").text(pos.y.toFixed(2));
+
+                if(item) {
+                    if (previousPoint != item.dataIndex) {
+                        previousPoint = item.dataIndex;
+
+                        jQuery("#tooltip").remove();
+                        var x = item.datapoint[0].toFixed(0),
+                            y = item.datapoint[1].toFixed(0);
+
+                        // Format date
+                        var date = new Date(parseInt(x));
+                        console.log(x);
+                        console.log(date);
+                        var strDate = "" + date.getDate() + "." + (date.getMonth()+1) + "." + date.getFullYear();
+                        showTooltip(item.pageX, item.pageY, item.series.label + " - " + strDate + " = " + y);
+                        //showTooltip(item.pageX, item.pageY, y + data_point_caption );
+                    }
+
+                } else {
+                    jQuery("#tooltip").remove();
+                    previousPoint = null;
+                }
+
             });
         }
 

@@ -31,9 +31,18 @@ var require = {
         'text':         'vendor/requirejs-text/text',
         'localstorage': 'vendor/backbone.localStorage/backbone.localStorage',
         //facebook:     'vendor/backbone.api.facebook/backbone.api.facebook'
-        'facebook':     '../modules/fangate/js/libs/fb_sdk',
+        'facebook':     '//connect.facebook.net/en_US/all',
         'fb_share':     'utils/fb_share',
         'tinysort':     'vendor/tinysort/jquery.tinysort',
+
+        // graph
+        'AA.facebook':  'vendor/AA.facebook/js/AA.facebook',
+        'AA.contest':  'vendor/AA.contest/js/AA.contest',
+        'jquery.flot.min':  'vendor/jquery.flot.min/jquery.flot.min',
+        'jquery.flot.resize.min':  'vendor/jquery.flot.resize.min/jquery.flot.resize.min',
+        'jquery.flot.time':  'vendor/jquery.flot.time/jquery.flot.time',
+        'imperio.general':  'vendor/imperio.general/js/imperio.general',
+
 
         // directory settings
         'templates':    '../templates',
@@ -75,6 +84,36 @@ var require = {
         'tinysort':{
             deps: ['jquery'],
             exports: 'tinysort'
+        },
+
+        'AA.facebook':{
+            deps: ['jquery', 'facebook', 'jquery.flot.min', 'jquery.flot.resize.min', 'jquery.flot.time'],
+            exports: 'AA.facebook'
+        },
+
+        'AA.contest':{
+            deps: ['jquery', 'AA.facebook', 'facebook', 'jquery.flot.min', 'jquery.flot.resize.min', 'jquery.flot.time'],
+            exports: 'AA.contest'
+        },
+
+        'jquery.flot.min':{
+            deps: ['jquery'],
+            exports: 'jquery'
+        },
+
+        'jquery.flot.resize.min':{
+            deps: ['jquery', 'jquery.flot.min'],
+            exports: 'jquery'
+        },
+
+        'jquery.flot.time':{
+            deps: ['jquery', 'jquery.flot.min'],
+            exports: 'jquery'
+        },
+
+        'imperio.general':{
+            deps: ['jquery', 'bootstrap'],
+            exports: 'jquery'
         },
 
         'sinon-qunit': {

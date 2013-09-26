@@ -15,7 +15,7 @@
 
         // extend underscore with our aa object, so that it is accessible everywhere where the _ underscore object is known.
         _.extend(_, { aa: aa });
-
+        console.log('marcus2');
         App.initialize();
     });
 }());
