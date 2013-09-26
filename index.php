@@ -123,10 +123,10 @@ if (isset($aaForJs['instance']['fb_app_secret']))
         </label>
         <br>
         <label class="radio-inline">
-          <input type="radio" id="months" name="typeOfTime" value="6months">  last 6 months
+          <input type="radio" id="6months" name="typeOfTime" value="6months">  last 6 months
         </label>
         <label class="radio-inline">
-          <input type="radio" id="months" name="typeOfTime" value="12months">  last 12 months
+          <input type="radio" id="12months" name="typeOfTime" value="12months">  last 12 months
         </label>
     </div>
 
