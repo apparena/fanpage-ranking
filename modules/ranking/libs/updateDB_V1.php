@@ -1,15 +1,17 @@
 <?php
 
+$_REQUEST['aa_inst_id'] = 5618; //because the file cannot be updated with parameter passed
+
 // //////////////////////////////////////////
 $m_id = 280;
 $today = date('Y-m-d', time());  //today
-$error = '<br>';
+$error = '';
 $num_fanpages = 0;
 /////////////////////////////////////////////
 
 echo '-------------------------------------------<br>';
 echo 'Date:' . $today . '<br>';
-echo 'Errors:';
+echo 'Errors: <br>';
 
 
 
@@ -98,6 +100,10 @@ $intersectionArrayNumber = count($intersectionArray);
 
 
 
+$fanpages_inserted = 0;
+$fanpages_updated = 0;
+
+
 
 if(!empty($differenceArray)){  //insert new rows into metric DB and into basic DB
     foreach($differenceArray as $id){
@@ -108,52 +114,58 @@ if(!empty($differenceArray)){  //insert new rows into metric DB and into basic D
             //transform to array
             $json_array = json_decode($json, true);
 
-             //set name
-             if(isset($json_array['name']) && $json_array['name'] != NULL){ $name = $json_array['name'];}
-             else {$name = 'no name';}
 
-             //set likes
-             if(isset($json_array['likes']) && $json_array['likes'] != NULL){ $likes = $json_array['likes'];}
-             else {$likes = 0;}
 
-             //set talking_about_count
-             if(isset($json_array['talking_about_count']) && $json_array['talking_about_count'] != NULL){ $talking_about_count = $json_array['talking_about_count'];    }
-             else {$talking_about_count = 0;}
+            //check if the id given is for a fan page no for an image, in case of image go out of the loop.
+            //both image and fan page have 'likes' attribute, but only fanpages have an type of 'likes' as int
+            // we assume that all fanpages and all images has 'likes'  attribute
+            if(isset($json_array['likes']) && $json_array['likes'] != NULL && gettype($json_array['likes']) == 'integer'){
 
-             //set description
-             if(isset($json_array['description']) && $json_array['description'] != NULL){ $description = $json_array['description'];    }
-             else {$description = 'no description';}
 
-            //insert into basic DB
-            $query3 = "INSERT INTO
-                           fanpage_basic_data
-                        SET
-                            fb_page_id = :fb_page_id,
-                            name = :name,
-                            description = :description
-                      ";
+                 //set name
+                 if(isset($json_array['name']) && $json_array['name'] != NULL){ $name = $json_array['name'];}
+                 else {$name = '';}
+                 //set likes
+                 if(isset($json_array['likes']) && $json_array['likes'] != NULL){ $likes = $json_array['likes'];}
+                 else {$likes = 0;}
+                 //set talking_about_count
+                 if(isset($json_array['talking_about_count']) && $json_array['talking_about_count'] != NULL){ $talking_about_count = $json_array['talking_about_count'];    }
+                 else {$talking_about_count = 0;}
+                 //set description
+                 if(isset($json_array['description']) && $json_array['description'] != NULL){ $description = $json_array['description'];    }
+                 else {$description = '';}
+
+                //insert into basic DB
+                $query3 = "INSERT INTO
+                               fanpage_basic_data
+                            SET
+                                fb_page_id = :fb_page_id,
+                                name = :name,
+                                description = :description
+                          ";
                 $query4 = $db->prepare($query3);
                 $query4->bindParam(':fb_page_id', $id, PDO::PARAM_INT);
                 $query4->bindParam(':name', $name, PDO::PARAM_STR);
                 $query4->bindParam(':description', $description, PDO::PARAM_STR);
-
                 $query4->execute();
-            //insert into metric DB
-            $query5 = "INSERT INTO
-                           fanpage_metric_data
-                        SET
-                            date = :date,
-                            fb_page_id = :fb_page_id,
-                            likes = :likes,
-                            talking_about_count = :talking_about_count
-                      ";
-            $query6 = $db->prepare($query5);
-            $query6->bindParam(':fb_page_id', $id, PDO::PARAM_INT);
-            $query6->bindParam(':date', $today);
-            $query6->bindParam(':likes', $likes, PDO::PARAM_INT);
-            $query6->bindParam(':talking_about_count', $talking_about_count, PDO::PARAM_INT);
-
-            $query6->execute();
+                //insert into metric DB
+                $query5 = "INSERT INTO
+                               fanpage_metric_data
+                            SET
+                                date = :date,
+                                fb_page_id = :fb_page_id,
+                                likes = :likes,
+                                talking_about_count = :talking_about_count
+                          ";
+                $query6 = $db->prepare($query5);
+                $query6->bindParam(':fb_page_id', $id, PDO::PARAM_INT);
+                $query6->bindParam(':date', $today);
+                $query6->bindParam(':likes', $likes, PDO::PARAM_INT);
+                $query6->bindParam(':talking_about_count', $talking_about_count, PDO::PARAM_INT);
+                $query6->execute();
+                $fanpages_inserted++;
+            }
+            else {$error = $error . 'this id: /' . $id . '/ is a photo id, it cannot be put in database <br>';}
         }
         else {$error = $error . 'request to facebook API did not succeed for fanpage id:' . $id . '<br>';}
     }
@@ -181,48 +193,62 @@ if(!empty($toUpdateNotTodayInserted)){
             //transform to array
             $json_array = json_decode($json, true);
 
-            //set name
-            if(isset($json_array['name']) && $json_array['name'] != NULL){ $name = $json_array['name'];}
-            else {$name = 'no name';}
-
-            //set likes
-            if(isset($json_array['likes']) && $json_array['likes'] != NULL){ $likes = $json_array['likes'];}
-            else {$likes = 0;}
-
-            //set talking_about_count
-            if(isset($json_array['talking_about_count']) && $json_array['talking_about_count'] != NULL){ $talking_about_count = $json_array['talking_about_count'];    }
-            else {$talking_about_count = 0;}
-
-            //set description
-            if(isset($json_array['description']) && $json_array['description'] != NULL){ $description = $json_array['description'];    }
-            else {$description = 'no description';}
-
-            // update basic DB
-            $query7 = "UPDATE fanpage_basic_data ".
-                      "SET ".
-                        "name = :name, " .
-                        "description = :description " .
-                        "WHERE fb_page_id = '$id'";
-            $query8 = $db->prepare($query7);
-            $query8->bindParam(':name', $name, PDO::PARAM_STR);
-            $query8->bindParam(':description', $description, PDO::PARAM_STR);
-
-            $query8->execute();
 
 
-            //insert into metric DB
-            $query9 = "INSERT INTO fanpage_metric_data " .
-                      "SET " .
+            //check if the id given is for a fan page no for an image, in case of image go out of the loop.
+            //both image and fan page have 'likes' attribute, but only fanpages have an type of 'likes' as int
+            // we assume that all fanpages and all images has 'likes'  attribute
+            if(isset($json_array['likes']) && $json_array['likes'] != NULL && gettype($json_array['likes']) == 'integer'){
+
+
+                //set name
+                if(isset($json_array['name']) && $json_array['name'] != NULL){ $name = $json_array['name'];}
+                else {$name = '';}
+                //set likes
+                if(isset($json_array['likes']) && $json_array['likes'] != NULL){ $likes = $json_array['likes'];}
+                else {$likes = 0;}
+                //set talking_about_count
+                if(isset($json_array['talking_about_count']) && $json_array['talking_about_count'] != NULL){ $talking_about_count = $json_array['talking_about_count'];    }
+                else {$talking_about_count = 0;}
+                //set description
+                if(isset($json_array['description']) && $json_array['description'] != NULL){ $description = $json_array['description'];    }
+                else {$description = '';}
+
+                // update basic DB
+                $query7 = "UPDATE fanpage_basic_data ".
+                          "SET name = :name, " .
+                               "description = :description " .
+                               "WHERE fb_page_id = '$id' " ;
+
+                $query8 = $db->prepare($query7);
+                $query8->bindParam(':name', $name, PDO::PARAM_STR);
+                $query8->bindParam(':description', $description, PDO::PARAM_STR);
+
+                $query8->execute();
+
+
+
+                //insert into metric DB
+                $query11 = "SELECT * FROM fanpage_metric_data WHERE fb_page_id = '$id' AND date = '$today' ";
+                $query12 = $db->query($query11);
+                $test = $query12->fetchAll();
+                if(empty($test)){
+                    $query9 = "INSERT INTO fanpage_metric_data " .
+                        "SET " .
                         "date = :date, " .
                         "fb_page_id = :fb_page_id, " .
                         "likes = :likes, " .
-                        "talking_about_count = :talking_about_count";
-            $query10 = $db->prepare($query9);
-            $query10->bindParam(':fb_page_id', $id, PDO::PARAM_INT);
-            $query10->bindParam(':date', $today);
-            $query10->bindParam(':likes', $likes, PDO::PARAM_INT);
-            $query10->bindParam(':talking_about_count', $talking_about_count, PDO::PARAM_INT);
-            $query10->execute();
+                        "talking_about_count = :talking_about_count ";
+                    $query10 = $db->prepare($query9);
+                    $query10->bindParam(':fb_page_id', $id, PDO::PARAM_INT);
+                    $query10->bindParam(':date', $today);
+                    $query10->bindParam(':likes', $likes, PDO::PARAM_INT);
+                    $query10->bindParam(':talking_about_count', $talking_about_count, PDO::PARAM_INT);
+                    $query10->execute();
+                }
+                $fanpages_updated++;
+            }
+            else {$error = $error . 'this id: /' . $id . '/ is a photo id, it cannot be put in database <br>';}
         }
         else { $error = $error . 'request to facebook API did not succeed for fanpage id:' . $id . '<br>';}
     }
@@ -237,8 +263,8 @@ if(!empty($toUpdateNotTodayInserted)){
 
 
 
-echo $error . '<br>';
-echo 'Num Of Fanpages:' . $num_fanpages . '<br>';
+echo $error;
+echo 'Num of Fanpages sent to database is: ' . ($fanpages_inserted + $fanpages_updated) . ', out of ' . $num_fanpages . ' from app_manager <br>';
 echo '-------------------------------------------<br><br>';
 
 
