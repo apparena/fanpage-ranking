@@ -10,7 +10,8 @@ define([
     'modulesSrc/ranking/js/collections/RankingCollection',
     'jquery.flot.resize.min',
     'jquery.flot.time',
-    'imperio.general'
+    'imperio.general',
+    'select2.min'
 
 
 
@@ -21,6 +22,9 @@ define([
 
     var fansPagesNumber;  //to be set later from the php response
     var typeOfTime = $("input[name='typeOfTime']:checked").val(); // in html is set checked as 'days'
+    $('#e9').select2();
+    var arrayIdsNames = new Array();
+
     console.log(typeOfTime);
 
     var RankingView = Backbone.View.extend({
@@ -42,6 +46,7 @@ define([
             this.refreshRowsOnClickArrows();            // event require insertAllElements() occurred before
             this.refreshRowsOnClickButton();            // event require insertAllElements() occurred before
             this.updateTimeGraph();
+            this.chooseItems();
         },
 
         allRowsMinInfo: function(){ // ajax call
@@ -73,8 +78,10 @@ define([
                     talking_about_count: fieldsObj['talking_about_count']
                 });
             }
+            console.log(fansPagesNumber);
             // fetching data from collection.js  and using in view
             fansPagesNumber = this.collection.length;
+            console.log(fansPagesNumber);
             for(var i= 0;i<fansPagesNumber; i++){
                 //console.log(this.collection.at(i).get('id'));
                 //console.log(this.collection.at(i).get('name'));
@@ -215,6 +222,53 @@ define([
             });
         },
 
+
+
+
+        //function to hand write elements we want to display only on the page
+        chooseItems: function(){
+            fansPagesNumber = this.collection.length;
+            for(var i= 0;i<fansPagesNumber; i++){
+
+                var data = this.collection.at(i);
+                var internal = new Array();
+                internal['id'] = data.get('id');
+                internal['name'] = data.get('name');
+                arrayIdsNames.push(internal);
+                //create dynamically <option> elements & append to <select>
+                var str1 = "<option value='";
+                var str2 = data.get('id');
+                var str3 = "'>";
+                var str4 = data.get('name');
+                var str5 = '</option>';
+                var html = str1.concat(str2, str3, str4, str5);
+                $('#e9').append(html);
+            }
+            $('.select2-container').on('DOMNodeInserted', function(){
+                console.log('roy');
+                console.log($('.select2-search-choice').length);
+                console.log($('.select2-search-choice > div').text());
+                var value = $('.select2-search-choice > div').text();
+                for(var i in arrayIdsNames){
+                    if(arrayIdsNames[i]['name'] == value){
+                        var correspondingId = arrayIdsNames[i]['id'];
+                        break;
+                    }
+                }
+                console.log(correspondingId);
+                $('.manipulate').addClass('collapsed');
+                var selector = '#'.concat(correspondingId);
+                console.log(selector);
+                $(selector).removeClass('collapsed');
+            });
+
+
+        },
+
+
+
+
+
         // function set the max number of rows to be displayed and returns it
         setMaxRows: function(){
             var maxResults = $('select option:selected').val();  // selector point the selected option
@@ -261,7 +315,6 @@ define([
             var timeStr = h + 'h' + min + 'min';
             $('.date').append(dateStr);
             $('.time').append(timeStr);
-            console.log(fansPagesNumber);
             $('.num-elements').append(fansPagesNumber);
         },
 

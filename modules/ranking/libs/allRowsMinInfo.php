@@ -2,6 +2,7 @@
 
 
 
+
 //set today
 $today = date('Y-m-d', time());
 
@@ -9,7 +10,7 @@ $aa_inst_id = $aa['instance']['aa_inst_id'];
 $fansPagesIdsAsStr = $aa['config']['fanpage_ids']['value'];
 //$fansPagesIdsAsStr = '163721403669672;106479362709892;212285335468828;160805495421;173099949403228;263416953165;332236356800801;241806709206264;168513559842620;329596519636;218266734578;153048968094202';
 $aaFansPagesIdsAsArray = explode(';',$fansPagesIdsAsStr);
-
+$aaFansPagesIdsAsArray = array_unique($aaFansPagesIdsAsArray); //remove duplicate value
 
 
 //test

@@ -2,6 +2,8 @@
 
 $_REQUEST['aa_inst_id'] = 5618; //because the file cannot be updated with parameter passed
 
+
+
 // //////////////////////////////////////////
 $m_id = 280;
 $today = date('Y-m-d', time());  //today
@@ -9,9 +11,22 @@ $error = '';
 $num_fanpages = 0;
 /////////////////////////////////////////////
 
+
+
+
+
+
+
+
+
+
 echo '-------------------------------------------<br>';
 echo 'Date:' . $today . '<br>';
 echo 'Errors: <br>';
+
+
+
+
 
 
 
@@ -60,7 +75,9 @@ foreach($list_i_id as $i_id){
     if($json != FALSE){   //if V1 request succeed   -- file_get_contents() returns FALSE
         if(strlen($json) > 0){
             $array = explode(';',$json);
+            $array = array_unique($array); //remove duplicate values
             $all = array_merge($all, $array);
+            $all = array_unique($all); //remove duplicate values
         }
         else { $error = $error . 'the instance:'. $i_id. ' does not contain any fanpage id <br>'; }
     }
@@ -76,7 +93,7 @@ $num_fanpages = count($all);
 $query1 = "SELECT fb_page_id FROM fanpage_basic_data";
 $query2 = $db->query($query1);
 $dbFansPagesIdsArray = $query2->fetchAll(PDO::FETCH_COLUMN);
-
+$dbFansPagesIdsArray = array_unique($dbFansPagesIdsArray); //remove duplicate values
 
 // getting the array of new ids entered in aa for the app_inst_id   // these ids will be requested from fb and inserted in db
 $differenceArray = array_diff($all, $dbFansPagesIdsArray);
@@ -110,7 +127,8 @@ if(!empty($differenceArray)){  //insert new rows into metric DB and into basic D
             // we assume that all fanpages and all images has 'likes'  attribute
             if(isset($json_array['likes']) && $json_array['likes'] != NULL && gettype($json_array['likes']) == 'integer'){
 
-
+                 //set id, in case it is not numerical id, such as string id
+                 if(isset($json_array['id']) && $json_array['id'] != NULL){ $id = $json_array['id'];}
                  //set name
                  if(isset($json_array['name']) && $json_array['name'] != NULL){ $name = $json_array['name'];}
                  else {$name = '';}
@@ -190,6 +208,8 @@ if(!empty($toUpdateNotTodayInserted)){
             if(isset($json_array['likes']) && $json_array['likes'] != NULL && gettype($json_array['likes']) == 'integer'){
 
 
+                //set id, in case it is not numerical id, such as string id
+                if(isset($json_array['id']) && $json_array['id'] != NULL){ $id = $json_array['id'];}
                 //set name
                 if(isset($json_array['name']) && $json_array['name'] != NULL){ $name = $json_array['name'];}
                 else {$name = '';}
@@ -253,7 +273,7 @@ if(!empty($toUpdateNotTodayInserted)){
 
 
 echo $error;
-echo 'Num of Fanpages sent to database is: ' . ($fanpages_inserted + $fanpages_updated) . ', out of ' . $num_fanpages . ' from app_manager <br>';
+echo '** New fan pages in database inserted:' . $fanpages_inserted . ' ** Existing fan pages in database updated:' . $fanpages_updated . ' ** out of total:' . $num_fanpages . ' from app_manager <br>';
 echo '-------------------------------------------<br><br>';
 
 

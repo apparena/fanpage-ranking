@@ -108,7 +108,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <div class='list-group-item' style= "font-weight:bold">
 
     <div>
-        <h3>Ranking Volksbanks</h3>
+        <h3>Ranking Sparkasse Banks</h3>
         <h12 class="num-elements"></h12> Banks ranked on : <h12 class="date"></h12> at: <h12 class="time"></h12>
         <br><br>
     </div>
@@ -140,15 +140,34 @@ if (isset($aaForJs['instance']['fb_app_secret']))
                 <option value=3>3</option>
                 <option value=4>4</option>
                 <option value=5>5</option>
-                <option value=5>10</option>
-                <option value=5>15</option>
-                <option value=5>20</option>
-                <option value=5>25</option>
+                <option value=10>10</option>
+                <option value=15>15</option>
+                <option value=20>20</option>
+                <option value=25>25</option>
             </select>
             <label> Banks</label>
         </ul>
     </div>
+
+    <p>
+
+        <div class="select2-container select2-container-multi populate" id="s2id_e9" style="width:300px; display:none">
+            <ul class="select2-choices">
+
+                <li class="select2-search-field">
+                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen1" tabindex="-1" style="width: 10px;">
+                </li>
+            </ul>
+        </div>
+
+
+         <select multiple="" name="e9" id="e9" style="width:300px" class="populate select2-offscreen" tabindex="-1">
+         </select>
+    </p>
+
 </div>
+
+
 
 <br>
 
@@ -162,18 +181,18 @@ if (isset($aaForJs['instance']['fb_app_secret']))
             </div>
             <div class="col-4">
                 Fan page name &nbsp;
-                <i class="icon-long-arrow-down icon-3 fans-pages-names-desc"></i>&nbsp;
-                <i class="icon-long-arrow-up icon-3 fans-pages-names-asc"></i>
+                <i class="icon-long-arrow-down fans-pages-names-desc"></i>&nbsp&nbsp;
+                <i class="icon-long-arrow-up fans-pages-names-asc"></i>
             </div>
             <div class="col-3">
                 Likes &nbsp;
-                <i class="icon-long-arrow-down icon-3 likes-desc"></i>&nbsp;
-                <i class="icon-long-arrow-up icon-3 likes-asc"></i>
+                <i class="icon-long-arrow-down likes-desc"></i>&nbsp&nbsp;
+                <i class="icon-long-arrow-up likes-asc"></i>
             </div>
             <div class="col-3">
                 Talking about &nbsp;
-                <i class="icon-long-arrow-down icon-3 talks-about-desc"></i>&nbsp;
-                <i class="icon-long-arrow-up icon-3 talks-about-asc"></i>
+                <i class="icon-long-arrow-down talks-about-desc"></i>&nbsp&nbsp;
+                <i class="icon-long-arrow-up talks-about-asc"></i>
             </div>
         </div>
     </div>

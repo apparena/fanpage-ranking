@@ -42,6 +42,7 @@ var require = {
         'jquery.flot.resize.min':  'vendor/jquery.flot.resize.min/jquery.flot.resize.min',
         'jquery.flot.time':  'vendor/jquery.flot.time/jquery.flot.time',
         'imperio.general':  'vendor/imperio.general/js/imperio.general',
+        'select2.min':  'vendor/select2/js/select2.min',
 
 
         // directory settings
@@ -113,6 +114,11 @@ var require = {
 
         'imperio.general':{
             deps: ['jquery', 'bootstrap'],
+            exports: 'jquery'
+        },
+
+        'select2.min':{
+            deps: ['jquery'],
             exports: 'jquery'
         },
 
