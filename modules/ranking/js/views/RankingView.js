@@ -21,7 +21,7 @@ define([
     //   _.aa.config.fanpage_ids.value;
 
     var fansPagesNumber;  //to be set later from the php response
-    var typeOfTime = $("input[name='typeOfTime']:checked").val(); // in html is set checked as 'days'
+    var typeOfTime = $('.typeOfTime.active').attr('id'); // in html is set checked as 'days'
     $('#e9').select2();
     var arrayIdsNames = new Array();
 
@@ -44,7 +44,7 @@ define([
             this.expandingCollapsingElementsEachRow();  // event require insertAllElements() occurred before
             this.setOrderingForArrows();                // event require insertAllElements() occurred before
             this.refreshRowsOnClickArrows();            // event require insertAllElements() occurred before
-            this.refreshRowsOnClickButton();            // event require insertAllElements() occurred before
+            this.refreshRowsOnChangeMaxDisplayed();            // event require insertAllElements() occurred before
             this.updateTimeGraph();
             this.chooseItems();
         },
@@ -113,12 +113,16 @@ define([
         },
 
 
-        updateTimeGraph: function(){;
-            view = this;  // the save 'this' before changing context
-            // typeOfTime is global and in html (index.php) is already set checked as 'days'
-            $("input[name='typeOfTime']").change(function(){
-                typeOfTime = $("input[name='typeOfTime']:checked").val(); //overriding global variable on change
+
+        updateTimeGraph: function(){
+            var view = this;  // the save 'this' before changing context
+            // typeOfTime is global and in html (index.php) the active class is 30days
+            $('.typeOfTime').on('click', function(){
+                typeOfTime = this.id;
                 console.log(typeOfTime);
+                $('.typeOfTime').removeClass('active');
+                $(this).addClass('active');
+                console.log('lina');
                 $('.insert-graph1:not(.collapsed)').each(function(key, elmt){
                     var chart_likes_id = this.id;
                     var id = chart_likes_id.replace('chart_likes_','');
@@ -185,39 +189,37 @@ define([
 
 
         setOrderingForArrows: function(){
-            // ordering ranks
-            $('.ranks-desc').on('click', function(){
-                $('.manipulate').tsort('.ranks p',{order:'desc'});
-            });
-            $('.ranks-asc').on('click', function(){
-                $('.manipulate').tsort('.ranks p',{order:'asc'});
-            });
-            // ordering images
-            $('.photos-desc').on('click', function(){
-                $('.manipulate').tsort('.photos p',{order:'desc'});
-            });
-            $('.photos-asc').on('click', function(){
-                $('.manipulate').tsort('.photos p',{order:'asc'});
-            });
             // ordering fans pages names
             $('.fans-pages-names-desc').on('click', function(){
+                $('.icons').removeClass('order');
+                $('.fans-pages-names-desc').addClass('order');
                 $('.manipulate').tsort('.fans-pages-names p',{order:'desc'});
             });
             $('.fans-pages-names-asc').on('click', function(){
+                $('.icons').removeClass('order');
+                $('.fans-pages-names-asc').addClass('order');
                 $('.manipulate').tsort('.fans-pages-names p',{order:'asc'});
             });
             // ordering likes
             $('.likes-desc').on('click', function(){
+                $('.icons').removeClass('order');
+                $('.likes-desc').addClass('order');
                 $('.manipulate').tsort('.likes p',{order:'desc'});
             });
             $('.likes-asc').on('click', function(){
+                $('.icons').removeClass('order');
+                $('.likes-asc').addClass('order');
                 $('.manipulate').tsort('.likes p',{order:'asc'});
             });
             // ordering talks about
             $('.talks-about-desc').on('click', function(){
+                $('.icons').removeClass('order');
+                $('.talks-about-desc').addClass('order');
                 $('.manipulate').tsort('.talks-about p',{order:'desc'});
             });
             $('.talks-about-asc').on('click', function(){
+                $('.icons').removeClass('order');
+                $('.talks-about-asc').addClass('order');
                 $('.manipulate').tsort('.talks-about p',{order:'asc'});
             });
         },
@@ -229,7 +231,7 @@ define([
         chooseItems: function(){
             fansPagesNumber = this.collection.length;
             for(var i= 0;i<fansPagesNumber; i++){
-
+                //create array to hold keys values as id, name
                 var data = this.collection.at(i);
                 var internal = new Array();
                 internal['id'] = data.get('id');
@@ -244,24 +246,56 @@ define([
                 var html = str1.concat(str2, str3, str4, str5);
                 $('#e9').append(html);
             }
-            $('.select2-container').on('DOMNodeInserted', function(){
+            $('.select2-choices').on('DOMNodeInserted', function(){
+                //hide selecting top and bottom elements
+                $('.top-bottom').addClass('collapsed');
                 console.log('roy');
-                console.log($('.select2-search-choice').length);
-                console.log($('.select2-search-choice > div').text());
-                var value = $('.select2-search-choice > div').text();
-                for(var i in arrayIdsNames){
-                    if(arrayIdsNames[i]['name'] == value){
-                        var correspondingId = arrayIdsNames[i]['id'];
-                        break;
-                    }
-                }
-                console.log(correspondingId);
+                //find the id of the chosen element by user
+                var list = $('.select2-search-choice');
+                var len = list.length;
+                console.log(len);
                 $('.manipulate').addClass('collapsed');
-                var selector = '#'.concat(correspondingId);
-                console.log(selector);
-                $(selector).removeClass('collapsed');
+                //extract the id of the item chosen by the user in the select Box
+                list.each(function(index, item){
+                    var div = $(item).find('div');
+                    var text = div.text();
+                    console.log(text);
+                    for(var i in arrayIdsNames){
+                        if(arrayIdsNames[i]['name'] == text){
+                            var correspondingId = arrayIdsNames[i]['id'];
+                            break;
+                        }
+                    }
+                    console.log(correspondingId);
+                    var selector = '#'.concat(correspondingId);
+                    console.log(selector);
+                    $(selector).removeClass('collapsed');
+                });
+                //remove rows when user remove his chosen item (by pressing X)
+                $('.select2-search-choice-close').on('click', function(){
+                    console.log('Laura');
+                    var div = $(this).prev();
+                    var text = div.text();
+                    console.log(text);
+                    for(var i in arrayIdsNames){
+                        if(arrayIdsNames[i]['name'] == text){
+                            var correspondingId = arrayIdsNames[i]['id'];
+                            break;
+                        }
+                    }
+                    console.log(correspondingId);
+                    var selector = '#'.concat(correspondingId);
+                    console.log(selector);
+                    $(selector).addClass('collapsed');
+                    //case where user removed all his chosen items (pressing X)
+                    if($('.manipulate.collapsed').length == fansPagesNumber){
+                        //when all rows are collapsed
+                        console.log('georges');
+                        $('.manipulate').removeClass('collapsed');
+                        $('.top-bottom').removeClass('collapsed');
+                    }
+                });
             });
-
 
         },
 
@@ -290,15 +324,21 @@ define([
         refreshRowsOnClickArrows: function(){
             var view = this;
             $('.fans-pages-names-desc, .fans-pages-names-asc, .likes-desc, .likes-asc, .talks-about-desc, .talks-about-asc').on('click', function(){
-                view.showMaxRows(fansPagesNumber, view.setMaxRows());
+                if($('.select2-search-choice').length == 0){
+                    view.showMaxRows(fansPagesNumber, view.setMaxRows());
+                }
             });
         },
 
         // fct that adds click event to the "refresh button" for showing limited number of rows in grid
-        refreshRowsOnClickButton: function(){
+        refreshRowsOnChangeMaxDisplayed: function(){
             var view = this;
             $('#max-rows').change(function(){
-                view.showMaxRows(fansPagesNumber, view.setMaxRows());
+                var lenChoice = $('.select2-search-choice').length;
+                var lenTopBottom = view.setMaxRows();
+                if(lenChoice == 0){
+                    view.showMaxRows(fansPagesNumber, lenTopBottom);
+                }
             });
         },
 

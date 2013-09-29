@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f366a2b6-39b5-468e-a161-ae9a3d78e656" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vendor/select2/css/select2-spinner.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vendor/select2/css/select2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vendor/select2/css/select2x2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vendor/select2/css/select2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vendor/select2/js/select2.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/ranking.css" afterPath="$PROJECT_DIR$/css/ranking.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config.js" afterPath="$PROJECT_DIR$/js/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/ranking/js/views/RankingView.js" afterPath="$PROJECT_DIR$/modules/ranking/js/views/RankingView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/ranking/libs/allRowsMinInfo.php" afterPath="$PROJECT_DIR$/modules/ranking/libs/allRowsMinInfo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/ranking/libs/updateDB_V1.php" afterPath="$PROJECT_DIR$/modules/ranking/libs/updateDB_V1.php" />
     </list>
     <ignored path="rankingvolksbanks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,28 +28,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RankingView.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RankingView.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/ranking/js/views/RankingView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="8" selection-start="724" selection-end="724" vertical-scroll-proportion="0.33333334">
+            <state line="221" column="35" selection-start="9313" selection-end="9313" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bank.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/ranking/templates/bank.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="29" selection-start="26" selection-end="36" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="0" selection-start="4971" selection-end="4971" vertical-scroll-proportion="0.0">
+            <state line="193" column="134" selection-start="6394" selection-end="6394" vertical-scroll-proportion="0.68435013">
               <folding />
             </state>
           </provider>
@@ -76,7 +59,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/router.js" />
         <option value="$PROJECT_DIR$/init.php" />
         <option value="$PROJECT_DIR$/modules/ranking/libs/test.php" />
         <option value="$PROJECT_DIR$/js/main.js" />
@@ -90,17 +72,18 @@
         <option value="$PROJECT_DIR$/modules/ranking/libs/updateDB_V1.php" />
         <option value="$PROJECT_DIR$/modules/ranking/templates/bank.html" />
         <option value="$PROJECT_DIR$/modules/ranking/js/models/RankingModel.js" />
-        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/css/ranking.css" />
         <option value="$PROJECT_DIR$/modules/ranking/js/views/RankingView.js" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1404" />
+    <option name="x" value="46" />
     <option name="y" value="-8" />
-    <option name="width" value="1412" />
-    <option name="height" value="801" />
+    <option name="width" value="955" />
+    <option name="height" value="575" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -248,6 +231,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fanpageranking" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rankingfanpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -362,18 +359,22 @@
       <created>1380205428014</created>
       <updated>1380205428014</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="version 0.6 adding individula selection">
+      <created>1380296196637</created>
+      <updated>1380296196637</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1404" y="-8" width="1412" height="801" extended-state="6" />
+    <frame x="46" y="-8" width="955" height="575" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27603787" sideWeight="0.9609984" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27510917" sideWeight="0.939759" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771084" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -428,7 +429,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="test to repair bug with online calling of app" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 0.6 adding individula selection" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -446,16 +447,12 @@
     <MESSAGE value="repairing the case if only 1 day exit in DB" />
     <MESSAGE value="syntax error , 2 html elmt same id" />
     <MESSAGE value="test to repair bug with online calling of app" />
+    <MESSAGE value="version 0.6 adding individula selection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="55" selection-start="5422" selection-end="5422" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/ranking/libs/updateDB_V1.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="129" column="64" selection-start="4240" selection-end="4240" vertical-scroll-proportion="0.0" />
@@ -511,30 +508,37 @@
         <state line="6" column="16" selection-start="142" selection-end="142" vertical-scroll-proportion="0.16558442" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/js/vendor/bootstrap-assets/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="0" selection-start="4971" selection-end="4971" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/ranking.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.08279221">
+        <state line="1" column="13" selection-start="17" selection-end="23" vertical-scroll-proportion="0.048295453">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/ranking/templates/bank.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="29" selection-start="26" selection-end="36" vertical-scroll-proportion="-0.0">
+        <state line="1" column="10" selection-start="71" selection-end="71" vertical-scroll-proportion="0.048433047">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/ranking.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="29" selection-start="72" selection-end="72" vertical-scroll-proportion="0.17435898">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/ranking/js/views/RankingView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="724" selection-end="724" vertical-scroll-proportion="0.33333334">
+        <state line="221" column="35" selection-start="9313" selection-end="9313" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="193" column="134" selection-start="6394" selection-end="6394" vertical-scroll-proportion="0.68435013">
           <folding />
         </state>
       </provider>

@@ -106,64 +106,64 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 <br>
 <div class='list-group-item' style= "font-weight:bold">
-
-    <div>
+    <div class="alert">
         <h3>Ranking Sparkasse Banks</h3>
         <h12 class="num-elements"></h12> Banks ranked on : <h12 class="date"></h12> at: <h12 class="time"></h12>
-        <br><br>
     </div>
 
-    <div style="float:left">
-        <p>Choose time scale of Graphs <i class='icon-spinner icon-spin icon-large updateTimeGraph collapsed'></i></p>
-        <label class="radio-inline">
-          <input type="radio" id="days" name="typeOfTime" value="30days" checked> last 30 days
-        </label>
-        <label class="radio-inline">
-          <input type="radio" id="weeks" name="typeOfTime" value="10weeks"> last 10 weeks
-        </label>
-        <br>
-        <label class="radio-inline">
-          <input type="radio" id="6months" name="typeOfTime" value="6months">  last 6 months
-        </label>
-        <label class="radio-inline">
-          <input type="radio" id="12months" name="typeOfTime" value="12months">  last 12 months
-        </label>
-    </div>
+    <div class="row">
 
-    <div>
-        <ul class="pager">
-            <label>Display the Top / Bottom </label>
-            <select id="max-rows">
-                <option value="all">all</option>
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-                <option value=10>10</option>
-                <option value=15>15</option>
-                <option value=20>20</option>
-                <option value=25>25</option>
-            </select>
-            <label> Banks</label>
-        </ul>
-    </div>
-
-    <p>
-
-        <div class="select2-container select2-container-multi populate" id="s2id_e9" style="width:300px; display:none">
-            <ul class="select2-choices">
-
-                <li class="select2-search-field">
-                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen1" tabindex="-1" style="width: 10px;">
-                </li>
-            </ul>
+        <div class="col-6">
+            <div>
+                <p>Choose time scale of Graphs <i class='icon-spinner icon-spin icon-large updateTimeGraph collapsed'></i></p>
+                <ul class="nav nav-pills">
+                    <li class="typeOfTime active" id="30days"><a href="#">Last 30 days</a></li>
+                    <li class="typeOfTime" id="10weeks"><a href="#">Last 10 weeks</a></li>
+                    <li class="typeOfTime" id="6months"><a href="#">Last 6 months</a></li>
+                    <li class="typeOfTime" id="12months"><a href="#">Last 12 months</a></li>
+                </ul>
+            </div>
         </div>
 
+        <div class="col-6">
+            <div class="top-bottom">
+                <p style="float:left">Display the Top / Bottom &nbsp;</p>
+                <select id="max-rows" style="float:left">
+                    <option value="all">all</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+                    <option value=15>15</option>
+                    <option value=20>20</option>
+                    <option value=25>25</option>
+                </select>
+                <p>&nbsp;Banks</p>
+            </div>
+            <br>
+            <p>Choose individual banks you want to rank</p>
+            <p>
+                <div class="select2-container select2-container-multi populate" id="s2id_e9" style="width:300px; display:none">
+                    <ul class="select2-choices">
 
-         <select multiple="" name="e9" id="e9" style="width:300px" class="populate select2-offscreen" tabindex="-1">
-         </select>
-    </p>
+                        <li class="select2-search-field">
+                        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen1" tabindex="-1" style="width: 10px;">
+                        </li>
+                    </ul>
+                </div>
+                 <select multiple="" name="e9" id="e9" style="width:300px" class="populate select2-offscreen" tabindex="-1">
+                 </select>
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
 
 </div>
 
@@ -181,18 +181,18 @@ if (isset($aaForJs['instance']['fb_app_secret']))
             </div>
             <div class="col-4">
                 Fan page name &nbsp;
-                <i class="icon-long-arrow-down fans-pages-names-desc"></i>&nbsp&nbsp;
-                <i class="icon-long-arrow-up fans-pages-names-asc"></i>
+                <a href="#" class="icons fans-pages-names-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>&nbsp;
+                <a href="#" class="icons fans-pages-names-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
             <div class="col-3">
                 Likes &nbsp;
-                <i class="icon-long-arrow-down likes-desc"></i>&nbsp&nbsp;
-                <i class="icon-long-arrow-up likes-asc"></i>
+                <a href="#" class="icons likes-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>&nbsp;
+                <a href="#" class="icons likes-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
             <div class="col-3">
                 Talking about &nbsp;
-                <i class="icon-long-arrow-down talks-about-desc"></i>&nbsp&nbsp;
-                <i class="icon-long-arrow-up talks-about-asc"></i>
+                <a href="#" class="icons talks-about-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>&nbsp;
+                <a href="#" class="icons talks-about-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
         </div>
     </div>
