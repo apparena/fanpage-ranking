@@ -36,39 +36,25 @@ $aaFansPagesIdsAsArray = array_unique($aaFansPagesIdsAsArray); //remove duplicat
 
 //querying the min info for all rows
 
-//outer array to hold inner arrays containing each bank information
-
-$keys = array();
-$values = array();
 
 
-$i = 0;
 foreach($aaFansPagesIdsAsArray as $id){
 
-    //query fanpage_basic_data
-    $query1 = "SELECT name, description FROM fanpage_basic_data
-            WHERE fb_page_id = '$id'";
-    $query2 = $db->query($query1);
-    $arrayDescriptionName = $query2->fetchAll(PDO::FETCH_ASSOC);
-
-    //query fanpage_metric_data
-    $query3 = "SELECT likes, talking_about_count FROM fanpage_metric_data
-                WHERE fb_page_id = '$id'
-                ORDER BY date DESC
-                LIMIT 1";
-    $query4 = $db->query($query3);
-    $arrayTodayLikesTalkingAboutCount = $query4->fetchAll(PDO::FETCH_ASSOC);
-
-    var_dump($arrayDescriptionName);echo '<br><br>';echo '<br><br>';
-    var_dump($arrayTodayLikesTalkingAboutCount);echo '<br><br>';echo '<br><br>';
-
+    $str = "SELECT fanpage_basic_data.fb_page_id, fanpage_basic_data.name, fanpage_basic_data.description, " .
+             "fanpage_metric_data.likes, fanpage_metric_data.talking_about_count " .
+             "FROM fanpage_basic_data INNER JOIN fanpage_metric_data " .
+             "WHERE fanpage_basic_data.fb_page_id = '$id' AND fanpage_metric_data.fb_page_id = '$id' " .
+             "ORDER BY fanpage_metric_data.date DESC LIMIT 1 " .
+             "ON fanpage_basic_data.fb_page_id = fanpage_metric_data.fb_page_id";
+    $query = $db->query($str);
+    $array = $query->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($array);echo '<br><br>';
 }
 
 
 
 
-//var_dump($values);echo '<br><br>';echo '<br><br>';
-//var_dump($keys);echo '<br><br>';echo '<br><br>';
+
 
 echo 'lina karam'; echo'<br>';
 echo 'sandra karam';echo'<br>';
