@@ -42,6 +42,33 @@ $keys = array();
 $values = array();
 
 
+$i = 0;
+foreach($aaFansPagesIdsAsArray as $id){
+
+    //query fanpage_basic_data
+    $query1 = "SELECT name, description FROM fanpage_basic_data
+            WHERE fb_page_id = '$id'";
+    $query2 = $db->query($query1);
+    $arrayDescriptionName = $query2->fetchAll(PDO::FETCH_ASSOC);
+
+    //query fanpage_metric_data
+    $query3 = "SELECT likes, talking_about_count FROM fanpage_metric_data
+                WHERE fb_page_id = '$id'
+                ORDER BY date DESC
+                LIMIT 1";
+    $query4 = $db->query($query3);
+    $arrayTodayLikesTalkingAboutCount = $query4->fetchAll(PDO::FETCH_ASSOC);
+
+    $a = json_encode(array_merge(['id'=>$id],$arrayDescriptionName[0],$arrayTodayLikesTalkingAboutCount[0]));
+    //var_dump($a);echo '<br><br>';echo '<br><br>';
+
+    array_push($values, $a);
+    array_push($keys, ('item'.$i));
+    $i++;
+}
+
+var_dump($values);echo '<br><br>';echo '<br><br>';
+var_dump($keys);echo '<br><br>';echo '<br><br>';
 
 
 echo 'bernard';
