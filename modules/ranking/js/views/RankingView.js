@@ -311,7 +311,7 @@ define([
             for (var i=maxRows; i<allRows; i++){
                 // eq(n) is jquery to select element at index n
                 ($('.manipulate').eq(i)).addClass('collapsed');
-                console.log(($('.manipulate').eq(i)).attr('class')); //
+                //console.log(($('.manipulate').eq(i)).attr('class')); //
             }
         },
 
