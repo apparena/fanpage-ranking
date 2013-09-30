@@ -59,12 +59,12 @@ foreach($aaFansPagesIdsAsArray as $id){
 }
 
 $outerArray = array_combine($keys, $items);
-//var_dump($outerArray);echo '<br><br>';
+var_dump($outerArray);echo '<br><br>';
 
 
 
 
 // return[]  is already created in line 53 of ajax.php
-$return['message'] = $outerArray;              // look line 53  ajax.php
+//$return['message'] = $outerArray;              // look line 53  ajax.php
 //$return['message'] = $outerArray;      // look line 53  ajax.php // i can put in description an array or a json,  both should normally work because in ajax.php line   86   we use the json_encode()  !!
-$return['status'] = 'success';           // look line 53  ajax.php
+//$return['status'] = 'success';           // look line 53  ajax.php
