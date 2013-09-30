@@ -406,7 +406,8 @@ define([
                 arr.push(value[1]);
             });
             arr = arr.sort();
-            var min = arr[0];
+            console.log(arr);
+            var min = arr[arr.length - 1];
 
             var plot = $.plot( $( target ),
                 [ { data: d1, label: data_label, color: graph_color} ], {
