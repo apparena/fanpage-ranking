@@ -408,6 +408,7 @@ define([
             arr = arr.sort();
             console.log(arr);
             var min = arr[arr.length - 1];
+            console.log(min);
 
             var plot = $.plot( $( target ),
                 [ { data: d1, label: data_label, color: graph_color} ], {
