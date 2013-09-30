@@ -4,7 +4,7 @@
  *
  * handle all requests from "ajax/restfull"
  */
-ini_set('display_errors', 1);
+
 define('DS', DIRECTORY_SEPARATOR);
 //define('ROOT', dirname(__FILE__));
 
