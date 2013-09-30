@@ -398,9 +398,13 @@ define([
             /* Normalize data */
             var d1 = data;
             var max = 0;
+            var min = 10000000000;
             $.each( data, function(index, value) {
                 if(value[1] > max){
                     max = value[1];
+                }
+                if(value[1] < min){
+                    min = value[1];
                 }
 
             });
@@ -413,7 +417,7 @@ define([
                     },
                     legend: { position: 'nw'},
                     grid: { hoverable: true, clickable: true, borderColor: '#ccc', borderWidth: 1, labelMargin: 10 },
-                    yaxis: { min: 0, max: max*1.05 },
+                    yaxis: { min: min*1.05, max: max*1.05 },
                     xaxis: { mode: "time", timeformat: "%d.%m." }
                 });
 
