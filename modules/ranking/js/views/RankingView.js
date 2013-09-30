@@ -63,7 +63,9 @@ define([
             var json = this.allRowsMinInfo();
             console.log(json);
             var obj = $.parseJSON(json);
+            console.log(obj);
             fansPagesNumber = Object.keys(obj).length;
+            console.log(fansPagesNumber);
             //fetching values from ajax Object and sending to collection
             for(var i=0; i<fansPagesNumber; i++){
                 var item = 'item'+i;
