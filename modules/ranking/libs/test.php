@@ -62,8 +62,6 @@ foreach($aaFansPagesIdsAsArray as $id){
     $query4 = $db->query($query3);
     $arrayTodayLikesTalkingAboutCount = $query4->fetchAll(PDO::FETCH_ASSOC);
 
-    $a = json_encode(array_merge(['id'=>$id],$arrayDescriptionName[0],$arrayTodayLikesTalkingAboutCount[0]));
-    var_dump($a);echo '<br><br>';echo '<br><br>';
 
 
 }
