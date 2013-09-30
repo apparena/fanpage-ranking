@@ -1,20 +1,6 @@
 <?php
 
 
-try
-{
-    require_once("../../../init.php");
-}
-catch (Exception $e)
-{
-    echo '<pre>';
-    print_r($e->getMessage());
-    echo '</pre>';
-    echo '<pre>';
-    print_r($e->getTrace());
-    echo '</pre>';
-    exit();
-}
 
 //set today
 $today = date('Y-m-d', time());
@@ -73,7 +59,7 @@ foreach($aaFansPagesIdsAsArray as $id){
 }
 
 $outerArray = array_combine($keys, $items);
-var_dump($outerArray);echo '<br><br>';
+//var_dump($outerArray);echo '<br><br>';
 
 
 
