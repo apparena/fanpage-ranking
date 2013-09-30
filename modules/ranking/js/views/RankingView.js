@@ -121,7 +121,6 @@ define([
                 console.log(typeOfTime);
                 $('.typeOfTime').removeClass('active');
                 $(this).addClass('active');
-                console.log('lina');
                 $('.insert-graph1:not(.collapsed)').each(function(key, elmt){
                     var chart_likes_id = this.id;
                     var id = chart_likes_id.replace('chart_likes_','');
@@ -248,7 +247,6 @@ define([
             $('.select2-choices').on('DOMNodeInserted', function(){
                 //hide selecting top and bottom elements
                 $('.top-bottom').addClass('collapsed');
-                console.log('roy');
                 //find the id of the chosen element by user
                 var list = $('.select2-search-choice');
                 var len = list.length;
@@ -258,21 +256,20 @@ define([
                 list.each(function(index, item){
                     var div = $(item).find('div');
                     var text = div.text();
-                    console.log(text);
+                    //console.log(text);
                     for(var i in arrayIdsNames){
                         if(arrayIdsNames[i]['name'] == text){
                             var correspondingId = arrayIdsNames[i]['id'];
                             break;
                         }
                     }
-                    console.log(correspondingId);
+                    //console.log(correspondingId);
                     var selector = '#'.concat(correspondingId);
-                    console.log(selector);
+                    //console.log(selector);
                     $(selector).removeClass('collapsed');
                 });
                 //remove rows when user remove his chosen item (by pressing X)
                 $('.select2-search-choice-close').on('click', function(){
-                    console.log('Laura');
                     var div = $(this).prev();
                     var text = div.text();
                     console.log(text);
@@ -284,12 +281,11 @@ define([
                     }
                     console.log(correspondingId);
                     var selector = '#'.concat(correspondingId);
-                    console.log(selector);
+                    //console.log(selector);
                     $(selector).addClass('collapsed');
                     //case where user removed all his chosen items (pressing X)
                     if($('.manipulate.collapsed').length == fansPagesNumber){
                         //when all rows are collapsed
-                        console.log('georges');
                         $('.manipulate').removeClass('collapsed');
                         $('.top-bottom').removeClass('collapsed');
                     }
@@ -434,8 +430,8 @@ define([
 
                         // Format date
                         var date = new Date(parseInt(x));
-                        console.log(x);
-                        console.log(date);
+                        //console.log(x);
+                        //console.log(date);
                         var strDate = "" + date.getDate() + "." + (date.getMonth()+1) + ".";
                         showTooltip(item.pageX, item.pageY, "  " + item.series.label + " =" + y + " (" + strDate + ")" );
                         //showTooltip(item.pageX, item.pageY, y + data_point_caption );
