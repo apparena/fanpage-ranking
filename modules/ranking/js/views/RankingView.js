@@ -103,14 +103,15 @@ define([
                 $(this).removeClass('icon-collapse');
                 $(this).addClass('icon-collapse-top');
                 var rowId = $(this).attr('name');
-                console.log(rowId);
-                console.log($('#'.concat(rowId)).attr('id'));
-                console.log(this);
-                if($('.additional', $(this)).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
-                    $('.additional', $(this)).removeClass('collapsed');
+                //console.log(rowId);
+                var jquery = $('#'.concat(rowId));
+                //console.log($('#'.concat(rowId)).attr('id'));
+                //console.log(this);
+                if($('.additional', jquery).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
+                    $('.additional', jquery).removeClass('collapsed');
                 }
                 else {
-                    $('.additional', $(this)).addClass('collapsed');
+                    $('.additional', jquery).addClass('collapsed');
                 }
                 view.showGraph(rowId);
             });
