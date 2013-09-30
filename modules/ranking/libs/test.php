@@ -44,8 +44,8 @@ foreach($aaFansPagesIdsAsArray as $id){
              "fanpage_metric_data.likes, fanpage_metric_data.talking_about_count " .
              "FROM fanpage_basic_data INNER JOIN fanpage_metric_data " .
              "WHERE fanpage_basic_data.fb_page_id = '$id' AND fanpage_metric_data.fb_page_id = '$id' " .
-
-             "ON fanpage_basic_data.fb_page_id = fanpage_metric_data.fb_page_id";
+             "ORDER BY fanpage_metric_data.date DESC LIMIT 1 " .
+             "ON fanpage_basic_data.fb_page_id=fanpage_metric_data.fb_page_id";
     $query = $db->query($str);
     $array = $query->fetchAll(PDO::FETCH_ASSOC);
     var_dump($array);echo '<br><br>';
