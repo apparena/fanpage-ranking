@@ -108,15 +108,14 @@ define([
                     $('.additional', jquery).removeClass('collapsed');
                     $(this).removeClass('icon-collapse');
                     $(this).addClass('icon-collapse-top');
-                    $('.item-spinner').addClass('collapsed');
                 }
                 else {
                     $('.additional', jquery).addClass('collapsed');
                     $(this).removeClass('icon-collapse-top');
                     $(this).addClass('icon-collapse');
-                    $('.item-spinner').addClass('collapsed');
                 }
                 view.showGraph(rowId);
+                $('.item-spinner').addClass('collapsed');
             });
         },
 
