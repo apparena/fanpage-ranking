@@ -101,6 +101,7 @@ define([
             view = this;  // the save 'this' before changing context
             $('.collapse-expand').on('click', function(){
                 $('.item-spinner').removeClass('collapsed');
+                console.log($('.item-spinner').attr('class'));
                 var rowId = $(this).attr('name');
                 var jquery = $('#'.concat(rowId));
                 console.log(this);
