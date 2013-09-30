@@ -100,17 +100,16 @@ define([
         expandingCollapsingElementsEachRow: function(view){
             view = this;  // the save 'this' before changing context
             $('.collapse-expand').on('click', function(){
+                $('.item-spinner').removeClass('collapsed');
                 var rowId = $(this).attr('name');
                 var jquery = $('#'.concat(rowId));
                 console.log(this);
                 if($('.additional', jquery).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
-                    $('.item-spinner').removeClass('collapsed');
                     $('.additional', jquery).removeClass('collapsed');
                     $(this).removeClass('icon-collapse');
                     $(this).addClass('icon-collapse-top');
                 }
                 else {
-                    $('.item-spinner').removeClass('collapsed');
                     $('.additional', jquery).addClass('collapsed');
                     $(this).removeClass('icon-collapse-top');
                     $(this).addClass('icon-collapse');
