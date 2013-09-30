@@ -407,7 +407,7 @@ define([
             });
             arr = arr.sort();
             console.log(arr);
-            var min = arr[arr.length - 1];
+            var min = arr[0];
             console.log(min);
 
             var plot = $.plot( $( target ),
