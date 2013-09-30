@@ -52,7 +52,7 @@ define([
         allRowsMinInfo: function(){ // ajax call
             var response = this.ajax({  //this is s custom fct that is written in router.js line 106 that return an object having 2 attributes : data and type
                 module: 'ranking',
-                action: 'allRowsMinInfo'
+                action: 'test'
             });
             var messageObject = response.data;            //line 124 125 in router.js
             var messageJson = messageObject['message'];   //line 54   54  in ajax.php   // message value is set inside the called php file
