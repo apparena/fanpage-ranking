@@ -78,7 +78,7 @@ $outerArray = array_combine($keys, $items);
 //var_dump($outerArray);echo '<br><br>';
 
 $json = json_encode($outerArray);
-//var_dump($json);echo '<br><br>';
+var_dump($json);echo '<br><br>';
 
 
 // return[]  is already created in line 53 of ajax.php
