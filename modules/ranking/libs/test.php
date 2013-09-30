@@ -44,15 +44,12 @@ $values = array();
 
 $i = 0;
 foreach($aaFansPagesIdsAsArray as $id){
-    echo 'lina karam'; echo'<br>';
 
     //query fanpage_basic_data
     $query1 = "SELECT name, description FROM fanpage_basic_data
             WHERE fb_page_id = '$id'";
     $query2 = $db->query($query1);
     $arrayDescriptionName = $query2->fetchAll(PDO::FETCH_ASSOC);
-
-    echo 'sandra karam';echo'<br>';
 
     //query fanpage_metric_data
     $query3 = "SELECT likes, talking_about_count FROM fanpage_metric_data
@@ -62,12 +59,17 @@ foreach($aaFansPagesIdsAsArray as $id){
     $query4 = $db->query($query3);
     $arrayTodayLikesTalkingAboutCount = $query4->fetchAll(PDO::FETCH_ASSOC);
 
-
+    var_dump($arrayDescriptionName);echo '<br><br>';echo '<br><br>';
+    var_dump($arrayTodayLikesTalkingAboutCount);echo '<br><br>';echo '<br><br>';
 
 }
+
+
+
 
 //var_dump($values);echo '<br><br>';echo '<br><br>';
 //var_dump($keys);echo '<br><br>';echo '<br><br>';
 
-
+echo 'lina karam'; echo'<br>';
+echo 'sandra karam';echo'<br>';
 echo 'bernard';
