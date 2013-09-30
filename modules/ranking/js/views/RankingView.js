@@ -418,7 +418,7 @@ define([
                     },
                     legend: { position: 'nw'},
                     grid: { hoverable: true, clickable: true, borderColor: '#ccc', borderWidth: 1, labelMargin: 10 },
-                    yaxis: { min: min*1.001, max: max*1.001 },
+                    yaxis: { min: min*1.01, max: max*1.01 },
                     xaxis: { mode: "time", timeformat: "%d.%m." }
                 });
 
