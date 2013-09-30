@@ -105,6 +105,7 @@ define([
                 var rowId = $(this).attr('name');
                 console.log(rowId);
                 console.log($('#'.concat(rowId)).attr('id'));
+                console.log(this);
                 if($('.additional', $(this)).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
                     $('.additional', $(this)).removeClass('collapsed');
                 }
@@ -396,7 +397,10 @@ define([
             var d1 = data;
             var max = 0;
             $.each( data, function(index, value) {
-                max = value[1];
+                if(value[1] > max){
+                    max = value[1];
+                }
+
             });
 
             var plot = $.plot( $( target ),
