@@ -27,9 +27,9 @@ $aaFansPagesIdsAsArray = array_unique($aaFansPagesIdsAsArray); //remove duplicat
 
 
 //test
-//var_dump($today);echo '<br><br>';
-//var_dump($aa_inst_id);echo '<br><br>';
-//var_dump($aaFansPagesIdsAsArray);echo '<br><br>';
+var_dump($today);echo '<br><br>';
+var_dump($aa_inst_id);echo '<br><br>';
+var_dump($aaFansPagesIdsAsArray);echo '<br><br>';
 
 
 
