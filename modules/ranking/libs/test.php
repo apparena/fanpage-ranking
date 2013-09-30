@@ -44,7 +44,7 @@ $values = array();
 
 $i = 0;
 foreach($aaFansPagesIdsAsArray as $id){
-    echo 'lina karam';
+    echo 'lina karam'; echo'<br>';
 
     //query fanpage_basic_data
     $query1 = "SELECT name, description FROM fanpage_basic_data
