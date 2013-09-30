@@ -102,7 +102,7 @@ define([
             $('.collapse-expand').on('click', function(){
                 $(this).removeClass('icon-collapse');
                 $(this).addClass('icon-collapse-top');
-                var rowId = this.name;
+                var rowId = $(this).attr('name');
                 console.log(rowId);
                 $('content-wrapper').find('#'.concat(rowId));
                 console.log(this);
