@@ -100,8 +100,6 @@ define([
         expandingCollapsingElementsEachRow: function(view){
             view = this;  // the save 'this' before changing context
             $('.collapse-expand').on('click', function(){
-                $(this).removeClass('icon-collapse');
-                $(this).addClass('icon-collapse-top');
                 var rowId = $(this).attr('name');
                 //console.log(rowId);
                 var jquery = $('#'.concat(rowId));
@@ -109,9 +107,13 @@ define([
                 console.log(this);
                 if($('.additional', jquery).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
                     $('.additional', jquery).removeClass('collapsed');
+                    $(this).removeClass('icon-collapse');
+                    $(this).addClass('icon-collapse-top');
                 }
                 else {
                     $('.additional', jquery).addClass('collapsed');
+                    $(this).removeClass('icon-collapse-top');
+                    $(this).addClass('icon-collapse');
                 }
                 view.showGraph(rowId);
             });
