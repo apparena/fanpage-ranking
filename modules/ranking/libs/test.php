@@ -42,7 +42,12 @@ $keys = array();
 $values = array();
 
 
+$i = 0;
+foreach($aaFansPagesIdsAsArray as $id){
 
+echo 'lina';
+
+}
 
 //var_dump($values);echo '<br><br>';echo '<br><br>';
 //var_dump($keys);echo '<br><br>';echo '<br><br>';
