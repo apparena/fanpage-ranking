@@ -106,7 +106,7 @@ define([
                 //console.log(rowId);
                 var jquery = $('#'.concat(rowId));
                 //console.log($('#'.concat(rowId)).attr('id'));
-                //console.log(this);
+                console.log(this);
                 if($('.additional', jquery).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
                     $('.additional', jquery).removeClass('collapsed');
                 }
