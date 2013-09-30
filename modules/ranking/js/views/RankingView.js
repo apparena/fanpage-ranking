@@ -67,7 +67,7 @@ define([
             for(var i=0; i<fansPagesNumber; i++){
                 var item = 'item'+i;
                 var fieldsObj = obj[item];
-                console.log(fieldsObj);
+                //console.log(fieldsObj);
                 //add to collection
                 this.collection.add({
                     id: fieldsObj['fb_page_id'],
