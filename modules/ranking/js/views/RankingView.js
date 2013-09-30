@@ -104,8 +104,7 @@ define([
                 $(this).addClass('icon-collapse-top');
                 var rowId = $(this).attr('name');
                 console.log(rowId);
-                var obj = $('content-wrapper').find('#'.concat(rowId));
-                console.log(obj);
+                $('#'.concat(rowId));
                 if($('.additional', $(this)).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
                     $('.additional', $(this)).removeClass('collapsed');
                 }
