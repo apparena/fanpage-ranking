@@ -72,7 +72,7 @@ foreach($aaFansPagesIdsAsArray as $id){
     $i++;
 }
 
-$outerArray = array_combine($keys, $values);
+$outerArray = array_combine($keys, $items);
 var_dump($outerArray);echo '<br><br>';
 
 
