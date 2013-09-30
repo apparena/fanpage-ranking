@@ -62,7 +62,7 @@ foreach($aaFansPagesIdsAsArray as $id){
     $a = json_encode(array_merge(['id'=>$id],$arrayDescriptionName[0],$arrayTodayLikesTalkingAboutCount[0]));
     var_dump($a);echo '<br><br>';echo '<br><br>';
 
-    echo 'lina';
+    echo 'lina karam';
 
 }
 
