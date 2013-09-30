@@ -68,7 +68,6 @@ define([
                 var item = 'item'+i;
                 var fieldsObj = obj[item];
                 console.log(fieldsObj);
-                //var fieldsObj = $.parseJSON(fieldsJson);
                 //add to collection
                 this.collection.add({
                     id: fieldsObj['fb_page_id'],
