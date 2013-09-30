@@ -194,6 +194,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
                 <a href="#" class="icons talks-about-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>
                 <a href="#" class="icons talks-about-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
+            collapse/expand
             <div class="col-1">
             </div>
         </div>
