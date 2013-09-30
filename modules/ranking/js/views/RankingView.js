@@ -61,7 +61,7 @@ define([
 
         handleJSON: function(){
             var json = this.allRowsMinInfo();
-            //console.log(json);
+            console.log(json);
             var obj = $.parseJSON(json);
             fansPagesNumber = Object.keys(obj).length;
             //fetching values from ajax Object and sending to collection
