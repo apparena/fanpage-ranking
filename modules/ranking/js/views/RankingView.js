@@ -179,7 +179,6 @@ define([
                 'graph_color':'#941ce1',
                 'data':arrayTalksAbout
             });
-            $('.item-spinner').addClass('collapsed');
         },
 
 
@@ -456,6 +455,7 @@ define([
                 }
 
             });
+            $('.item-spinner').addClass('collapsed');
         }
 
 
