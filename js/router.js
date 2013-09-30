@@ -104,7 +104,7 @@ define([
 
         // Extend the View class to make global ajax requests with jquery
         Backbone.View.prototype.ajax = function (data, async) {
-            console.log('ajax', data);
+            //console.log('ajax', data);
             var returnData = {type: 'notReturned', data: {}};
 
             if (typeof async === 'undefined') {
