@@ -67,8 +67,8 @@ foreach($aaFansPagesIdsAsArray as $id){
     $i++;
 }
 
-var_dump($values);echo '<br><br>';echo '<br><br>';
-var_dump($keys);echo '<br><br>';echo '<br><br>';
+//var_dump($values);echo '<br><br>';echo '<br><br>';
+//var_dump($keys);echo '<br><br>';echo '<br><br>';
 
 
 echo 'bernard';
