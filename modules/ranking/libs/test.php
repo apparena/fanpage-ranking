@@ -38,10 +38,11 @@ $aaFansPagesIdsAsArray = array_unique($aaFansPagesIdsAsArray); //remove duplicat
 
 //outer array to hold inner arrays containing each bank information
 
-$keys = array();
-$values = array();
 
+$keys = array();
+$items = array();
 $i = 0;
+
 foreach($aaFansPagesIdsAsArray as $id){
 
     //query fanpage_basic_data
@@ -62,11 +63,17 @@ foreach($aaFansPagesIdsAsArray as $id){
     $arrayTodayLikesTalkingAboutCount = array_shift($arrayTodayLikesTalkingAboutCount);
     //var_dump($arrayTodayLikesTalkingAboutCount);echo '<br><br>';
 
-    $all = array_merge($arrayIdDescriptionName, $arrayTodayLikesTalkingAboutCount);
-    var_dump($all);echo '<br><br>';
+    $fields = array_merge($arrayIdDescriptionName, $arrayTodayLikesTalkingAboutCount);
+    var_dump($fields);echo '<br><br>';
+
+    array_push($items, $fields);
+    array_push($keys, ('item'.$i));
+
+    $i++;
 }
 
-
+$outerArray = array_combine($keys, $values);
+var_dump($outerArray);echo '<br><br>';
 
 
 
