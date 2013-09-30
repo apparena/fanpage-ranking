@@ -199,6 +199,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
             </div>
         </div>
     </div>
+    <div class='page-spinner'><i class='icon-spinner icon-spin icon-large'></i></div>
 
 
 
