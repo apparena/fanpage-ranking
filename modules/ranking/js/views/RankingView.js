@@ -61,19 +61,17 @@ define([
 
         handleJSON: function(){
             var json = this.allRowsMinInfo();
-            console.log(json);
             var obj = $.parseJSON(json);
-            console.log(obj);
             fansPagesNumber = Object.keys(obj).length;
-            console.log(fansPagesNumber);
             //fetching values from ajax Object and sending to collection
             for(var i=0; i<fansPagesNumber; i++){
                 var item = 'item'+i;
-                var fieldsJson = obj[item];
-                var fieldsObj = $.parseJSON(fieldsJson);
+                var fieldsObj = obj[item];
+                console.log(fieldsObj);
+                //var fieldsObj = $.parseJSON(fieldsJson);
                 //add to collection
                 this.collection.add({
-                    id: fieldsObj['id'],
+                    id: fieldsObj['fb_page_id'],
                     name: fieldsObj['name'],
                     description: fieldsObj['description'],
                     likes: fieldsObj['likes'],
