@@ -1,4 +1,4 @@
-<div class='list-group-item manipulate' id="<% print(id); %>">
+<a class='list-group-item manipulate' id="<% print(id); %>">
     <div class='row show-grid'>
          <div class='col-1 photos'>
              <img class="insert-image" src="<% print('https://graph.facebook.com/'+ id + '/picture?type=square'); %>" >
@@ -15,7 +15,7 @@
              <i class='icon-comments-alt icon-3'></i>
          </div>
          <div class="col-1">
-            <div class=''>&nbsp&nbsp&nbsp<i class='icon-collapse icon-5'></i>&nbsp&nbsp&nbsp</div>&nbsp;
+            <i class='icon-collapse icon-5'></i>
          </div>
     </div>
     <div class='row show-grid'>
@@ -26,6 +26,6 @@
         <div class="col-1 col-6 additional collapsed insert-graph1" id="<% print('chart_likes_' + id); %>" style="float:left; width:500px; height: 220px"></div>
         <div class="col-1 col-6 additional collapsed insert-graph2" id="<% print('chart_talking_about_count_' + id); %>" style="width:500px; height: 220px;"></div>
     </div>
-</div>
+</a>
 
 
