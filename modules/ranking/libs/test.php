@@ -52,7 +52,15 @@ foreach($aaFansPagesIdsAsArray as $id){
     $query2 = $db->query($query1);
     $arrayDescriptionName = $query2->fetchAll(PDO::FETCH_ASSOC);
 
-    echo 'sandra karam';
+    echo 'sandra karam';echo'<br>';
+
+    //query fanpage_metric_data
+    $query3 = "SELECT likes, talking_about_count FROM fanpage_metric_data
+                WHERE fb_page_id = '$id'
+                ORDER BY date DESC
+                LIMIT 1";
+    $query4 = $db->query($query3);
+    $arrayTodayLikesTalkingAboutCount = $query4->fetchAll(PDO::FETCH_ASSOC);
 
 }
 
