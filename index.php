@@ -181,18 +181,18 @@ if (isset($aaForJs['instance']['fb_app_secret']))
             </div>
             <div class="col-4">
                 Fan page name &nbsp;
-                <a href="#" class="icons fans-pages-names-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down" style="font-size:x-large;"></i>&nbsp&nbsp&nbsp</a>&nbsp;
-                <a href="#" class="icons fans-pages-names-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up" style="font-size:x-large;"></i>&nbsp&nbsp&nbsp</a>
+                <a href="#" class="icons fans-pages-names-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>&nbsp;
+                <a href="#" class="icons fans-pages-names-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
             <div class="col-3">
                 Likes &nbsp;
-                <a href="#" class="icons likes-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down" style="font-size:x-large;"></i>&nbsp&nbsp&nbsp</a>&nbsp;
-                <a href="#" class="icons likes-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up" style="font-size:x-large;"></i>&nbsp&nbsp&nbsp</a>
+                <a href="#" class="icons likes-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>&nbsp;
+                <a href="#" class="icons likes-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
             <div class="col-3">
                 Talking about &nbsp;
-                <a href="#" class="icons talks-about-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down" style="font-size:x-large;"></i>&nbsp&nbsp&nbsp</a>&nbsp;
-                <a href="#" class="icons talks-about-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up" style="font-size:x-large;"></i>&nbsp&nbsp&nbsp</a>
+                <a href="#" class="icons talks-about-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>&nbsp;
+                <a href="#" class="icons talks-about-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
             <div class="col-1">
             </div>
