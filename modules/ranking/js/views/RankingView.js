@@ -105,7 +105,7 @@ define([
                 console.log($('.item-spinner').attr('class'));
                 var rowId = $(this).attr('name');
                 var jquery = $('#'.concat(rowId));
-                console.log(this);
+                //console.log(this);
                 if($('.additional', jquery).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
                     $('.additional', jquery).removeClass('collapsed');
                     $(this).removeClass('icon-collapse');
@@ -117,8 +117,6 @@ define([
                     $(this).addClass('icon-collapse');
                 }
                 view.showGraph(rowId);
-                $('.item-spinner').addClass('collapsed');
-                console.log($('.item-spinner').attr('class'));
             });
         },
 
@@ -457,6 +455,8 @@ define([
                 }
 
             });
+            $('.item-spinner').addClass('collapsed');
+            console.log($('.item-spinner').attr('class'));
         }
 
 
