@@ -45,6 +45,12 @@ $values = array();
 $i = 0;
 foreach($aaFansPagesIdsAsArray as $id){
 
+//query fanpage_basic_data
+    $query1 = "SELECT name, description FROM fanpage_basic_data
+            WHERE fb_page_id = '$id'";
+    $query2 = $db->query($query1);
+    $arrayDescriptionName = $query2->fetchAll(PDO::FETCH_ASSOC);
+
 echo 'lina';
 
 }
