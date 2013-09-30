@@ -47,6 +47,7 @@ define([
             this.refreshRowsOnChangeMaxDisplayed();            // event require insertAllElements() occurred before
             this.updateTimeGraph();
             this.chooseItems();
+            $('.page-spinner').addClass('collapsed');
         },
 
         allRowsMinInfo: function(){ // ajax call
@@ -100,9 +101,6 @@ define([
         expandingCollapsingElementsEachRow: function(view){
             view = this;  // the save 'this' before changing context
             $('.collapse-expand').on('click', function(){
-                console.log($('.item-spinner').attr('class'));
-                $('.item-spinner').removeClass('collapsed');
-                console.log($('.item-spinner').attr('class'));
                 var rowId = $(this).attr('name');
                 var jquery = $('#'.concat(rowId));
                 //console.log(this);
@@ -455,8 +453,6 @@ define([
                 }
 
             });
-            $('.item-spinner').addClass('collapsed');
-            console.log($('.item-spinner').attr('class'));
         }
 
 
