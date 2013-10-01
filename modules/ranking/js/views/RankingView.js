@@ -48,6 +48,7 @@ define([
             this.updateTimeGraph();
             this.chooseItems();
             $('.page-spinner').addClass('collapsed');
+            this.collapseAll();
         },
 
         allRowsMinInfo: function(){ // ajax call
@@ -102,19 +103,22 @@ define([
             view = this;  // the save 'this' before changing context
             $('.collapse-expand').on('click', function(){
                 var rowId = $(this).attr('name');
-                var jquery = $('#'.concat(rowId));
+                var jquery1 = $('#'.concat(rowId));
+                var jquery2 = $('.'.concat('row-spinner-',rowId));
                 //console.log(this);
-                if($('.additional', jquery).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
-                    $('.additional', jquery).removeClass('collapsed');
+                if($('.additional', jquery1).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
+                    $('.additional', jquery1).removeClass('collapsed');
                     $(this).removeClass('icon-collapse');
                     $(this).addClass('icon-collapse-top');
+                    jquery2.removeClass('collapsed');
                 }
                 else {
-                    $('.additional', jquery).addClass('collapsed');
+                    $('.additional', jquery1).addClass('collapsed');
                     $(this).removeClass('icon-collapse-top');
                     $(this).addClass('icon-collapse');
                 }
                 view.showGraph(rowId);
+                jquery2.addClass('collapsed');
             });
         },
 
@@ -360,8 +364,20 @@ define([
             $('.num-elements').append(fansPagesNumber);
         },
 
-
-
+        collapseAll: function(){
+            $('#collapse-all').on('click', function(){
+                $('.additional').each(function(index,elmnt){
+                    if(!$(elmnt).hasClass('collapsed') && $(elmnt).hasClass('insert-graph1')){
+                        console.log(elmnt);
+                        var id = elmnt.id;
+                        console.log(id);
+                        id = id.replace('chart_likes_','');
+                        console.log(id);
+                        $('[name=' + id + ']').trigger('click');
+                    }
+                })
+            })
+        },
 
         renderGraph: function(params, callback){
             /* Check data param */
