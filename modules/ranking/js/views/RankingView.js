@@ -143,7 +143,7 @@ define([
 
         showGraph: function(id){
             // do not execute the graph rendering and the ajax call if the item is collapsing
-            if ( $( '#' + id + ' i[name="' + id + '"]' ).hasClass( 'icon-collapse-top' ) === true ) {
+            if ( $( '#' + id + ' i[name="' + id + '"]' ).hasClass( 'icon-collapse-top' ) === false ) {
                 return false;
             }
             var data = this.additionalInfo(id, typeOfTime);  //id must be string
