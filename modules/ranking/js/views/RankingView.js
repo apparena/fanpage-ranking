@@ -401,13 +401,13 @@ define([
             $.each( data, function(index, value) {
                 arr.push(value[1]);
             });
-            console.log(arr);
+            //console.log(arr);
             arr.sort(function(a, b) { return a - b });
-            console.log(arr);
+            //console.log(arr);
             var min = arr[0];
             var max = arr[arr.length - 1];
-            console.log(min);
-            console.log(max);
+            //console.log(min);
+            //console.log(max);
             var plot = $.plot( $( target ),
                 [ { data: d1, label: data_label, color: graph_color} ], {
                     series: {
