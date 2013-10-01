@@ -368,11 +368,11 @@ define([
             $('#collapse-all').on('click', function(){
                 $('.additional').each(function(index,elmnt){
                     if(!$(elmnt).hasClass('collapsed') && $(elmnt).hasClass('insert-graph1')){
-                        //console.log(elmnt);
+                        console.log(elmnt);
                         var id = elmnt.id;
-                        //console.log(id);
+                        console.log(id);
                         id = id.replace('chart_likes_','');
-                        //console.log(id);
+                        console.log(id);
                         $('[name=' + id + ']').trigger('click');
                     }
                 })
