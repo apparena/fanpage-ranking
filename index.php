@@ -114,48 +114,61 @@ if (isset($aaForJs['instance']['fb_app_secret']))
     <div class="row">
 
         <div class="col-6">
-            <div>
-                <p>Choose time scale of Graphs <i class='icon-spinner icon-spin icon-large updateTimeGraph collapsed'></i></p>
-                <ul class="nav nav-pills">
-                    <li class="typeOfTime active" id="30days"><a href="#">Last 30 days</a></li>
-                    <li class="typeOfTime" id="10weeks"><a href="#">Last 10 weeks</a></li>
-                    <li class="typeOfTime" id="6months"><a href="#">Last 6 months</a></li>
-                    <li class="typeOfTime" id="12months"><a href="#">Last 12 months</a></li>
-                </ul>
+            <div class="row">
+                <div class="col-12">
+                    <p>Choose time scale of Graphs</p>
+                    <ul class="nav nav-pills">
+                        <li class="typeOfTime active" id="30days"><a href="#">Last 30 days</a></li>
+                        <li class="typeOfTime" id="10weeks"><a href="#">Last 10 weeks</a></li>
+                        <li class="typeOfTime" id="6months"><a href="#">Last 6 months</a></li>
+                        <li class="typeOfTime" id="12months"><a href="#">Last 12 months</a></li>
+                    </ul>
+                </div>
             </div>
+            <div class="collapsed" id="spinner-typeOfTime" style="position:relative;left:50%;top:50%;"><i class='icon-spinner icon-spin icon-large' style='font-size:44px;'></i></div>
         </div>
 
         <div class="col-6">
-            <div class="top-bottom">
-                <p style="float:left">Display the Top / Bottom &nbsp;</p>
-                <select id="max-rows" style="float:left">
-                    <option value="all">all</option>
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                    <option value=5>5</option>
-                    <option value=10>10</option>
-                    <option value=15>15</option>
-                    <option value=20>20</option>
-                    <option value=25>25</option>
-                </select>
-                <p>&nbsp;Banks</p>
+
+            <div class="row">
+                <div class="col-8 top-bottom" style="float:left">
+                    <p style="float:left">Display the Top / Bottom &nbsp;</p>
+                    <select id="max-rows" style="float:left">
+                        <option value="all">all</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                        <option value=5>5</option>
+                        <option value=10>10</option>
+                        <option value=15>15</option>
+                        <option value=20>20</option>
+                        <option value=25>25</option>
+                    </select>
+                    <p>&nbsp;Banks</p>
+                </div>
+
+                <div class="col-4">
+                    <button type="button" id="collapse-all" class="btn btn-info btn-xs">Collapse All</button>
+                </div>
             </div>
             <br>
-            <p>Choose individual banks you want to rank</p>
-            <p>
-                <div class="select2-container select2-container-multi populate" id="s2id_e9" style="width:300px; display:none">
-                    <ul class="select2-choices">
+            <div class="row">
+                <div class="col-12">
+                    <p>Choose individual banks you want to rank</p>
+                        <div class="select2-container select2-container-multi populate" id="s2id_e9" style="width:300px; display:none">
+                            <ul class="select2-choices">
 
-                        <li class="select2-search-field">
-                        <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen1" tabindex="-1" style="width: 10px;">
-                        </li>
-                    </ul>
+                                <li class="select2-search-field">
+                                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen1" tabindex="-1" style="width: 10px;">
+                                </li>
+                            </ul>
+                        </div>
+                         <select multiple="" name="e9" id="e9" style="width:500px" class="populate select2-offscreen" tabindex="-1">
+                         </select>
                 </div>
-                 <select multiple="" name="e9" id="e9" style="width:300px" class="populate select2-offscreen" tabindex="-1">
-                 </select>
-            </p>
+            </div>
+
         </div>
     </div>
 
