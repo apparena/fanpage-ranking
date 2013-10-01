@@ -164,7 +164,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
                                 </li>
                             </ul>
                         </div>
-                         <select multiple="" name="e9" id="e9" style="width:500px" class="populate select2-offscreen" tabindex="-1">
+                         <select multiple="" name="e9" id="e9" style="width:500px" class="populate select2-offscreen hello" tabindex="-1">
                          </select>
                 </div>
             </div>
