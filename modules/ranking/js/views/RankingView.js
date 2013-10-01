@@ -397,19 +397,17 @@ define([
 
             /* Normalize data */
             var d1 = data;
-            var max = 0;
             var arr = new Array();
             $.each( data, function(index, value) {
-                if(value[1] > max){
-                    max = value[1];
-                }
                 arr.push(value[1]);
             });
-            arr = arr.sort();
+            console.log(arr);
+            arr.sort(function(a, b) { return a - b });
             console.log(arr);
             var min = arr[0];
+            var max = arr[arr.length - 1];
             console.log(min);
-
+            console.log(max);
             var plot = $.plot( $( target ),
                 [ { data: d1, label: data_label, color: graph_color} ], {
                     series: {
