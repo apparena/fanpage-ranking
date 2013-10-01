@@ -378,7 +378,7 @@ define([
                 })
             })
         },
-
+//
         renderGraph: function(params, callback){
             /* Check data param */
             if ( typeof( params ) != 'undefined' ) {
