@@ -105,20 +105,27 @@ define([
                 var rowId = $(this).attr('name');
                 var jquery1 = $('#'.concat(rowId));
                 var jquery2 = $('.'.concat('row-spinner-',rowId));
-                //console.log(this);
-                if($('.additional', jquery1).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
-                    $('.additional', jquery1).removeClass('collapsed');
-                    $(this).removeClass('icon-collapse');
-                    $(this).addClass('icon-collapse-top');
-                    jquery2.removeClass('collapsed');
-                }
-                else {
-                    $('.additional', jquery1).addClass('collapsed');
-                    $(this).removeClass('icon-collapse-top');
-                    $(this).addClass('icon-collapse');
-                }
-                view.showGraph(rowId);
-                jquery2.addClass('collapsed');
+                var that = this; // save the this of the item the user clicked on
+                jquery2.show();
+                // slide down/up instead of just showing/hiding
+                setTimeout( function () { // get around the bug that the loading indicator is not shown or shown too late
+                    if($('.additional', jquery1).hasClass('collapsed')){  // find() // $('.additional', '.manipulate') is equivalent to $('.manipulate').find('.additional')
+                        view.showGraph(rowId);
+                        $('.additional', jquery1).slideDown( 300, function () {
+                            $('.additional', jquery1).removeClass('collapsed');
+                            $(that).removeClass('icon-collapse');
+                            $(that).addClass('icon-collapse-top');
+                        });
+                    }
+                    else {
+                        $('.additional', jquery1).slideUp( 300, function () {
+                            $('.additional', jquery1).addClass('collapsed');
+                            $(that).removeClass('icon-collapse-top');
+                            $(that).addClass('icon-collapse');
+                        });
+                    }
+                    jquery2.hide();
+                }, 100 );
             });
         },
 
@@ -143,7 +150,7 @@ define([
 
         showGraph: function(id){
             // do not execute the graph rendering and the ajax call if the item is collapsing
-            if ( $( '#' + id + ' i[name="' + id + '"]' ).hasClass( 'icon-collapse-top' ) === false ) {
+            if ( $( '#' + id + ' i[name="' + id + '"]' ).hasClass( 'icon-collapse-top' ) === true ) {
                 return false;
             }
             var data = this.additionalInfo(id, typeOfTime);  //id must be string
