@@ -186,7 +186,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 
 
-    <! -------------------    title of the table ------------------------------------------------->
+    <!-------------------    title of the table ------------------------------------------------->
     <div class='list-group-item' style= "font-weight:bold; font-style: italic; background-color:#e3dfa5">
         <div class="row show-grid">
             <div class="col-1">
@@ -216,7 +216,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 
 
-    <! -------------------    banks ------------------------------------------------->
+    <!-------------------    banks ------------------------------------------------->
     <div class="banks" id="content-wrapper">
 
     </div>
