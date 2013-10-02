@@ -2,7 +2,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!modulesSrc/contactForm/templates/contactForm.html'
+    'text!modulesSrc/contactForm/templates/contactForm_bak.html'
 ], function ($, _, Backbone, FormTemplate) {
     var FormView = Backbone.View.extend({
 
