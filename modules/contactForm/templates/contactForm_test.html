@@ -53,7 +53,12 @@
                     </label>
                 </div>
             </div>
-            
+            <div class="control-group">
+                <label class="control-label"><%= _.aa.locale.your_request %></label>
+                <div class="controls">
+                    <textarea class="span6" rows="5" name='Description' maxlength='30000' onclick="this.focus();this.select()"><%= _.aa.locale.more_product_info.replace( '%s', _.aa.config.name.value ) %></textarea>
+                </div>
+            </div>
         </form>
 
         </div>
