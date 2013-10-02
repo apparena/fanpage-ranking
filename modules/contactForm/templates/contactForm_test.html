@@ -16,8 +16,31 @@
                 <input type='hidden' name='actionType' value=Q2FzZXM=/>
                 <input type='hidden' name='Department' value='d443ae9394e0d7275710439f27d48b29f3148ec5bcd90913'/>
                 <input type='hidden' name='returnURL' value='https://develop.app-arena.com'/> <br>
+                <input type='hidden' maxlength='120' name='Subject' value="Anfrage: <%= _.aa.config.name.value %>" />
+                <input type='hidden' maxlength='120' name='Produkt' value="<%= _.aa.config.name.value %>" />
 
-                <strong>Web Form</strong>
+                <select name='Status' class="hide">
+                    <option value='Open'>Open</option>
+                </select>
+                <select name='Lead-Source' class="hide">
+                    <option value='App-Arena.com - Produktdetailseite'>App-Arena.com - Produktdetailseite</option>
+                </select>
+                <input type='hidden' maxlength='120' name='Formular-auf-Seite' value="<%= _.aa.config.product_url.value %>" />
+                <input type='hidden' maxlength='120' name='Referer' value="<%= window.location.href %>" />
+                <input type='hidden'  maxlength='120' name='Due Date' value="<%= new Date() %>" />
+                <select name='Due Datehour' class="hide">
+                    <option value='01'>01</option>
+                </select>
+                <select name='Due Dateminute' class="hide">
+                    <option value='00'>00</option>
+                </select>
+                <select name='Due Dateampm' class="hide">
+                    <option value='PM'>PM</option>
+                </select>
+                <select name='Priority' class="hide">
+                    <option value='Medium'>Medium</option>
+                </select>
+                <input type='hidden' name='returnURL' value='https://develop.app-arena.com' />
 
                 <div class="control-group">
                     <div class="controls controls-row row">
@@ -35,89 +58,33 @@
                     </div>
                 </div>
 
-
-                Email &nbsp;&nbsp;:
-
-                <input type='text' maxlength='120' name='Email'/>
-
-
-                Phone &nbsp;&nbsp;:
-
-                <input type='text' maxlength='120' name='Phone'/>
-
-
-                Subject &nbsp;&nbsp;:
-
-                <input type='text' maxlength='120' name='Subject'/>
-
-
-                Description &nbsp;&nbsp;:
-
-                <textarea name='Description' maxlength='30000' width='250'
-                          height='250'></textarea>
-
-
-                Status &nbsp;&nbsp;:
-
-                <select name='Status'>
-                    <option value='Open'>Open</option>
-                </select>
-
-
-                Lead-Source &nbsp;&nbsp;:
-
-                <select name='Lead-Source'>
-                    <option value='App-Arena.com - Produktdetailseite'>App-Arena.com - Produktdetailseite
-                    </option>
-                </select>
-
-
-                Produkt &nbsp;&nbsp;:
-
-                <input type='text' maxlength='120' name='Produkt'/>
-
-
-                Formular-auf-Seite &nbsp;&nbsp;:
-
-                <input type='text' maxlength='120' name='Formular-auf-Seite'/>
-
-
-                Praesentation-zusenden &nbsp;&nbsp;:
-
-                <input type='checkbox' name='Praesentation-zusenden'/>
-
-
-                Referer &nbsp;&nbsp;:
-
-                <input type='text' maxlength='120' name='Referer'/>
-
-
-                Firma &nbsp;&nbsp;:
-
-                <input type='text' maxlength='120' name='Firma'/>
-
-
-                Due Date &nbsp;&nbsp;:
-
-                <input type='text' maxlength='120' name='Due Date'/>dd.MM.yyyy <select
-                    name='Due Datehour'>
-                <option value='01'>01</option>
-
-                </select>&nbsp;<select name='Due Dateminute'>
-                    <option value='00'>00</option>
-                    <option value='01'>01</option>
-
-                </select>&nbsp;<select name='Due Dateampm'>
-                    <option value='AM'>AM</option>
-                    <option value='PM'>PM</option>
-                </select>
-
-                    Priority &nbsp;&nbsp;:
-
-                <select name='Priority' class="hide">
-                    <option value='Medium'>Medium</option>
-                </select>
-
+                <div class="control-group">
+                    <div class="controls controls-row row">
+                        <label class="control-label span3"><%= _.aa.locale.company %></label>
+                        <label class="control-label span3"><%= _.aa.locale.email %></label>
+                    </div>
+                    <div class="controls controls-row">
+                        <input class="span3" type='text' maxlength='120' name='Firma' placeholder="<%= _.aa.locale.company %>" />
+                        <input class="span3" type='text' maxlength='120' name='Email' placeholder="<%= _.aa.locale.email %>" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls controls-row row">
+                        <label class="control-label span3"><%= _.aa.locale.phone %></label>
+                    </div>
+                    <div class="controls controls-row">
+                        <input class="span3" type='text' maxlength='120' name='Phone' placeholder="<%= _.aa.locale.phone %>" />
+                        <label class="checkbox span3">
+                            <input type='checkbox' name='Praesentation-zusenden' /> <%= _.aa.locale.get_presentation %>
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"><%= _.aa.locale.your_request %></label>
+                    <div class="controls">
+                        <textarea class="span6" rows="5" name='Description' maxlength='30000' onclick="this.focus();this.select()"><%= _.aa.locale.more_product_info.replace( '%s', _.aa.config.name.value ) %></textarea>
+                    </div>
+                </div>
 
             </form>
         </div>
