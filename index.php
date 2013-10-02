@@ -107,8 +107,22 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <br>
 <div class='list-group-item' style= "font-weight:bold">
     <div class="alert">
-        <h3>Ranking Sparkasse Banks</h3>
-        <h12 class="num-elements"></h12> Banks ranked on : <h12 class="date"></h12> at: <h12 class="time"></h12>
+        <div>
+            <h3>Ranking Sparkasse Banks</h3>
+            <h12 class="num-elements"></h12> Banks ranked on : <h12 class="date"></h12> at: <h12 class="time"></h12>
+        </div>
+        <div class="customer_entry_container">
+            <div class="customer_entry_msg">
+                <label>
+                    <span><?php __p( 'customer_entry_msg' ); ?></span>
+                </label>
+            </div>
+            <div class="customer_entry_btn">
+                <a href="#page/contactForm" id="customer_form_btn" class="btn btn-primary">
+                    <span><?php __p( 'customer_entry_btn' ); ?></span>
+                </a>
+            </div>
+        </div>
     </div>
 
     <div class="row">
@@ -225,6 +239,9 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 </div>
 
+<div id="form-wrapper" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+
+</div>
 
 <?php
 //unset($aa['config']['css_bootstrap']);

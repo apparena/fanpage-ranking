@@ -1,6 +1,7 @@
 (function () {
     'use strict';
     require.config({
+        //urlArgs: "bust=" +  (new Date()).getTime(),
         baseUrl: 'js/'
     });
     require([

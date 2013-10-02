@@ -12,5 +12,6 @@ define([
         var rankingView = new RankingView();
         //console.log(rankingView);
         //console.log(RankingView);
+
     };
 });
