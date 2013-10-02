@@ -7,15 +7,35 @@
 
         <div class="modal-body">
 
-            <form id="contactForm" action='https://support.zoho.com/support/WebToCase' method='POST'>
-
-                <input type='hidden' name='xnQsjsdp' value=FyANna-CGO1thYo*kRl79w$$/> <input type='hidden'
-                                                                                             name='xmIwtLD'
-                                                                                             value=w6UeJz4Nz5OalCZe8C6Cm51GFBCUjBoL/>
-                <input type='hidden' name='actionType' value=Q2FzZXM=/> <input type='hidden' name='Department'
-                                                                               value='d443ae9394e0d7275710439f27d48b29f3148ec5bcd90913'/>
-                <input type='hidden' name='returnURL' value='https://develop.app-arena.com'/> <br>
-
+            <form id="contactForm" action='https://support.zoho.com/support/WebToCase' method='POST' class="form-vertical">
+                <input type='hidden' name='xnQsjsdp' value=FyANna-CGO1thYo*kRl79w$$/>
+                <input type='hidden' name='xmIwtLD' value=w6UeJz4Nz5OalCZe8C6Cm51GFBCUjBoL/>
+                <input type='hidden' name='actionType' value=Q2FzZXM=/>
+                <input type='hidden' name='Department' value='d443ae9394e0d7275710439f27d48b29f3148ec5bcd90913'/>
+                <input type='hidden' maxlength='120' name='Subject' value="Anfrage: <%= _.aa.config.name.value %>" />
+                <input type='hidden' maxlength='120' name='Produkt' value="<%= _.aa.config.name.value %>" />
+                <select name='Status' class="hide">
+                    <option value='Open'>Open</option>
+                </select>
+                <select name='Lead-Source' class="hide">
+                    <option value='App-Arena.com - Produktdetailseite'>App-Arena.com - Produktdetailseite</option>
+                </select>
+                <input type='hidden' maxlength='120' name='Formular-auf-Seite' value="<%= _.aa.config.product_url.value %>" />
+                <input type='hidden' maxlength='120' name='Referer' value="<%= window.location.href %>" />
+                <input type='hidden'  maxlength='120' name='Due Date' value="<%= new Date() %>" />
+                <select name='Due Datehour' class="hide">
+                    <option value='01'>01</option>
+                </select>
+                <select name='Due Dateminute' class="hide">
+                    <option value='00'>00</option>
+                </select>
+                <select name='Due Dateampm' class="hide">
+                    <option value='PM'>PM</option>
+                </select>
+                <select name='Priority' class="hide">
+                    <option value='Medium'>Medium</option>
+                </select>
+                <input type='hidden' name='returnURL' value='https://develop.app-arena.com' />
 
                 <div class="control-group">
                     <div class="controls controls-row row">
@@ -32,6 +52,7 @@
                         <input class="span3" type='text' maxlength='120' name='Contact Name' placeholder="<%= _.aa.locale.last_name %>" />
                     </div>
                 </div>
+
                 <div class="control-group">
                     <div class="controls controls-row row">
                         <label class="control-label span3"><%= _.aa.locale.company %></label>
