@@ -182,14 +182,18 @@ define([
                 'target':'#chart_likes_' + id,
                 'data_label':'Likes',
                 'data_point_caption': '',
-                'graph_color':'#e11c8c',
+                //'graph_color':'#e11c8c',
+                // take the color from app arena
+                'graph_color': _.aa.config.graph_likes.value,
                 'data':arrayLikes
             });
             this.renderGraph({
                 'target':'#chart_talking_about_count_' + id,
                 'data_label':'Talking about',
                 'data_point_caption': '',
-                'graph_color':'#941ce1',
+                //'graph_color':'#941ce1',
+                // take the color from app arena
+                'graph_color': _.aa.config.graph_talking.value,
                 'data':arrayTalksAbout
             });
         },
