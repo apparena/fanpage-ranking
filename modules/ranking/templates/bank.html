@@ -8,15 +8,15 @@
          </div>
          <div class='col-3 likes'>
              <div class='badge'><p class="insert-likes"><% if (typeof(attributes.likes) == "undefined") {print('no data for likes');} else {print(attributes.likes);} %></p></div>
-             <i class='icon-thumbs-up-alt' style='font-size:large;'></i>
+             <i class='icon-thumbs-up-alt large-icon'></i>
          </div>
          <div class='col-3 talks-about'>
              <div class='badge'><p class="insert-talks-about"><% if (typeof(attributes.talking_about_count) == "undefined") {print('no data for talking_about_count');} else {print(attributes.talking_about_count);} %></p></div>
-             <i class='icon-comments-alt' style='font-size:large;'></i>
+             <i class='icon-comments-alt large-icon'></i>
          </div>
          <div class="col-1">
-             <div style='float:left'><i class='icon-collapse collapse-expand' name="<% print(id); %>" style='font-size:xx-large;'>&nbsp</i></div>
-             <div class="<% print('row-spinner-' + id); %> collapsed"><i class='icon-spinner icon-spin icon-large' style='font-size:20px;'></i></div>
+             <div class="pull-left"><i class='icon-collapse collapse-expand xx-large-icon' name="<% print(id); %>">&nbsp</i></div>
+             <div class="<% print('row-spinner-' + id); %> collapsed"><i class='icon-spinner icon-spin icon-large'></i></div>
          </div>
     </div>
     <div class='row show-grid'>
@@ -24,8 +24,8 @@
     </div>
 
     <div class='row show-grid'>
-        <div class="col-6 additional collapsed insert-graph1" id="<% print('chart_likes_' + id); %>" style="float:left; width:500px; height: 220px; position:relative; left:40px"></div>
-        <div class="col-6 additional collapsed insert-graph2" id="<% print('chart_talking_about_count_' + id); %>" style="width:500px; height: 220px; position:relative; left:80px"></div>
+        <div class="col-6 additional collapsed insert-graph1" id="<% print('chart_likes_' + id); %>"></div>
+        <div class="col-6 additional collapsed insert-graph2" id="<% print('chart_talking_about_count_' + id); %>"></div>
     </div>
 </a>
 

@@ -84,7 +84,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 
 <body class="<?=$classbody?>">
-<div class="navbar navbar-inverse navbar-fixed-top" style="display:none">
+<div class="navbar navbar-inverse navbar-fixed-top hide">
     <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
@@ -107,11 +107,11 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <div class="container">
 
 <br>
-<div class='list-group-item' style= "font-weight:bold">
+<div class='list-group-item bold'>
     <div class="alert">
         <div>
-            <h3>Ranking Sparkasse Banks</h3>
-            <h12 class="num-elements"></h12> Banks ranked on : <h12 class="date"></h12> at: <h12 class="time"></h12>
+            <h3><?php __p( 'title' ); ?></h3>
+            <?php __p( 'overall_stats', '<h12 class=\"num-elements\"></h12>', '<h12 class=\"date\"></h12>', '<h12 class=\"time\"></h12>' ); ?>
         </div>
         <div class="customer_entry_container">
             <div class="customer_entry_msg">
@@ -132,55 +132,59 @@ if (isset($aaForJs['instance']['fb_app_secret']))
         <div class="col-6">
             <div class="row">
                 <div class="col-12">
-                    <p>Choose time scale of Graphs</p>
+                    <p><?php __p( 'overall_time_chooser' ); ?></p>
                     <ul class="nav nav-pills">
-                        <li class="typeOfTime active" id="30days"><a href="#">Last 30 days</a></li>
-                        <li class="typeOfTime" id="10weeks"><a href="#">Last 10 weeks</a></li>
-                        <li class="typeOfTime" id="6months"><a href="#">Last 6 months</a></li>
-                        <li class="typeOfTime" id="12months"><a href="#">Last 12 months</a></li>
+                        <li class="typeOfTime active" id="30days"><a href="#"><?php __p( 'chooser_30_days' ); ?></a></li>
+                        <li class="typeOfTime" id="10weeks"><a href="#"><?php __p( 'chooser_10_weeks' ); ?></a></li>
+                        <li class="typeOfTime" id="6months"><a href="#"><?php __p( 'chooser_6_months' ); ?></a></li>
+                        <li class="typeOfTime" id="12months"><a href="#"><?php __p( 'chooser_12_months' ); ?></a></li>
                     </ul>
                 </div>
             </div>
-            <div class="collapsed" id="spinner-typeOfTime" style="position:relative;left:50%;top:50%;"><i class='icon-spinner icon-spin icon-large' style='font-size:44px;'></i></div>
+            <div class="collapsed" id="spinner-typeOfTime"><i class='icon-spinner icon-spin icon-large'></i></div>
         </div>
 
         <div class="col-6">
 
             <div class="row">
-                <div class="col-8 top-bottom" style="float:left">
-                    <p style="float:left">Display the Top / Bottom &nbsp;</p>
-                    <select id="max-rows" style="float:left">
-                        <option value="all">all</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option value=3>3</option>
-                        <option value=4>4</option>
-                        <option value=5>5</option>
-                        <option value=10>10</option>
-                        <option value=15>15</option>
-                        <option value=20>20</option>
-                        <option value=25>25</option>
-                    </select>
-                    <p>&nbsp;Banks</p>
+                <div class="col-8 top-bottom" class="pull-left">
+                    <p class="pull-left">
+                    <?php
+                        $dropdown = '&nbsp;</p>
+                                <select id=\"max-rows\">
+                                    <option value=\"all\">' . __t( 'all' ) . '</option>
+                                    <option value=\"1\">1</option>
+                                    <option value=\"2\">2</option>
+                                    <option value=\"3\">3</option>
+                                    <option value=\"4\">4</option>
+                                    <option value=\"5\">5</option>
+                                    <option value=\"10\">10</option>
+                                    <option value=\"15\">15</option>
+                                    <option value=\"20\">20</option>
+                                    <option value=\"25\">25</option>
+                                </select>
+                            <p>&nbsp;';
+                        __p( 'chooser_limit', $dropdown );
+                    ?>
+                    </p>
                 </div>
 
                 <div class="col-4">
-                    <button type="button" id="collapse-all" class="btn btn-info btn-xs">Collapse All</button>
+                    <button type="button" id="collapse-all" class="btn btn-info btn-xs"><?php __p( 'collapse_all' ); ?></button>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-12">
-                    <p>Choose individual banks you want to rank</p>
-                        <div class="select2-container select2-container-multi populate" id="s2id_e9" style="width:300px; display:none">
+                    <p><?php __p( 'banks_to_rank' ); ?></p>
+                        <div class="select2-container select2-container-multi populate" id="s2id_e9">
                             <ul class="select2-choices">
-
                                 <li class="select2-search-field">
-                                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen1" tabindex="-1" style="width: 10px;">
+                                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen1" tabindex="-1">
                                 </li>
                             </ul>
                         </div>
-                         <select multiple="" name="e9" id="e9" style="width:500px" class="populate select2-offscreen" tabindex="-1">
+                         <select multiple="" name="e9" id="e9" class="populate select2-offscreen" tabindex="-1">
                          </select>
                 </div>
             </div>
@@ -203,32 +207,32 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 
     <!-------------------    title of the table ------------------------------------------------->
-    <div class='list-group-item' style= "font-weight:bold; font-style: italic; background-color:#e3dfa5">
+    <div class='list-group-item bold-italic-custom'>
         <div class="row show-grid">
             <div class="col-1">
-                Photo &nbsp;
+                <?php __p( 'image' ); ?> &nbsp;
             </div>
             <div class="col-4">
-                Fan page name &nbsp;
+                <?php __p( 'fanpage_name' ); ?> &nbsp;
                 <a href="#" class="icons fans-pages-names-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>
                 <a href="#" class="icons fans-pages-names-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
             <div class="col-3">
-                Likes &nbsp;
+                <?php __p( 'likes' ); ?> &nbsp;
                 <a href="#" class="icons likes-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>
                 <a href="#" class="icons likes-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
             <div class="col-3">
-                Talking about &nbsp;
+                <?php __p( 'talking_about' ); ?> &nbsp;
                 <a href="#" class="icons talks-about-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>
                 <a href="#" class="icons talks-about-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
             </div>
             <div class="col-1">
-                Expand
+                <?php __p( 'expand' ); ?>
             </div>
         </div>
     </div>
-    <div class='page-spinner'><i class='icon-spinner icon-spin icon-large' style='font-size:80px;'></i></div>
+    <div class='page-spinner'><i class='icon-spinner icon-spin icon-large'></i></div>
 
 
 
