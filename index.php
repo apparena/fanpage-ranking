@@ -78,6 +78,11 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 </head>
 
+<div id="custom_header">
+    <?php echo (isset( $aa[ 'config' ][ 'custom_header' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_header' ][ 'value' ] : ''; ?>
+</div>
+
+
 <body class="<?=$classbody?>">
 <div class="navbar navbar-inverse navbar-fixed-top" style="display:none">
     <div class="container">
@@ -98,9 +103,6 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 </div>
 <div id="msg-container"></div>
 <div id="fb-root"></div>
-
-
-
 
 <div class="container">
 
@@ -237,6 +239,10 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 <br><br>
 
+</div>
+
+<div id="custom_footer">
+    <?php echo (isset( $aa[ 'config' ][ 'custom_footer' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_footer' ][ 'value' ] : ''; ?>
 </div>
 
 <div id="form-wrapper" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
