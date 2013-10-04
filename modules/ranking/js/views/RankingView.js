@@ -473,7 +473,7 @@ define([
                         //console.log(x);
                         //console.log(date);
                         var strDate = "" + date.getDate() + "." + (date.getMonth()+1) + ".";
-                        showTooltip(item.pageX, item.pageY, "  " + item.series.label + " =" + y + " (" + strDate + ")" );
+                        showTooltip(item.pageX, item.pageY, "  " + item.series.label + ": " + y + " (" + strDate + ")" );
                         //showTooltip(item.pageX, item.pageY, y + data_point_caption );
                     }
 
