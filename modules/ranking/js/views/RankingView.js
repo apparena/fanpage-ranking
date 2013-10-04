@@ -1,6 +1,3 @@
-/*global define: false */
-
-
 define([
     'jquery',
     'underscore',
@@ -12,9 +9,6 @@ define([
     'jquery.flot.time',
     'imperio.general',
     'select2.min'
-
-
-
 ], function ($, _, Backbone, TinySort, BankTemplate, RankingCollection) {
 
     //setting global variables
@@ -180,7 +174,8 @@ define([
             }
             this.renderGraph({
                 'target':'#chart_likes_' + id,
-                'data_label':'Likes',
+                //'data_label':'Likes',
+                'data_label': _.aa.locale.likes,
                 'data_point_caption': '',
                 //'graph_color':'#e11c8c',
                 // take the color from app arena
@@ -189,7 +184,8 @@ define([
             });
             this.renderGraph({
                 'target':'#chart_talking_about_count_' + id,
-                'data_label':'Talking about',
+                //'data_label':'Talking about',
+                'data_label': _.aa.locale.talking_about,
                 'data_point_caption': '',
                 //'graph_color':'#941ce1',
                 // take the color from app arena
