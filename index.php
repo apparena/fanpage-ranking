@@ -12,7 +12,7 @@ catch (Exception $e)
     print_r($e->getTrace());
     echo '</pre>';
 }
-
+if($_SERVER["REOMTE_ADDR"]=='87.139.37.88'): echo 123; endif;
 // ToDo[maXus]: create class to extract code - 01.08.13
 /*
  * prepare the aa object for js
