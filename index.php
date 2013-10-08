@@ -12,7 +12,7 @@ catch (Exception $e)
     print_r($e->getTrace());
     echo '</pre>';
 }
-if($_SERVER["REOMTE_ADDR"]=='87.139.37.88'): echo 123; endif;
+
 // ToDo[maXus]: create class to extract code - 01.08.13
 /*
  * prepare the aa object for js
@@ -59,7 +59,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volksbanks fan page ranking App</title>
+    <title>Volksbanks fan page ranking App im Test</title>
 
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <link type="text/css" rel="stylesheet" href="css/ranking.css" />
