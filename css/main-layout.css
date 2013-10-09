@@ -272,6 +272,12 @@ select#max-rows
 	text-decoration: none;
 }
 
+a.list-group-item.manipulate
+{
+	background: #fff;
+	margin-top: 20px;
+}
+
 .fans-pages-names
 {
 	text-align: center !important;
