@@ -3,7 +3,7 @@
 body
 {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 112.5%;
+	font-size: 18px;
 }
 
 .collapsed {
@@ -26,4 +26,6 @@ body
 	top: 0;
 	left: 0;
 	width: 100%;
+	font-size: 66.66666666666672%;
+	text-transform: uppercase;
 }
