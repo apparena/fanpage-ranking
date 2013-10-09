@@ -83,7 +83,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
   <div class="customer_entry_container">
      <?php __p( 'customer_entry_msg' ); ?>
-     <?php __p( 'customer_entry_btn' ); ?>
+     <a href="#page/contactForm" id="customer_form_btn" class="btn btn-primary"><?php __p( 'customer_entry_btn' ); ?></a>
   </div>
 
 <div id="custom_header">
