@@ -432,6 +432,7 @@ a.list-group-item.manipulate
 .bootstrap-select
 {
 	margin-bottom: 2px !important;
+	display: inline-block !important;
 }
 
 .bootstrap-select > *
