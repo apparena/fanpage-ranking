@@ -95,128 +95,53 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 		   	<h1><?php __p( 'title' ); ?></h1>
 			   <h2>SEO</h2>
 			   <p>
-			   	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+			   	<?php echo (isset( $aa[ 'config' ][ 'custom_header' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_header' ][ 'value' ] : ''; ?>
 			   </p>
 	   	</div>
 	   </div>
 	</div>
 
-<?php
-/*
-<div id="custom_header">
-    <?php echo (isset( $aa[ 'config' ][ 'custom_header' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_header' ][ 'value' ] : ''; ?>
-</div>
+ <div id="time_bar">
+ 	<div class="main_container">
+      <ul class="nav nav-pills">
+         <li class="typeOfTime active" id="30days"><a href="#"><?php __p( 'chooser_30_days' ); ?></a></li>
+         <li class="typeOfTime" id="10weeks"><a href="#"><?php __p( 'chooser_10_weeks' ); ?></a></li>
+         <li class="typeOfTime" id="6months"><a href="#"><?php __p( 'chooser_6_months' ); ?></a></li>
+         <li class="typeOfTime" id="12months"><a href="#"><?php __p( 'chooser_12_months' ); ?></a></li>
+     </ul>
+     <?php __p( 'overall_time_chooser' ); ?>
+ 	</div>
+ </div>
 
-<div class="navbar navbar-inverse navbar-fixed-top hide">
-    <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Logo</a>
-
-        <div class="nav-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#/page/demo">load Demomodule</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div id="msg-container"></div>
-<div id="fb-root"></div>
-*/
-?>
+ 	<div id="choose_bar">
+ 		<div class="main_container">
+ 			<div class="right">
+ 				<?php __p( 'banks_to_rank' ); ?> &nbsp;
+              <select multiple="" name="e9" id="e9" class="populate select2-offscreen" tabindex="-1">
+              </select>
+ 			</div>
+          <?php
+               $dropdown = '&nbsp;</p>
+                       <select id=\"max-rows\">
+                           <option value=\"all\">' . __t( 'all' ) . '</option>
+                           <option value=\"1\">1</option>
+                           <option value=\"2\">2</option>
+                           <option value=\"3\">3</option>
+                           <option value=\"4\">4</option>
+                           <option value=\"5\">5</option>
+                           <option value=\"10\">10</option>
+                           <option value=\"15\">15</option>
+                           <option value=\"20\">20</option>
+                           <option value=\"25\">25</option>
+                       </select>
+                   <p>&nbsp;';
+               __p( 'chooser_limit', $dropdown );
+           ?> &nbsp;  &nbsp; &nbsp;
+ 			<button type="button" id="collapse-all" class="btn btn-info btn-xs"><?php __p( 'collapse_all' ); ?></button>
+     </div>
+ </div>
 
 <div class="container">
-
-<br>
-<div class='list-group-item bold'>
-    <div class="alert">
-        <div>
-            <h3><?php __p( 'title' ); ?></h3>
-            <?php __p( 'overall_stats', '<h12 class=\"num-elements\"></h12>', '<h12 class=\"date\"></h12>', '<h12 class=\"time\"></h12>' ); ?>
-        </div>
-    </div>
-
-    <div class="row">
-
-        <div class="col-6">
-            <div class="row">
-                <div class="col-12">
-                    <p><?php __p( 'overall_time_chooser' ); ?></p>
-                    <ul class="nav nav-pills">
-                        <li class="typeOfTime active" id="30days"><a href="#"><?php __p( 'chooser_30_days' ); ?></a></li>
-                        <li class="typeOfTime" id="10weeks"><a href="#"><?php __p( 'chooser_10_weeks' ); ?></a></li>
-                        <li class="typeOfTime" id="6months"><a href="#"><?php __p( 'chooser_6_months' ); ?></a></li>
-                        <li class="typeOfTime" id="12months"><a href="#"><?php __p( 'chooser_12_months' ); ?></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="collapsed" id="spinner-typeOfTime"><i class='icon-spinner icon-spin icon-large'></i></div>
-        </div>
-
-        <div class="col-6">
-
-            <div class="row">
-                <div class="col-8 top-bottom" class="pull-left">
-                    <p class="pull-left">
-                    <?php
-                        $dropdown = '&nbsp;</p>
-                                <select id=\"max-rows\">
-                                    <option value=\"all\">' . __t( 'all' ) . '</option>
-                                    <option value=\"1\">1</option>
-                                    <option value=\"2\">2</option>
-                                    <option value=\"3\">3</option>
-                                    <option value=\"4\">4</option>
-                                    <option value=\"5\">5</option>
-                                    <option value=\"10\">10</option>
-                                    <option value=\"15\">15</option>
-                                    <option value=\"20\">20</option>
-                                    <option value=\"25\">25</option>
-                                </select>
-                            <p>&nbsp;';
-                        __p( 'chooser_limit', $dropdown );
-                    ?>
-                    </p>
-                </div>
-
-                <div class="col-4">
-                    <button type="button" id="collapse-all" class="btn btn-info btn-xs"><?php __p( 'collapse_all' ); ?></button>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-12">
-                    <p><?php __p( 'banks_to_rank' ); ?></p>
-                        <div class="select2-container select2-container-multi populate" id="s2id_e9">
-                            <ul class="select2-choices">
-                                <li class="select2-search-field">
-                                <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen1" tabindex="-1">
-                                </li>
-                            </ul>
-                        </div>
-                         <select multiple="" name="e9" id="e9" class="populate select2-offscreen" tabindex="-1">
-                         </select>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-
-
-
-
-
-</div>
-
-
-
-<br>
-
 
 
     <!-------------------    title of the table ------------------------------------------------->
