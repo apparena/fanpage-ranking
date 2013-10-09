@@ -17,50 +17,41 @@
                 <input type='hidden' name='returnURL' value='https://develop.app-arena.com'/>
                 <input type='hidden' maxlength='120' name='Subject' value="Anfrage: <%= _.aa.config.name.value %>" />
 
-                <div class="control-group">
-                    <div class="controls controls-row row">
-                        <label class="control-label span1"><%= _.aa.locale.gender %></label>
-                        <label class="control-label span2"><%= _.aa.locale.first_name %></label>
-                        <label class="control-label span3"><%= _.aa.locale.last_name %></label>
-                    </div>
-                    <div class="controls controls-row">
-                        <select id="contact-gender" name='Geschlecht' class="span1">
-                            <option value='Herr'><%= _.aa.locale.gender_male %></option>
-                            <option value='Frau'><%= _.aa.locale.gender_female %></option>
-                        </select>
-                        <input class="span2" type='text' maxlength='120' name='First Name' placeholder="<%= _.aa.locale.first_name %>" />
-                        <input class="span3" type='text' maxlength='120' name='Contact Name' placeholder="<%= _.aa.locale.last_name %>" />
-                    </div>
+                <div class="form-row">
+                	<label class="control-label span1"><%= _.aa.locale.gender %></label>
+					 	<select id="contact-gender" name='Geschlecht' class="span1">
+                      <option value='Herr'><%= _.aa.locale.gender_male %></option>
+                      <option value='Frau'><%= _.aa.locale.gender_female %></option>
+                  </select>
+					 </div>
+                <div class="form-row">
+                  <label class="control-label span2"><%= _.aa.locale.first_name %></label>
+                  <input class="span2" type='text' maxlength='120' name='First Name' placeholder="<%= _.aa.locale.first_name %>" />
+					 </div>
+                <div class="form-row">
+                	<label class="control-label span3"><%= _.aa.locale.last_name %></label>
+                	<input class="span3" type='text' maxlength='120' name='Contact Name' placeholder="<%= _.aa.locale.last_name %>" />
                 </div>
-
-                <div class="control-group">
-                    <div class="controls controls-row row">
-                        <label class="control-label span3"><%= _.aa.locale.company %></label>
-                        <label class="control-label span3"><%= _.aa.locale.email %></label>
-                    </div>
-                    <div class="controls controls-row">
-                        <input class="span3" type='text' maxlength='120' name='Firma' placeholder="<%= _.aa.locale.company %>" />
-                        <input class="span3" type='text' maxlength='120' name='Email' placeholder="<%= _.aa.locale.email %>" />
-                    </div>
+                <div class="form-row">
+                	<label class="control-label span3"><%= _.aa.locale.company %></label>
+                	<input class="span3" type='text' maxlength='120' name='Firma' placeholder="<%= _.aa.locale.company %>" />
                 </div>
-
-                <div class="control-group">
-                    <div class="controls controls-row row">
-                        <label class="control-label span3"><%= _.aa.locale.phone %></label>
-                    </div>
-                    <div class="controls controls-row">
-                        <input class="span3" type='text' maxlength='120' name='Phone' placeholder="<%= _.aa.locale.phone %>" />
-                        <label class="checkbox span3">
-                            <input type='checkbox' name='Praesentation-zusenden' /> <%= _.aa.locale.get_presentation %>
-                        </label>
-                    </div>
+                <div class="form-row">
+                	<label class="control-label span3"><%= _.aa.locale.email %></label>
+                	<input class="span3" type='text' maxlength='120' name='Email' placeholder="<%= _.aa.locale.email %>" />
                 </div>
-
-                <div class="control-group">
-                    <label class="control-label"><%= _.aa.locale.your_request %></label>
-                    <div class="controls">
-                        <textarea class="span6" rows="5" name='Description' maxlength='30000' onclick="this.focus();this.select()"><%= _.aa.locale.more_product_info.replace( '%s', _.aa.config.name.value ) %></textarea>
-                    </div>
+                <div class="form-row">
+                	<label class="control-label span3"><%= _.aa.locale.phone %></label>
+                	<input class="span3" type='text' maxlength='120' name='Phone' placeholder="<%= _.aa.locale.phone %>" />
+                </div>
+                <div class="form-row">
+                	 <label class="checkbox span3">
+                      <input type='checkbox' name='Praesentation-zusenden' /> <%= _.aa.locale.get_presentation %>
+                   </label>
+                </div>
+                <div class="form-row">
+                	<label class="control-label"><%= _.aa.locale.your_request %></label>
+                	<textarea class="span6" rows="5" name='Description' maxlength='30000' onclick="this.focus();this.select()"><%= _.aa.locale.more_product_info.replace( '%s', _.aa.config.name.value ) %></textarea>
                 </div>
 
             </form>
