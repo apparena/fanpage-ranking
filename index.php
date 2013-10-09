@@ -135,7 +135,11 @@ if (isset($aaForJs['instance']['fb_app_secret']))
                            <option value=\"25\">25</option>
                        </select>
                    <p>&nbsp;';
+               ob_start();
                __p( 'chooser_limit', $dropdown );
+               $dropdown_output = ob_get_contents();
+               ob_end_clean();
+               echo str_replace( array( '<p>', '</p>' ), '', $dropdown_output );
            ?> &nbsp;  &nbsp; &nbsp;
  			<button type="button" id="collapse-all" class="btn btn-info btn-xs"><?php __p( 'collapse_all' ); ?></button>
      </div>
