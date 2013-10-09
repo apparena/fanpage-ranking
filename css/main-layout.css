@@ -276,6 +276,7 @@ select#max-rows
 {
 	text-align: center !important;
 	text-transform: uppercase;
+	background: #ececec !important;
 }
 
 .container
