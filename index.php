@@ -59,7 +59,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>:.. Volksbanks fan page ranking App ..:</title>
+    <title>Volksbanks fan page ranking App</title>
 
     <link type="text/css" rel="stylesheet" href="css/style.css" />
     <link type="text/css" rel="stylesheet" href="css/ranking.css" />
@@ -78,12 +78,26 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 </head>
 
+
+<body class="<?=$classbody?>">
+
+  <div class="customer_entry_container">
+      <div class="customer_entry_msg">
+          <label>
+              <span><?php __p( 'customer_entry_msg' ); ?></span>
+          </label>
+      </div>
+      <div class="customer_entry_btn">
+          <a href="#page/contactForm" id="customer_form_btn" class="btn btn-primary">
+              <span><?php __p( 'customer_entry_btn' ); ?></span>
+          </a>
+      </div>
+  </div>
+
 <div id="custom_header">
     <?php echo (isset( $aa[ 'config' ][ 'custom_header' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_header' ][ 'value' ] : ''; ?>
 </div>
 
-
-<body class="<?=$classbody?>">
 <div class="navbar navbar-inverse navbar-fixed-top hide">
     <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
@@ -112,18 +126,6 @@ if (isset($aaForJs['instance']['fb_app_secret']))
         <div>
             <h3><?php __p( 'title' ); ?></h3>
             <?php __p( 'overall_stats', '<h12 class=\"num-elements\"></h12>', '<h12 class=\"date\"></h12>', '<h12 class=\"time\"></h12>' ); ?>
-        </div>
-        <div class="customer_entry_container">
-            <div class="customer_entry_msg">
-                <label>
-                    <span><?php __p( 'customer_entry_msg' ); ?></span>
-                </label>
-            </div>
-            <div class="customer_entry_btn">
-                <a href="#page/contactForm" id="customer_form_btn" class="btn btn-primary">
-                    <span><?php __p( 'customer_entry_btn' ); ?></span>
-                </a>
-            </div>
         </div>
     </div>
 
