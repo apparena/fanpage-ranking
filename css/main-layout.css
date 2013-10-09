@@ -231,7 +231,7 @@ select#max-rows
 .select2-choices
 {
 	max-width: 180px;
-	max-height: 30px;
+	height: 30px;
 }
 
 .select2-results
