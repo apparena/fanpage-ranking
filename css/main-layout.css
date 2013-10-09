@@ -272,6 +272,12 @@ select#max-rows
 	text-decoration: none;
 }
 
+.fans-pages-names
+{
+	text-align: center !important;
+	text-transform: uppercase;
+}
+
 .container
 {
 	width: 1170px;
