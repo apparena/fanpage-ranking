@@ -380,6 +380,11 @@ a.list-group-item.manipulate
 	background-image: url(../img/expand_active.png);
 }
 
+.col-1.expand .icon-spinner
+{
+	display: none !important;
+}
+
 .container
 {
 	width: 1170px;
