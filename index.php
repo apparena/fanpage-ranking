@@ -88,6 +88,21 @@ if (isset($aaForJs['instance']['fb_app_secret']))
      <a href="#page/contactForm" id="customer_form_btn" class="btn btn-primary"><?php __p( 'customer_entry_btn' ); ?></a>
   </div>
 
+  <div id="custom_header">
+	   <div class="main_container">
+	   	<img src="img/sparkasse_logo.png" alt="Sparkasse" class="left" />
+	   	<div>
+		   	<h1>RANKING SPARKASSE BANKS</h1>
+			   <h2>SEO</h2>
+			   <p>
+			   	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+			   </p>
+	   	</div>
+	   </div>
+	</div>
+
+<?php
+/*
 <div id="custom_header">
     <?php echo (isset( $aa[ 'config' ][ 'custom_header' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_header' ][ 'value' ] : ''; ?>
 </div>
@@ -111,6 +126,8 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 </div>
 <div id="msg-container"></div>
 <div id="fb-root"></div>
+*/
+?>
 
 <div class="container">
 
