@@ -172,7 +172,7 @@ h2
 	text-transform: uppercase;
 }
 
-#time_bar ul li a.active,
+#time_bar ul li.active a,
 #time_bar ul li a:hover
 {
 	background: red !important;
