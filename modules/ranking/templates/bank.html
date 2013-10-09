@@ -1,11 +1,11 @@
 <a class='list-group-item manipulate' id="<% print(id); %>">
     <div class='row show-grid'>
-         <div class='col-6 fans-pages-names'>
+         <div class='col-10 fans-pages-names'>
              <p class="insert-name"><% if (typeof(attributes.name) == "undefined") {print('no data for name');} else {print(attributes.name);} %></p>
          </div>
     </div>
     <div class='row show-grid'>
-        <div class="col-12 additional collapsed insert-description"><% if (typeof(attributes.description) == "undefined") {print('no data for description');} else {print(attributes.description);} %></div>
+        <div class="col-10 additional collapsed insert-description"><% if (typeof(attributes.description) == "undefined") {print('no data for description');} else {print(attributes.description);} %></div>
     </div>
 
     <div class='row show-grid'>
