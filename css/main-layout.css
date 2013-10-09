@@ -282,7 +282,9 @@ a.list-group-item.manipulate
 {
 	text-align: center !important;
 	text-transform: uppercase;
-	background: #ececec !important;
+	background: #eaeaea !important;
+	font-size: 138.888888888889%;
+	color: #000 !important;
 }
 
 .container
