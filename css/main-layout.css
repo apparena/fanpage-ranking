@@ -367,7 +367,7 @@ a.list-group-item.manipulate
 }
 
 .col-1.expand .icon-collapse,
-.col-1.expand .icon-spinner
+.col-1.expand .icon-collapse-top
 {
 	background: url(../img/expand.png) no-repeat center red !important;
 	height: 160px;
@@ -375,7 +375,7 @@ a.list-group-item.manipulate
 	display: block;
 }
 
-.col-1.expand .icon-spinner
+.col-1.expand .icon-collapse-top
 {
 	background-image: url(../img/expand_active.png);
 }
