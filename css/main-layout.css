@@ -366,12 +366,18 @@ a.list-group-item.manipulate
 	padding: 0;
 }
 
-.col-1.expand .pull-left .icon-collapse
+.col-1.expand .icon-collapse,
+.col-1.expand .icon-spinner
 {
 	background: url(../img/expand.png) no-repeat center red !important;
 	height: 160px;
 	width: 128px;
 	display: block;
+}
+
+.col-1.expand .icon-spinner
+{
+	background-image: url(../img/expand_active.png);
 }
 
 .container
