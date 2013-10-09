@@ -308,7 +308,7 @@ a.list-group-item.manipulate
 
 .show-graph > div
 {
-	padding-top: 30px;
+	margin-top: 30px;
 }
 
 .insert-description
