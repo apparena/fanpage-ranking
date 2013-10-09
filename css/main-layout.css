@@ -175,7 +175,7 @@ h2
 #time_bar ul li a.active,
 #time_bar ul li a:hover
 {
-	background: red;
+	background: red !important;
 }
 
 #collapse-all
