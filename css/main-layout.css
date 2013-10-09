@@ -295,12 +295,15 @@ select#max-rows
 	background-image: url(../img/arrow_up.png);
 }
 
-.show-grid a.icons.order
+.show-grid a.icons.order i.icon-arrow-down-white
 {
-	background: #000 !important;
+	background: url(../img/arrow_down_active.png) no-repeat;
 }
 
-
+.show-grid a.icons.order i.icon-arrow-up-white
+{
+	background-image: url(../img/arrow_up_active.png);
+}
 
 .bootstrap-select
 {
