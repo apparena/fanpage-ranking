@@ -360,7 +360,7 @@ a.list-group-item.manipulate
 	padding: 0;
 }
 
-.col-1.expand .pull-left .large-icon-collapse
+.col-1.expand .pull-left .icon-collapse
 {
 	background: url(../img/expand.png) no-repeat center red !important;
 	height: 160px;
