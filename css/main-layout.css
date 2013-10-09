@@ -272,6 +272,11 @@ select#max-rows
 	text-decoration: none;
 }
 
+#content-wrapper
+{
+	background: yellow !important;
+}
+
 a.list-group-item.manipulate
 {
 	background: #fff;
