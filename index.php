@@ -58,7 +58,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <html lang="de-DE">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1170, maximum-scale=1.0" />
     <title>Volksbanks fan page ranking App</title>
 
     <link type="text/css" rel="stylesheet" href="css/style.css" />
@@ -75,6 +75,8 @@ if (isset($aaForJs['instance']['fb_app_secret']))
     <![endif]-->
     <?php if(__c('css_bootstrap', 'src') !== false): ?><link type="text/css" rel="stylesheet" href="<?php __pc('css_bootstrap', 'src')?>" /><?php ENDIF; ?>
     <?php if (__c('css_app', 'src') !== false): ?><link type="text/css" rel="stylesheet" href="<?php __pc('css_app', 'src')?>" /><?php ENDIF; ?>
+
+    <link type="text/css" rel="stylesheet" href="css/main-layout.css" />
 
 </head>
 
@@ -260,7 +262,21 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <script>
     var aa = <?php echo json_encode($aaForJs); ?>; // copy aa as a global object to js
 </script>
+<script src="js/vendor/jquery/jquery.js"></script>
+<script src="js/vendor/bootstrap-assets/js/select.min.js"></script>
 <script src="js/config.js"></script>
 <script id="requirejs" data-main="js/main" data-devmode="1" src="js/vendor/requirejs/require.js"></script>
+<script>
+
+    jQuery( 'body' ).ready(
+    	function()
+    	{
+
+	    	jQuery('select#max-rows').selectpicker();
+
+    	}
+    );
+
+</script>
 </body>
 </html>
