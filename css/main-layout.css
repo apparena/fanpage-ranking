@@ -306,9 +306,15 @@ a.list-group-item.manipulate
 	padding: 30px 0 20px;
 }
 
+.show-graph
+{
+	padding-top: 20px;
+}
+
 .insert-description
 {
 	font-size: 72.22222222222228%;
+	padding: 20px;
 }
 
 .col-1.photos
