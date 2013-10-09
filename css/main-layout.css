@@ -445,6 +445,11 @@ a.list-group-item.manipulate
 	font-weight: 300;
 }
 
+.bootstrap-select > .dropdown-toggle > *
+{
+	font-size: 77.77777777777784%;
+}
+
 .bootstrap-select > .dropdown-toggle
 {
 	background: #000;
