@@ -241,8 +241,18 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 </div>
 
+<?php
+/*
 <div id="custom_footer">
-    <?php echo (isset( $aa[ 'config' ][ 'custom_footer' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_footer' ][ 'value' ] : ''; ?>
+    < ?php echo (isset( $aa[ 'config' ][ 'custom_footer' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_footer' ][ 'value' ] : ''; ? >
+</div>
+*/
+?>
+<div id="custom_footer">
+ 	<div class="main_container">
+	    <div class="left">made with love in Cologne © <?php echo date('Y') ?> <a href="http://app-arena.com/" target="_blank" title="App-Arena.com">App-Arena.com</a></div>
+	    <div class="right"><a href="#" title="Impressum">Impressum</a> | <a href="#" title="AGB">AGB</a></div>
+ 	</div>
 </div>
 
 <div id="form-wrapper" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
