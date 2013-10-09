@@ -433,21 +433,17 @@ a.list-group-item.manipulate
 {
 	margin-bottom: 2px !important;
 	display: inline-block !important;
+	font-size: 77.77777777777784% !important;
+	border: 2px solid green;
 }
 
 .bootstrap-select > *
 {
-	font-size: 77.77777777777784%;
 	border: 0;
 	color: #fff;
 	padding: 5px !important;
 	text-transform: uppercase;
 	font-weight: 300;
-}
-
-.bootstrap-select > .dropdown-toggle > *
-{
-	font-size: 77.77777777777784%;
 }
 
 .bootstrap-select > .dropdown-toggle
