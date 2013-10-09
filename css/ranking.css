@@ -4,7 +4,6 @@ body
 {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 18px;
-	padding: 0;
 }
 
 .collapsed {
@@ -24,9 +23,8 @@ body
 	box-sizing: border-box;
 	display: block;
 	position: fixed;
-	top: 0 !important;
+	top: 0;
 	left: 0;
-	margin: 0;
 	width: 100%;
 	font-size: 66.66666666666672%;
 	text-transform: uppercase;
@@ -57,66 +55,3 @@ body
 	padding: 8px 35px;
 }
 
-#custom_header
-{
-	margin-top: 50px;
-	padding-top: 105px;
-	background: url(../img/header.jpg) no-repeat center;
-	background-size: cover;
-	height: 500px;
-	position: relative;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	font-size: 77.77777777777784%;
-	color: #fff;
-}
-
-#custom_header > .main_container
-{
-	width: 1170px;
-	margin: 0 auto 0;
-	position: relative;
-}
-
-.left
-{
-	float: left;
-}
-
-#custom_header .left
-{
-	margin-top: 50px;
-}
-
-#custom_header > .main_container > div
-{
-	margin: 0 65px 0 275px;
-	text-align: left;
-}
-
-h1
-{
-	font-size: 313.55555555555581%;
-	font-weight: 300;
-	margin: 0;
-	text-transform: uppercase;
-}
-
-#custom_header h1
-{
-	font-size: 403.14285714285698%;
-}
-
-h2
-{
-	font-size: 216.77777777777795%;
-	font-weight: 300;
-	margin: 0;
-	color: red;
-	text-transform: uppercase;
-}
-
-#custom_header h2
-{
-	font-size: 278.7142857142856%;
-}
