@@ -438,13 +438,16 @@ a.list-group-item.manipulate
 {
 	font-size: 77.77777777777784%;
 	border: 0;
-	background: #000;
 	color: #fff;
 	padding: 5px !important;
 	text-transform: uppercase;
 	font-weight: 300;
 }
 
+.bootstrap-select > .dropdown-toggle
+{
+	background: #000;
+}
 
 .bootstrap-select.btn-group,
 .bootstrap-select.btn-group[class*="span"] {
