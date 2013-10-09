@@ -295,6 +295,11 @@ select#max-rows
 	background-image: url(../img/arrow_up.png);
 }
 
+.show-grid a.icons.order
+{
+	background: #000 !important;
+}
+
 
 
 .bootstrap-select
