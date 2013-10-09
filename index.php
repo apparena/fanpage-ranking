@@ -206,22 +206,22 @@ if (isset($aaForJs['instance']['fb_app_secret']))
     <div class='list-group-item bold-italic-custom'>
         <div class="row show-grid">
             <div class="col-1">
-                <?php __p( 'image' ); ?> &nbsp;
+                <!-- <?php __p( 'image' ); ?> -->
             </div>
             <div class="col-4">
                 <?php __p( 'fanpage_name' ); ?> &nbsp;
-                <a href="#" class="icons fans-pages-names-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>
-                <a href="#" class="icons fans-pages-names-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
+                <a href="#" class="icons fans-pages-names-desc"><i class="icon-arrow-down-white"></i></a>
+                <a href="#" class="icons fans-pages-names-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
             <div class="col-3">
                 <?php __p( 'likes' ); ?> &nbsp;
-                <a href="#" class="icons likes-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>
-                <a href="#" class="icons likes-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
+                <a href="#" class="icons likes-desc"><i class="icon-arrow-down-white"></i></a>
+                <a href="#" class="icons likes-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
             <div class="col-3">
                 <?php __p( 'talking_about' ); ?> &nbsp;
-                <a href="#" class="icons talks-about-desc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-down"></i>&nbsp&nbsp&nbsp</a>
-                <a href="#" class="icons talks-about-asc">&nbsp&nbsp&nbsp<i class="icon-long-arrow-up"></i>&nbsp&nbsp&nbsp</a>
+                <a href="#" class="icons talks-about-desc"><i class="icon-arrow-down-white"></i></a>
+                <a href="#" class="icons talks-about-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
             <div class="col-1">
                 <?php __p( 'expand' ); ?>
