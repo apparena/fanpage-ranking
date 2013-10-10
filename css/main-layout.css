@@ -217,9 +217,10 @@ select#max-rows
 	margin-top: -8px !important;
 }
 
-button[data-id="max-rows"] .dropdown-menu
+.dropdown-menu
 {
 	width: 180px !important;
+	border: 1px solid blue;
 }
 
 #choose_bar ul
