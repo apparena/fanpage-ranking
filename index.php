@@ -183,8 +183,6 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
     </div>
 
-<br><br>
-
 </div>
 
 <?php
