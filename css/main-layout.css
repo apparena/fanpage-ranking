@@ -211,7 +211,8 @@ select#max-rows
 
 #s2id_e9
 {
-	width: 680px;
+	width: 720px;
+	float: right;
 }
 
 #choose_bar ul

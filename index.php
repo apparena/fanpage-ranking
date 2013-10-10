@@ -138,9 +138,9 @@ if (isset($aaForJs['instance']['fb_app_secret']))
                echo str_replace( array( '<p>', '</p>' ), '', $dropdown_output );
            ?>
  			<div class="banks_search">
- 				<?php __p( 'banks_to_rank' ); ?> &nbsp;
               <select multiple="" name="e9" id="e9" class="populate select2-offscreen" tabindex="-1">
               </select>
+ 				<?php __p( 'banks_to_rank' ); ?> &nbsp;
  			</div>
      </div>
  </div>
