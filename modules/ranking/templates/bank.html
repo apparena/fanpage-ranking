@@ -9,11 +9,11 @@
              <img class="insert-image" src="<% print('https://graph.facebook.com/'+ id + '/picture?type=square'); %>" >
          </div>
          <div class='col-3 likes'>
-             <i class='large-icon'><a href="#">SEO Link</a></i>
+             <i class='large-icon'></i>
              <p class="insert-likes"><% if (typeof(attributes.likes) == "undefined") {print('no data for likes');} else {print(attributes.likes);} %></p>
          </div>
          <div class='col-3 talks-about'>
-             <i class='large-icon'><a href="#">SEO Link</a></i>
+             <i class='large-icon'></i>
              <p class="insert-talks-about"><% if (typeof(attributes.talking_about_count) == "undefined") {print('no data for talking_about_count');} else {print(attributes.talking_about_count);} %></p>
          </div>
          <div class="col-1 expand">
