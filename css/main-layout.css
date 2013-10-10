@@ -284,7 +284,7 @@ select#max-rows
 	text-decoration: none;
 }
 
-a.list-group-item.manipulate
+div.list-group-item.manipulate
 {
 	background: #fff;
 	margin-top: 40px;
