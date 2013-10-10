@@ -23,13 +23,13 @@
              <div class="<% print('row-spinner-' + id); %> collapsed"><i class='icon-spinner icon-spin icon-large'></i></div>
          </div>
     </div>
+    <div class='row show-grid'>
+        <div class="col-12 additional collapsed insert-description"><% if (typeof(attributes.description) == "undefined") {print('no data for description');} else {print(attributes.description);} %></div>
+    </div>
 
     <div class='row show-grid show-graph'>
         <div class="col-6 additional collapsed insert-graph1" id="<% print('chart_likes_' + id); %>"></div>
         <div class="col-6 additional collapsed insert-graph2" id="<% print('chart_talking_about_count_' + id); %>"></div>
-    </div>
-    <div class='row show-grid'>
-        <div class="col-12 additional collapsed insert-description"><% if (typeof(attributes.description) == "undefined") {print('no data for description');} else {print(attributes.description);} %></div>
     </div>
 </div>
 

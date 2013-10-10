@@ -350,13 +350,15 @@ div.list-group-item.manipulate
 
 .show-graph > div
 {
-	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .insert-description
 {
 	font-size: 72.22222222222228%;
 	padding: 30px;
+	text-align: left;
+	text-transform: none;
 }
 
 .col-1.photos
