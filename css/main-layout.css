@@ -369,6 +369,7 @@ a.list-group-item.manipulate
 .col-1.expand *
 {
 	border: 1px dotted blue !important;
+	background: none !important;
 }
 
 .col-1.expand .icon-collapse,
