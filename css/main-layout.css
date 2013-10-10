@@ -312,16 +312,16 @@ a.list-group-item.manipulate
 .select2-search-choice div
 {
 	background: #fff !important;
-	padding: 2px 10px !important;
-	height: 16px !important;
+	padding: 2px 8px !important;
+	height: 18px !important;
 	overflow: hidden;
 }
 
 .select2-search-choice div a
 {
 	margin-right: 10px !important;
-	width: 8px !important;
-	height: 8px !important;
+	width: 6px !important;
+	height: 6px !important;
 	margin-top: -2px !important;
 	background: none !important;
 	display: block;
