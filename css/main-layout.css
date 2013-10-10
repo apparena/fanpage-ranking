@@ -225,6 +225,7 @@ select#max-rows
 	padding: 5px 30px;
 	font-family: 'Open Sans', sans-serif;
 	background: none;
+	margin-top: -5px !important;
 }
 
 .select2-container,
