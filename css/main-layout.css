@@ -219,7 +219,7 @@ select#max-rows
 
 .banks_search #s2id_e9
 {
-	width: 180px !important;
+	width: 180px;
 }
 
 #choose_bar ul
