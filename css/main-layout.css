@@ -325,6 +325,7 @@ a.list-group-item.manipulate
 	position: absolute;
 	top: 0;
 	right: 5px;
+	display: none !important;
 }
 
 .fans-pages-names,
