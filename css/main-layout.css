@@ -223,6 +223,8 @@ select#max-rows
 	border: 1px solid rgba( 255, 255, 255, .5 );
 	font-size: 77.77777777777784%;
 	width: 680px;
+	height: 20px !important;
+	overflow: auto;
 }
 
 .select2-search-field input
