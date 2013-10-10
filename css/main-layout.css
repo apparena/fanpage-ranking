@@ -313,7 +313,7 @@ a.list-group-item.manipulate
 {
 	background: #fff !important;
 	padding: 2px 10px !important;
-	height: 20px !important;
+	height: 16px !important;
 	overflow: hidden;
 }
 
@@ -322,8 +322,9 @@ a.list-group-item.manipulate
 	margin-right: 10px !important;
 	width: 8px !important;
 	height: 8px !important;
-	margin-top: 0 !important;
+	margin-top: -2px !important;
 	background: none !important;
+	display: block;
 }
 
 .fans-pages-names,
