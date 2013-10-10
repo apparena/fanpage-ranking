@@ -217,9 +217,7 @@ select#max-rows
 	margin-top: -8px !important;
 }
 
-.banks_search #s2id_e9,
-.banks_search #s2id_e9 ul,
-.banks_search #s2id_e9 ul li
+button[data-id="max-rows"] .dropdown-menu
 {
 	width: 180px !important;
 }
