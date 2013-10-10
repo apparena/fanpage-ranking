@@ -422,8 +422,9 @@ a.list-group-item.manipulate
 {
 	font-size: 70%;
 	position: absolute;
-	bottom: 5px;
+	bottom: 10px;
 	left: 0;
+	color: #fff !important;
 	text-align: center;
 	width: 205px;
 }
