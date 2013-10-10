@@ -307,6 +307,7 @@ a.list-group-item.manipulate
 {
 	background: none !important;
 	padding: 0 !important;
+	border: 0 !important;
 }
 
 .select2-search-choice div
@@ -315,16 +316,15 @@ a.list-group-item.manipulate
 	padding: 2px 8px !important;
 	height: 18px !important;
 	overflow: hidden;
+	position: relative;
+	border-radius: 4px;
 }
 
 .select2-search-choice div a.select2-search-choice-close
 {
-	margin-right: 10px !important;
-	width: 6px !important;
-	height: 6px !important;
-	margin-top: -2px !important;
-	background: none !important;
-	display: block;
+	position: absolute;
+	top: 0;
+	right: 5px;
 }
 
 .fans-pages-names,
