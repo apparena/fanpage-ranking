@@ -305,8 +305,8 @@ div.list-group-item.manipulate
 
 .insert-image
 {
-	width: 160px;
-	height: 160px;
+	width: 120px;
+	height: 120px;
 }
 
 .select2-search-choice
@@ -370,8 +370,8 @@ div.list-group-item.manipulate
 .col-1.photos
 {
 	background: red;
-	height: 160px;
-	width: 160px;
+	height: 120px;
+	width: 120px;
 	text-align: center;
 	padding: 0;
 }
@@ -379,9 +379,9 @@ div.list-group-item.manipulate
 .col-3.likes,
 .col-3.talks-about
 {
-	width: 415px;
+	width: 430px;
 	background: #282828;
-	height: 160px;
+	height: 120px;
 	padding: 0;
 	position: relative;
 }
@@ -403,8 +403,8 @@ div.list-group-item.manipulate
 .col-3.talks-about .large-icon
 {
 	background: url(../img/thumb.png) center no-repeat #000;
-	height: 160px;
-	width: 205px;
+	height: 120px;
+	width: 215px;
 	float: left;
 }
 
@@ -416,7 +416,7 @@ div.list-group-item.manipulate
 .col-3.likes .insert-likes,
 .col-3.talks-about .insert-talks-about
 {
-	width: 210px;
+	width: 215px;
 	text-align: center;
 	color: #fff;
 	display: block;
@@ -434,7 +434,7 @@ div.list-group-item.manipulate
 	left: 0;
 	color: #fff !important;
 	text-align: center;
-	width: 205px;
+	width: 215px;
 }
 
 .col-1.expand
@@ -446,8 +446,8 @@ div.list-group-item.manipulate
 .col-1.expand .icon-collapse-top
 {
 	background: url(../img/expand.png) no-repeat center red !important;
-	height: 160px;
-	width: 128px;
+	height: 120px;
+	width: 138px;
 	display: block;
 }
 
