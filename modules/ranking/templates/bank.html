@@ -1,4 +1,4 @@
-<a class='list-group-item manipulate' id="<% print(id); %>">
+<div class='list-group-item manipulate' id="<% print(id); %>">
     <div class='row show-grid'>
          <div class='col-12 fans-pages-names'>
              <p class="insert-name"><% if (typeof(attributes.name) == "undefined") {print('no data for name');} else {print(attributes.name);} %></p>
@@ -9,6 +9,7 @@
              <img class="insert-image" src="<% print('https://graph.facebook.com/'+ id + '/picture?type=square'); %>" >
          </div>
          <div class='col-3 likes'>
+         	<a href="#" class="seo-link" title="SEO Link">SEO Link</a>
              <i class='large-icon'></i>
              <p class="insert-likes"><% if (typeof(attributes.likes) == "undefined") {print('no data for likes');} else {print(attributes.likes);} %></p>
          </div>
@@ -30,6 +31,6 @@
     <div class='row show-grid'>
         <div class="col-12 additional collapsed insert-description"><% if (typeof(attributes.description) == "undefined") {print('no data for description');} else {print(attributes.description);} %></div>
     </div>
-</a>
+</div>
 
 
