@@ -313,19 +313,19 @@ a.list-group-item.manipulate
 .select2-search-choice div
 {
 	background: #fff !important;
-	padding: 2px 8px !important;
-	height: 18px !important;
+	padding: 0 8px !important;
+	height: 20px !important;
 	overflow: hidden;
 	position: relative;
 	border-radius: 4px;
+	line-height: 150%;
 }
 
-.select2-search-choice div a.select2-search-choice-close
+.select2-search-choice a.select2-search-choice-close
 {
 	position: absolute;
-	top: 0;
-	right: 5px;
-	display: none !important;
+	padding-top: 4px !important;
+	background: url(../img/close_button.png) no-repeat right !important;
 }
 
 .select2-search-choice div *
@@ -375,6 +375,19 @@ a.list-group-item.manipulate
 	background: #282828;
 	height: 160px;
 	padding: 0;
+}
+
+.col-1.photos-head
+{
+	width: 250px;
+	text-align: center;
+}
+
+.col-3.likes-head,
+.col-3.talks-about-head
+{
+	width: 365px;
+	text-align: center;
 }
 
 .col-3.likes .large-icon,
