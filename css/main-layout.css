@@ -375,6 +375,7 @@ a.list-group-item.manipulate
 	background: #282828;
 	height: 160px;
 	padding: 0;
+	position: relative;
 }
 
 .col-1.photos-head
@@ -414,6 +415,17 @@ a.list-group-item.manipulate
 	font-size: 230.00000000000018%;
 	padding: 50px 0 0;
 	float: right;
+}
+
+.col-3.likes .seo-link,
+.col-3.talks-about .seo-link
+{
+	font-size: 70%;
+	position: absolute;
+	bottom: 5px;
+	left: 0;
+	text-align: center;
+	width: 205px;
 }
 
 .col-1.expand
