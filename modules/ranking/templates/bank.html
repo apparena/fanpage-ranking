@@ -9,7 +9,6 @@
              <img class="insert-image" src="<% print('https://graph.facebook.com/'+ id + '/picture?type=square'); %>" >
          </div>
          <div class='col-3 likes'>
-         	<a href="#" class="seo-link" title="SEO Link">SEO Link</a>
              <i class='large-icon'></i>
              <p class="insert-likes"><% if (typeof(attributes.likes) == "undefined") {print('no data for likes');} else {print(attributes.likes);} %></p>
          </div>
