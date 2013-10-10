@@ -230,6 +230,15 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 	    	jQuery('#max-rows').selectpicker();
 
+	    	jQuery('#max-rows').change(
+	    		function()
+	    		{
+
+		    		alert(1);
+
+	    		}
+	    	);
+
     	}
     );
 
