@@ -152,6 +152,11 @@ h2
 	margin-top: -0px;
 }
 
+#choose_bar .banks_search
+{
+	margin-top: 10px;
+}
+
 #time_bar ul
 {
 	float: right;
@@ -206,7 +211,7 @@ select#max-rows
 
 #s2id_e9
 {
-	width: 180px;
+	width: 580px;
 }
 
 #choose_bar ul
@@ -216,7 +221,7 @@ select#max-rows
 	background: none;
 	border: 1px solid rgba( 255, 255, 255, .5 );
 	font-size: 77.77777777777784%;
-	width: 180px;
+	width: 580px;
 }
 
 .select2-search-field input
@@ -232,7 +237,7 @@ select#max-rows
 .select2-container,
 .select2-choices
 {
-	max-width: 180px;
+	max-width: 580px;
 	height: 30px;
 }
 .select2-choices
