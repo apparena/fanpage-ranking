@@ -144,7 +144,7 @@ h2
 {
 	background: red;
 	color: #fff;
-	height: 130px !important;
+	height: auto !important;
 }
 
 #choose_bar .right
