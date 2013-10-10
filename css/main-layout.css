@@ -200,7 +200,7 @@ h2
 select#max-rows
 {
 	float: none;
-	display: inline-block;
+	display: inline-block !important;
 }
 
 #s2id_e9
