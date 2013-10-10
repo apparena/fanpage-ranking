@@ -366,12 +366,6 @@ a.list-group-item.manipulate
 	padding: 0;
 }
 
-.col-1.expand *
-{
-	border: 1px dotted blue !important;
-	background: none !important;
-}
-
 .col-1.expand .icon-collapse,
 .col-1.expand .icon-collapse-top
 {
@@ -381,19 +375,9 @@ a.list-group-item.manipulate
 	display: block;
 }
 
-.col-1.expand .icon-collapse *
-{
-	border: 1px solid blue !important;
-}
-
-.col-1.expand .icon-collapse-top *
-{
-	border: 1px solid green !important;
-}
-
 .col-1.expand .icon-collapse-top
 {
-	background-image: url(../img/expand_active.png);
+	background-image: url(../img/expand_active.png) !important;
 }
 
 .col-1.expand .icon-spinner
