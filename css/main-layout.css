@@ -375,6 +375,16 @@ a.list-group-item.manipulate
 	display: block;
 }
 
+.col-1.expand .icon-collapse *
+{
+	border: 1px solid blue;
+}
+
+.col-1.expand .icon-collapse-top *
+{
+	border: 1px solid green;
+}
+
 .col-1.expand .icon-collapse-top
 {
 	background-image: url(../img/expand_active.png);
