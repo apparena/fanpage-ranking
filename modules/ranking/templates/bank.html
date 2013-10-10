@@ -9,12 +9,14 @@
              <img class="insert-image" src="<% print('https://graph.facebook.com/'+ id + '/picture?type=square'); %>" >
          </div>
          <div class='col-3 likes'>
+         	<a href="#" class="seo-link" title="SEO Link">SEO Link</a>
              <i class='large-icon'></i>
-             <p class="insert-likes"><a href="#" class="seo-link" title="SEO Link">SEO Link</a><% if (typeof(attributes.likes) == "undefined") {print('no data for likes');} else {print(attributes.likes);} %></p>
+             <p class="insert-likes"><% if (typeof(attributes.likes) == "undefined") {print('no data for likes');} else {print(attributes.likes);} %></p>
          </div>
          <div class='col-3 talks-about'>
+         	<a href="#" class="seo-link" title="SEO Link">SEO Link</a>
              <i class='large-icon'></i>
-             <p class="insert-talks-about"><a href="#" class="seo-link" title="SEO Link"><% if (typeof(attributes.talking_about_count) == "undefined") {print('no data for talking_about_count');} else {print(attributes.talking_about_count);} %></p>
+             <p class="insert-talks-about"><% if (typeof(attributes.talking_about_count) == "undefined") {print('no data for talking_about_count');} else {print(attributes.talking_about_count);} %></p>
          </div>
          <div class="col-1 expand">
              <div class="pull-left"><i class='icon-collapse collapse-expand xx-large-icon' name="<% print(id); %>">&nbsp</i></div>
