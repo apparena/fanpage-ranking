@@ -225,6 +225,7 @@ select#max-rows
 	width: 680px;
 	height: 40px !important;
 	overflow: auto;
+	margin-bottom: -10px;
 }
 
 .select2-search-field input
