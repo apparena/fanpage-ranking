@@ -357,7 +357,7 @@ div.list-group-item.manipulate
 {
 	font-size: 72.22222222222228%;
 	padding: 30px;
-	text-align: left;
+	text-align: left !important;
 	text-transform: none;
 }
 
