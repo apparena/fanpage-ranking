@@ -217,6 +217,11 @@ select#max-rows
 	margin-top: -8px !important;
 }
 
+.banks_search #s2id_e9
+{
+	width: 180px !important;
+}
+
 #choose_bar ul
 {
 	border-radius: 4px;
