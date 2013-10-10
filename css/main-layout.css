@@ -211,7 +211,7 @@ select#max-rows
 
 #s2id_e9
 {
-	width: 580px;
+	width: 680px;
 }
 
 #choose_bar ul
@@ -221,7 +221,7 @@ select#max-rows
 	background: none;
 	border: 1px solid rgba( 255, 255, 255, .5 );
 	font-size: 77.77777777777784%;
-	width: 580px;
+	width: 680px;
 }
 
 .select2-search-field input
@@ -237,7 +237,7 @@ select#max-rows
 .select2-container,
 .select2-choices
 {
-	max-width: 580px;
+	max-width: 680px;
 	height: 30px;
 }
 .select2-choices
