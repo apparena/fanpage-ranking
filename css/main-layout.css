@@ -317,7 +317,7 @@ a.list-group-item.manipulate
 	overflow: hidden;
 }
 
-.select2-search-choice div a
+.select2-search-choice div a.select2-search-choice-close
 {
 	margin-right: 10px !important;
 	width: 6px !important;
