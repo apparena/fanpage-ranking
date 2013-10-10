@@ -145,6 +145,7 @@ h2
 	background: red;
 	color: #fff;
 	height: auto !important;
+	padding: 28px 0 38px;
 }
 
 #choose_bar .right
@@ -154,7 +155,7 @@ h2
 
 #choose_bar .banks_search
 {
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 #time_bar ul
