@@ -235,7 +235,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 	    		{
 
 		    		alert(jQuery( this ).val());
-		    		jQuery( this ).click();
+		    		jQuery( this ).change();
 
 	    		}
 	    	);
