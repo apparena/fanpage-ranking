@@ -151,25 +151,22 @@ if (isset($aaForJs['instance']['fb_app_secret']))
     <!-------------------    title of the table ------------------------------------------------->
     <div class='list-group-item bold-italic-custom'>
         <div class="row show-grid">
-            <div class="col-1">
-                <!-- <?php __p( 'image' ); ?> -->
-            </div>
-            <div class="col-4">
+            <div class="col-1 photos">
                 <?php __p( 'fanpage_name' ); ?> &nbsp;
                 <a href="#" class="icons fans-pages-names-desc"><i class="icon-arrow-down-white"></i></a>
                 <a href="#" class="icons fans-pages-names-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
-            <div class="col-3">
+            <div class="col-3 likes">
                 <?php __p( 'likes' ); ?> &nbsp;
                 <a href="#" class="icons likes-desc"><i class="icon-arrow-down-white"></i></a>
                 <a href="#" class="icons likes-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
-            <div class="col-3">
+            <div class="col-3 talks-about">
                 <?php __p( 'talking_about' ); ?> &nbsp;
                 <a href="#" class="icons talks-about-desc"><i class="icon-arrow-down-white"></i></a>
                 <a href="#" class="icons talks-about-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
-            <div class="col-1">
+            <div class="col-1 expand">
                 <?php __p( 'expand' ); ?>
             </div>
         </div>
