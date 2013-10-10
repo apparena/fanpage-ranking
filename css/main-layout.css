@@ -213,7 +213,7 @@ select#max-rows
 {
 	width: 720px;
 	float: right;
-	margin-bottom: -20px;
+	margin-bottom: -20px !important;
 }
 
 #choose_bar ul
