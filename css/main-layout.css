@@ -328,6 +328,11 @@ a.list-group-item.manipulate
 	display: none !important;
 }
 
+.select2-search-choice div *
+{
+	border: 1px dotted blue !important;
+}
+
 .fans-pages-names,
 .insert-description
 {
