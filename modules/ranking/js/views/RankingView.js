@@ -108,7 +108,7 @@ define([
                         $('.additional', jquery1).slideDown( 300, function () {
                             $('.additional', jquery1).removeClass('collapsed');
                             $(that).removeClass('icon-collapse');
-                            //$(that).addClass('icon-collapse-top');
+                            $(that).addClass('icon-collapse-top');
                         });
                     }
                     else {

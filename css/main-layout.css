@@ -771,3 +771,9 @@ a.list-group-item.manipulate
 	float: left;
 	margin: 5px 10px 0 0 !important;
 }
+.icon-collapse:before {
+  content: "" !important;
+}
+.icon-collapse-top:before {
+  content: "" !important;
+}
