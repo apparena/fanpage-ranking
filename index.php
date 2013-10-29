@@ -13,11 +13,6 @@ catch (Exception $e)
     echo '</pre>';
 }
 
-echo("<pre>");
-var_dump($aa['aa_inst_locale']);
-echo("</pre>");
-
-
 // ToDo[maXus]: create class to extract code - 01.08.13
 /*
  * prepare the aa object for js
