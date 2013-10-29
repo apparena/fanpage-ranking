@@ -91,7 +91,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
   <div id="custom_header">
 	   <div class="main_container">
-	   	<img src="img/sparkasse_logo.png" alt="Sparkasse" class="left" />
+	   	<img src="<?=$aa[ 'config' ][ 'page_logo' ][ 'value' ]?>" alt="Logo" class="left" />
 	   	<div>
 		   	<h1><?php __p( 'title' ); ?></h1>
 			   <h2>SEO</h2>
