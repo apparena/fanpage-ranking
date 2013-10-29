@@ -13,9 +13,9 @@ catch (Exception $e)
     echo '</pre>';
 }
 
-echo("<pre>");
-var_dump($aa);
-echo("</pre>");
+//echo("<pre>");
+//var_dump($aa);
+//echo("</pre>");
 
 
 // ToDo[maXus]: create class to extract code - 01.08.13
