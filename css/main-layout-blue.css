@@ -436,6 +436,9 @@ div.list-group-item.manipulate
 	text-align: center;
 	width: 215px;
 }
+.col-1.expand-head {
+    display: none;
+}
 
 .col-1.expand
 {
