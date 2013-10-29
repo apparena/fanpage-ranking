@@ -443,6 +443,7 @@ div.list-group-item.manipulate
 .col-1.expand
 {
 	padding: 0;
+    cursor: pointer;
 }
 
 .col-1.expand .icon-collapse,
