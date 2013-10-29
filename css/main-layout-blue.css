@@ -11,7 +11,7 @@ body
 
 .customer_entry_container
 {
-	background: #0064b5;
+	background: #0066B3;
 	text-align: center;
 	height: 50px;
 	padding: 10px;
@@ -117,7 +117,7 @@ h2
 	font-size: 216.77777777777795%;
 	font-weight: 300;
 	margin: 0;
-	color: #0064b5;
+	color: #0066B3;
 	text-transform: uppercase;
 }
 
@@ -142,7 +142,7 @@ h2
 
 #choose_bar
 {
-	background: #0064b5;
+	background: #0066B3;
 	color: #fff;
 	height: auto !important;
 	padding: 28px 0 38px;
@@ -182,7 +182,7 @@ h2
 #time_bar ul li.active a,
 #time_bar ul li a:hover
 {
-	background: #0064b5 !important;
+	background: #0066B3 !important;
 }
 
 #collapse-all
@@ -286,7 +286,7 @@ select#max-rows
 
 #custom_footer a:hover
 {
-	color: #0064b5;
+	color: #0066B3;
 	text-decoration: none;
 }
 
@@ -369,7 +369,7 @@ div.list-group-item.manipulate
 
 .col-1.photos
 {
-	background: #0064b5;
+	background: #0066B3;
 	height: 120px;
 	width: 120px;
 	text-align: center;
@@ -445,7 +445,7 @@ div.list-group-item.manipulate
 .col-1.expand .icon-collapse,
 .col-1.expand .icon-collapse-top
 {
-	background: url(../img/expand.png) no-repeat center #0064b5 !important;
+	background: url(../img/expand.png) no-repeat center #0066B3 !important;
 	height: 120px;
 	width: 138px;
 	display: block;
@@ -805,7 +805,7 @@ div.list-group-item.manipulate
 
 .modal-content .btn:hover
 {
-	background: #0064b5;
+	background: #0066B3;
 }
 
 .modal-content select,
