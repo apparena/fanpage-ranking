@@ -87,6 +87,12 @@ if (isset($aaForJs['instance']['fb_app_secret']))
   <div class="customer_entry_container">
      <?php __p( 'customer_entry_msg' ); ?>
      <a href="#page/contactForm" id="customer_form_btn" class="btn btn-primary"><?php __p( 'customer_entry_btn' ); ?></a>
+     <img src="css/beta.png" id="beta">
+  </div>
+
+  <div class="customer_entry_container">
+      <?php __p( 'customer_entry_msg' ); ?>
+      <a href="#page/contactForm" id="customer_form_btn" class="btn btn-primary"><?php __p( 'customer_entry_btn' ); ?></a>
   </div>
 
   <div id="custom_header">
