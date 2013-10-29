@@ -187,8 +187,6 @@ $aa['env']['browser'] = getBrowser();
 $aa_locale = new Zend_Translate('array', $aa['locale'], $cur_locale);
 $aa_locale->setLocale($cur_locale);
 
-print_r($aa['locale']);
-
 $aa_translate            = new StdClass();
 $aa_translate->translate = $aa_locale;
 
