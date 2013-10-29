@@ -72,7 +72,7 @@ body
 .main_container
 {
 	min-width: 1170px !important;
-	width: 1170px !important;
+	//width: 1170px !important;
 	margin: 0 auto 0;
 	position: relative;
 	padding: 0 25px;
@@ -215,6 +215,9 @@ select#max-rows
 	width: 720px;
 	float: right;
 	margin-top: -8px !important;
+}
+#s2id_autogen1 {
+    color: white;
 }
 
 .dropdown-menu
