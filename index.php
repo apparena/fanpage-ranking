@@ -14,7 +14,7 @@ catch (Exception $e)
 }
 
 echo("<pre>");
-var_dump($app_data);
+var_dump($aa['locale']);
 echo("</pre>");
 
 
