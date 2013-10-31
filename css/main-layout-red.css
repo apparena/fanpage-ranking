@@ -147,6 +147,7 @@ h2
 	color: #fff;
 	height: auto !important;
 	padding: 28px 0 38px;
+    border-top: 1px solid white;
 }
 
 #choose_bar .right
