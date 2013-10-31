@@ -76,9 +76,8 @@ if (isset($aaForJs['instance']['fb_app_secret']))
     <?php if(__c('css_bootstrap', 'src') !== false): ?><link type="text/css" rel="stylesheet" href="<?php __pc('css_bootstrap', 'src')?>" /><?php ENDIF; ?>
     <?php if (__c('css_app', 'src') !== false): ?><link type="text/css" rel="stylesheet" href="<?php __pc('css_app', 'src')?>" /><?php ENDIF; ?>
 
-    <? $design = __pc('design_template', 'value');
-    __pc($design , 'src') ?>
-    <link type="text/css" rel="stylesheet" href="css/main-layout-blue.css" />
+    <? $design = __pc('design_template', 'value');?>
+    <link type="text/css" rel="stylesheet" href="css/<?=$design?>.css" />
 
 </head>
 
