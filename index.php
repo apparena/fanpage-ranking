@@ -61,8 +61,8 @@ if (isset($aaForJs['instance']['fb_app_secret']))
     <meta name="viewport" content="width=1170, maximum-scale=1.0" />
     <title>Volksbanks fan page ranking App</title>
 
-<!--    <link type="text/css" rel="stylesheet" href="css/style.css" />-->
-<!--    <link type="text/css" rel="stylesheet" href="css/ranking.css" />-->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/ranking.css" />
 
 
     <!--[if IE 7]>
