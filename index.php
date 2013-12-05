@@ -75,10 +75,8 @@ if (isset($aaForJs['instance']['fb_app_secret']))
     <![endif]-->
     <?php if(__c('css_bootstrap', 'src') !== false): ?><link type="text/css" rel="stylesheet" href="<?php __pc('css_bootstrap', 'src')?>" /><?php ENDIF; ?>
     <?php if (__c('css_app', 'src') !== false): ?><link type="text/css" rel="stylesheet" href="<?php __pc('css_app', 'src')?>" /><?php ENDIF; ?>
-    <?php if (__c('css_app', 'src') !== false): ?><link type="text/css" rel="stylesheet" href="<?php __pc('css_app', 'src')?>" /><?php ENDIF; ?>
-<?=$aa[ 'config' ][ 'design_template' ][ 'value' ]?>
-
-    <link type="text/css" rel="stylesheet" href="css/main-layout-blue.css" />
+    <?php if (__c($aa[ 'config' ][ 'design_template' ][ 'value' ], 'src') !== false): ?><link type="text/css" rel="stylesheet" href="<?php __pc($aa[ 'config' ][ 'design_template' ][ 'value' ], 'src')?>" /><?php ENDIF; ?>
+<!--    <link type="text/css" rel="stylesheet" href="css/main-layout-blue.css" />-->
 
 </head>
 
