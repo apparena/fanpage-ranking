@@ -57,6 +57,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <!doctype html>
 <html lang="de-DE">
 <head>
+    <? var_dump($aa[ 'config' ]) ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1170, maximum-scale=1.0" />
     <title>Volksbanks fan page ranking App</title>
