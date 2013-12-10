@@ -663,7 +663,7 @@ div.list-group-item.manipulate
     display: inline-block;
     position: absolute;
     right: 15px;
-    margin-top: 2.5px;
+    margin-top: 3px;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li a i.check-mark {
