@@ -37,8 +37,8 @@ switch ($type_of_time) {
     //query 12 days same day as today, in each month, during the last 12 months
     case '12months':
         $where_time = "date = '$today' ";
-        for($i=1;$i<13;$i++){
-            $where_time = $where_time . " OR date = DATE_ADD('$today', INTERVAL - '$i' MONTH)";
+        for($i=1;$i<48;$i++){
+            $where_time = $where_time . " OR date = DATE_ADD('$today', INTERVAL - '$i' WEEK)";
         }
         break;
 
@@ -47,9 +47,10 @@ switch ($type_of_time) {
 
 $query1 = "SELECT date, likes, talking_about_count FROM fanpage_metric_data " .
           "WHERE fb_page_id = '$fb_page_id' ".
-          "AND ".
+          "AND (".
           "$where_time" .
-          " ORDER BY date ASC" ;
+          ") ORDER BY date ASC" ;
+//print_r ($query1);
 $query2 = $db->query($query1);
 $maxResults = $query2->fetchAll(PDO::FETCH_ASSOC);
 $json = json_encode($maxResults);

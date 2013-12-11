@@ -62,6 +62,7 @@ define([
             //fetching values from ajax Object and sending to collection
             for(var i=0; i<fansPagesNumber; i++){
                 var item = 'item'+i;
+                if (obj[item]) {
                 var fieldsObj = obj[item];
                 //console.log(fieldsObj);
                 //add to collection
@@ -72,6 +73,7 @@ define([
                     likes: fieldsObj['likes'],
                     talking_about_count: fieldsObj['talking_about_count']
                 });
+            }
             }
             console.log(fansPagesNumber);
             // fetching data from collection.js  and using in view
@@ -148,7 +150,7 @@ define([
                 return false;
             }
             var data = this.additionalInfo(id, typeOfTime);  //id must be string
-            //console.log(data);
+            console.log(data);
             var obj = $.parseJSON(data);
             //console.log(obj);
             var len = Object.keys(obj).length;

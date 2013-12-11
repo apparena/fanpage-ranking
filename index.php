@@ -202,16 +202,6 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
 </div>
 
-<?php
-//unset($aa['config']['css_bootstrap']);
-//unset($aa['config']['css_app']);
-//unset($aa['config']['tac']);
-
-//echo '<pre class="debug">';
-//print_r($aa);
-//echo '</pre>';
-?>
-
 <script>
     var aa = <?php echo json_encode($aaForJs); ?>; // copy aa as a global object to js
 </script>
