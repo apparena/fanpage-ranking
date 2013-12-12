@@ -24,7 +24,7 @@ define([
         },
 
         loadModule: function (module, id) {
-            console.log('load: ', module, 'id: ', id);
+            //console.log('load: ', module, 'id: ', id);
             require([module], function (module) {
                 if (id !== false) {
                     module(id);
@@ -35,12 +35,12 @@ define([
                 //The errback, error callback
                 //The error has a list of modules that failed
                 var failedModule = err.requireModules && err.requireModules[0];
-                console.log('canot loadmodule: ', failedModule);
+                //console.log('canot loadmodule: ', failedModule);
             });
         },
 
         moduleAction: function (module, filename, id) {
-            console.log('load module', module, filename);
+            //console.log('load module', module, filename);
             var env = module;
 
             if (_.isUndefined(filename)) {
@@ -59,7 +59,7 @@ define([
         },
 
         callAction: function (module) {
-            console.log('call action', module);
+            //console.log('call action', module);
 
             if (_.isUndefined(this.lastEnvClass) || this.lastEnvClass === '') {
                 this.navigate('', {trigger: true, replace: true});
@@ -69,7 +69,7 @@ define([
         },
 
         homeAction: function () {
-            console.log('home action');
+            //console.log('home action');
             //var module = '../modules/home/js/main';
             var module = 'home';
             this.setEnv(module);
@@ -77,7 +77,7 @@ define([
         },
 
         setEnv: function (envClass) {
-            console.log('envClass', envClass);
+            //console.log('envClass', envClass);
 
             var body = $('body');
 

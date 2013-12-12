@@ -19,7 +19,7 @@ define([
     $('#e9').select2();
     var arrayIdsNames = new Array();
 
-    console.log(typeOfTime);
+    //console.log(typeOfTime);
 
     var RankingView = Backbone.View.extend({
 
@@ -75,10 +75,10 @@ define([
                 });
             }
             }
-            console.log(fansPagesNumber);
+            //console.log(fansPagesNumber);
             // fetching data from collection.js  and using in view
             fansPagesNumber = this.collection.length;
-            console.log(fansPagesNumber);
+            //console.log(fansPagesNumber);
             for(var i= 0;i<fansPagesNumber; i++){
                 //console.log(this.collection.at(i).get('id'));
                 //console.log(this.collection.at(i).get('name'));
@@ -132,13 +132,13 @@ define([
             // typeOfTime is global and in html (index.php) the active class is 30days
             $('.typeOfTime').on('click', function(){
                 typeOfTime = this.id;
-                console.log(typeOfTime);
+                //console.log(typeOfTime);
                 $('.typeOfTime').removeClass('active');
                 $(this).addClass('active');
                 $('.insert-graph1:not(.collapsed)').each(function(key, elmt){
                     var chart_likes_id = this.id;
                     var id = chart_likes_id.replace('chart_likes_','');
-                    console.log(id);
+                    //console.log(id);
                     view.showGraph(id);
                 });
             });
@@ -150,7 +150,7 @@ define([
                 return false;
             }
             var data = this.additionalInfo(id, typeOfTime);  //id must be string
-            console.log(data);
+            //console.log(data);
             var obj = $.parseJSON(data);
             //console.log(obj);
             var len = Object.keys(obj).length;
@@ -274,13 +274,13 @@ define([
                 //find the id of the chosen element by user
                 var list = $('.select2-search-choice');
                 var len = list.length;
-                console.log(len);
+                //console.log(len);
                 $('.manipulate').addClass('collapsed');
                 //extract the id of the item chosen by the user in the select Box
                 list.each(function(index, item){
                     var div = $(item).find('div');
                     var text = div.text();
-                    //console.log(text);
+                    ////console.log(text);
                     for(var i in arrayIdsNames){
                         if(arrayIdsNames[i]['name'] == text){
                             var correspondingId = arrayIdsNames[i]['id'];
@@ -296,14 +296,14 @@ define([
                 $('.select2-search-choice-close').on('click', function(){
                     var div = $(this).prev();
                     var text = div.text();
-                    console.log(text);
+                    //console.log(text);
                     for(var i in arrayIdsNames){
                         if(arrayIdsNames[i]['name'] == text){
                             var correspondingId = arrayIdsNames[i]['id'];
                             break;
                         }
                     }
-                    console.log(correspondingId);
+                    //console.log(correspondingId);
                     var selector = '#'.concat(correspondingId);
                     //console.log(selector);
                     $(selector).addClass('collapsed');
@@ -381,11 +381,11 @@ define([
             $('#collapse-all').on('click', function(){
                 $('.additional').each(function(index,elmnt){
                     if(!$(elmnt).hasClass('collapsed') && $(elmnt).hasClass('insert-graph1')){
-                        console.log(elmnt);
+                        //console.log(elmnt);
                         var id = elmnt.id;
-                        console.log(id);
+                        //console.log(id);
                         id = id.replace('chart_likes_','');
-                        console.log(id);
+                        //console.log(id);
                         $('[name=' + id + ']').trigger('click');
                     }
                 })

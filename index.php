@@ -107,10 +107,10 @@ if (isset($aaForJs['instance']['fb_app_secret']))
  <div id="time_bar">
  	<div class="main_container">
       <ul class="nav nav-pills">
-         <li class="typeOfTime active" id="30days"><a href="#"><?php __p( 'chooser_30_days' ); ?></a></li>
-         <li class="typeOfTime" id="10weeks"><a href="#"><?php __p( 'chooser_10_weeks' ); ?></a></li>
-         <li class="typeOfTime" id="6months"><a href="#"><?php __p( 'chooser_6_months' ); ?></a></li>
-         <li class="typeOfTime" id="12months"><a href="#"><?php __p( 'chooser_12_months' ); ?></a></li>
+         <li class="typeOfTime active" id="30days"><a href="#main_container"><?php __p( 'chooser_30_days' ); ?></a></li>
+         <li class="typeOfTime" id="10weeks"><a href="#main_container"><?php __p( 'chooser_10_weeks' ); ?></a></li>
+         <li class="typeOfTime" id="6months"><a href="#main_container"><?php __p( 'chooser_6_months' ); ?></a></li>
+         <li class="typeOfTime" id="12months"><a href="#main_container"><?php __p( 'chooser_12_months' ); ?></a></li>
      </ul>
      <?php __p( 'overall_time_chooser' ); ?>
  	</div>
@@ -156,18 +156,18 @@ if (isset($aaForJs['instance']['fb_app_secret']))
         <div class="row show-grid">
             <div class="col-1 photos-head">
                 <?php __p( 'fanpage_name' ); ?> &nbsp;
-                <a href="#" class="icons fans-pages-names-desc"><i class="icon-arrow-down-white"></i></a>
-                <a href="#" class="icons fans-pages-names-asc"><i class="icon-arrow-up-white"></i></a>
+                <a href="#container" class="icons fans-pages-names-desc"><i class="icon-arrow-down-white"></i></a>
+                <a href="#container" class="icons fans-pages-names-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
             <div class="col-3 likes-head">
                 <?php __p( 'likes' ); ?> &nbsp;
-                <a href="#" class="icons likes-desc"><i class="icon-arrow-down-white"></i></a>
-                <a href="#" class="icons likes-asc"><i class="icon-arrow-up-white"></i></a>
+                <a href="#container" class="icons likes-desc"><i class="icon-arrow-down-white"></i></a>
+                <a href="#container" class="icons likes-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
             <div class="col-3 talks-about-head">
                 <?php __p( 'talking_about' ); ?> &nbsp;
-                <a href="#" class="icons talks-about-desc"><i class="icon-arrow-down-white"></i></a>
-                <a href="#" class="icons talks-about-asc"><i class="icon-arrow-up-white"></i></a>
+                <a href="#container" class="icons talks-about-desc"><i class="icon-arrow-down-white"></i></a>
+                <a href="#container" class="icons talks-about-asc"><i class="icon-arrow-up-white"></i></a>
             </div>
             <div class="col-1 expand-head">
                 <?php __p( 'expand' ); ?>

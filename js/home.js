@@ -6,7 +6,7 @@ define([
     'use strict';
 
     return function () {
-        console.log('home.js is here');
+        //console.log('home.js is here');
 
 
         var rankingView = new RankingView();
