@@ -59,7 +59,7 @@ body
 {
 	margin-top: 50px;
 	padding-top: 105px;
-	background: url(../img/header.jpg) no-repeat center;
+	background: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/header_1386855417_0.jpg) no-repeat center;
 	background-size: cover;
 	height: 500px;
 	position: relative;
@@ -335,7 +335,7 @@ div.list-group-item.manipulate
 {
 	position: absolute;
 	padding-top: 4px !important;
-	background: url(../img/close_button.png) no-repeat right !important;
+	background: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/close_button_1386855350_0.png) no-repeat right !important;
 }
 
 .select2-search-choice div *
@@ -406,7 +406,7 @@ div.list-group-item.manipulate
 .col-3.likes .large-icon,
 .col-3.talks-about .large-icon
 {
-	background: url(../img/thumb.png) center no-repeat #000;
+	background: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/thumb_1386855322_0.png) center no-repeat #000;
 	height: 120px;
 	width: 215px;
 	float: left;
@@ -414,7 +414,7 @@ div.list-group-item.manipulate
 
 .col-3.talks-about .large-icon
 {
-	background-image: url(../img/talk.png);
+	background-image: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/talk_1386855257_0.png);
 }
 
 .col-3.likes .insert-likes,
@@ -453,7 +453,7 @@ div.list-group-item.manipulate
 .col-1.expand .icon-collapse,
 .col-1.expand .icon-collapse-top
 {
-	background: url(../img/expand.png) no-repeat center #0066B3 !important;
+	background: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/expand_1386855202_0.png) no-repeat center #0066B3 !important;
 	height: 120px;
 	width: 138px;
 	display: block;
@@ -461,7 +461,7 @@ div.list-group-item.manipulate
 
 .col-1.expand .icon-collapse-top
 {
-	background-image: url(../img/expand_active.png) !important;
+	background-image: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/expand_active_1386855179_0.png) !important;
 }
 
 .col-1.expand .icon-spinner
@@ -489,13 +489,13 @@ div.list-group-item.manipulate
 {
 	height: 12px;
 	width: 15px;
-	background: url(../img/arrow_down.png) no-repeat;
+	background: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/arrow_down_1386855067_0.png) no-repeat;
 	display: inline-block;
 }
 
 .show-grid a.icons i.icon-arrow-up-white
 {
-	background-image: url(../img/arrow_up.png);
+	background-image: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/arrow_up_1386855148_0.png);
 }
 
 .show-grid a.icons.order
@@ -505,12 +505,12 @@ div.list-group-item.manipulate
 
 .show-grid a.icons.order i.icon-arrow-down-white
 {
-	background: url(../img/arrow_down_active.png) no-repeat;
+	background: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/arrow_down_active_1386855006_0.png) no-repeat;
 }
 
 .show-grid a.icons.order i.icon-arrow-up-white
 {
-	background-image: url(../img/arrow_up_active.png);
+	background-image: url(https://app-manager.s3.amazonaws.com/apps/models/2/8/0/551/de_DE/arrow_up_active_1386855119_0.png);
 }
 
 .bootstrap-select
