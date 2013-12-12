@@ -126,7 +126,7 @@ if (empty($aa_instance['aa_inst_id']))
 }
 
 $aa_scope = 'aa_' . $aa_instance['aa_inst_id'];
-print_r($aa_instance['aa_inst_id']);
+//print_r($aa_instance['aa_inst_id']);
 session_name($aa_scope);
 session_start();
 
