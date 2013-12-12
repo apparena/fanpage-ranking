@@ -71,7 +71,7 @@ foreach ($array['data'] as $inside_Array){
 
 $all = array();
 foreach($list_i_id as $i_id){
-    $json = file_get_contents('http://http://manager.app-arena.com/api/v1/instances/' . $i_id .'/config/fanpage_ids');
+    $json = file_get_contents('http://manager.app-arena.com/api/v1/instances/' . $i_id .'/config/fanpage_ids');
     if($json != FALSE){   //if V1 request succeed   -- file_get_contents() returns FALSE
         if(strlen($json) > 0){
             $array = explode(';',$json);
