@@ -96,7 +96,6 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 	   	<img src="<?=$aa[ 'config' ][ 'page_logo' ][ 'value' ]?>" alt="Logo" class="left" />
 	   	<div>
 		   	<h1><?php __p( 'title' ); ?></h1>
-			   <h2>SEO</h2>
 			   <p>
 			   	<?php echo (isset( $aa[ 'config' ][ 'custom_header' ][ 'value' ] ) ) ? $aa[ 'config' ][ 'custom_header' ][ 'value' ] : ''; ?>
 			   </p>
