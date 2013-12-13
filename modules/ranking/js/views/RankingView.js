@@ -37,6 +37,7 @@ define([
             this.setTime();
             this.expandingCollapsingElementsEachRow();  // event require insertAllElements() occurred before
             this.setOrderingForArrows();                // event require insertAllElements() occurred before
+            this.setmodal();
             this.refreshRowsOnClickArrows();            // event require insertAllElements() occurred before
             this.refreshRowsOnChangeMaxDisplayed();            // event require insertAllElements() occurred before
             this.updateTimeGraph();
@@ -58,7 +59,7 @@ define([
         handleJSON: function(){
             var json = this.allRowsMinInfo();
             var obj = $.parseJSON(json);
-            console.log(obj['item0']);
+            //console.log(obj['item0']);
             if (obj['item0'] == "no_fanpages"){
                     $('.no_data_warning').text(_.aa.locale.no_fanpage_warning);
                     $('.no_data_warning').removeClass('hide');
@@ -250,9 +251,18 @@ define([
                 $('.manipulate').tsort('.talks-about p',{order:'asc'});
             });
         },
-
-
-
+        setmodal: function(){
+            $('.modal_impressum').on('click', function(){
+                $('#modallabel').text(_.aa.locale.imprint);
+                $('#modalbody').html(_.aa.config.imprint.value);
+                $('#modal').modal();
+            });
+            $('.modal_agb , modal-').on('click', function(){
+                $('#modallabel').text(_.aa.locale.agb);
+                $('#modalbody').html(_.aa.config.agb.value);
+                $('#modal').modal();
+            });
+        },
 
         //function to hand write elements we want to display only on the page
         chooseItems: function(){

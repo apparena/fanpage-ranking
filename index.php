@@ -89,8 +89,9 @@ if (isset($aaForJs['instance']['fb_app_secret']))
      <?php __p( 'customer_entry_msg' ); ?>
      <a href="#page/contactForm" id="customer_form_btn" class="btn btn-primary"><?php __p( 'customer_entry_btn' ); ?></a>
   </div>
+  <? if ($aa[ 'config' ][ 'beta' ][ 'value' ] == "1") { ?>
   <img src="css/beta.png" id="beta">
-
+   <? } ?>
   <div id="custom_header">
 	   <div class="main_container">
 	   	<img src="<?=$aa[ 'config' ][ 'page_logo' ][ 'value' ]?>" alt="Logo" class="left" />
@@ -183,6 +184,20 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modallabel">Modal title</h4>
+                </div>
+                <div class="modal-body" id="modalbody">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 </div>
 
 <?php
@@ -195,7 +210,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 <div id="custom_footer">
  	<div class="main_container">
 	    <div class="left">made with love in Cologne © <?php echo date('Y') ?> <a href="http://app-arena.com/" target="_blank" title="App-Arena.com">App-Arena.com</a></div>
-	    <div class="right"><a href="#" title="Impressum">Impressum</a> | <a href="#" title="AGB">AGB</a></div>
+	    <div class="right"><a href="#" class="modal_impressum" title="<?php __p( 'imprint' ); ?>"><?php __p( 'imprint' ); ?></a> | <a href="#" class="modal_agb" title="<?php __p( 'agb' ); ?>"><?php __p( 'agb' ); ?></a></div>
  	</div>
 </div>
 
