@@ -9,6 +9,7 @@ define("ROOT_PATH", realpath(dirname(__FILE__))); // Set include path
 define('_VALID_CALL', 'true');
 set_include_path(ROOT_PATH . '/libs/' . PATH_SEPARATOR);
 
+
 /**
  * Include necessary libraries
  */
@@ -55,9 +56,15 @@ if (!empty($_REQUEST['aa_inst_id']))
 {
     $aa_inst_id = $_REQUEST['aa_inst_id'];
 }
-// @todo Try to get instance ID from request_id
-// @todo Try to get instance ID from action_id
-// @todo Try to get instance ID from page_id/aa_model_id
+if (!empty($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'],'sparkasse') !== false)
+{
+    $aa_inst_id = "7030";
+}
+if (!empty($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'],'vrbank') !== false)
+{
+    $aa_inst_id = "7031";
+}
+
 
 /* Initialize and set Facebook information in the session */
 if (isset ($_REQUEST["signed_request"]))
