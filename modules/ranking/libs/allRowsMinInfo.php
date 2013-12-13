@@ -9,10 +9,10 @@ $today = date('Y-m-d', time());
 
 $aa_inst_id = $aa['instance']['aa_inst_id'];
 $fansPagesIdsAsStr = $aa['config']['fanpage_ids']['value'];
+if(!empty($fansPagesIdsAsStr)) {
 //$fansPagesIdsAsStr = '163721403669672;106479362709892;212285335468828;160805495421;173099949403228;263416953165;332236356800801;241806709206264;168513559842620;329596519636;218266734578;153048968094202';
 $aaFansPagesIdsAsArray = explode(';',$fansPagesIdsAsStr);
 $aaFansPagesIdsAsArray = array_unique($aaFansPagesIdsAsArray); //remove duplicate value
-
 
 //test
 //var_dump($today);echo '<br><br>';
@@ -65,7 +65,10 @@ $outerArray = array_combine($keys, $items);
 
 $json = json_encode($outerArray);
 //var_dump($json);echo '<br><br>';
-
+} else {
+    $arr = array ('item0'=>no_fanpages);
+    $json = json_encode($arr);
+}
 
 // return[]  is already created in line 53 of ajax.php
 $return['message'] = $json;              // look line 53  ajax.php

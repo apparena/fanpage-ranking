@@ -58,11 +58,16 @@ define([
         handleJSON: function(){
             var json = this.allRowsMinInfo();
             var obj = $.parseJSON(json);
+            console.log(obj['item0']);
+            if (obj['item0'] == "no_fanpages"){
+                    $('.no_data_warning').text(_.aa.locale.no_fanpage_warning);
+                    $('.no_data_warning').removeClass('hide');
+            }
             fansPagesNumber = Object.keys(obj).length;
             //fetching values from ajax Object and sending to collection
             for(var i=0; i<fansPagesNumber; i++){
                 var item = 'item'+i;
-                if (obj[item]) {
+                if (obj[item] && obj['item0'] != "no_fanpages") {
                 var fieldsObj = obj[item];
                 //console.log(fieldsObj);
                 //add to collection
