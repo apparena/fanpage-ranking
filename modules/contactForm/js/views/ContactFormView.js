@@ -29,10 +29,21 @@ define([
 
         send: function () {
 
-            var data = jQuery('#contactForm').serialize();
-            jQuery.post('modules/contactForm/ajax/magento-contact-form.php', data);
-            this.$el.modal( 'hide' );
+            var Error = false;
 
+            if (!jQuery('input[name="z_name"]').val()) {
+                jQuery('input[name="z_name"]').addClass('error');
+                Error = true;
+            }
+            if (!jQuery('input[name="z_requester"]').val()) {
+                jQuery('input[name="z_requester"]').addClass('error');
+                Error = true;
+            }
+            if (!Error) {
+            var data = jQuery('#contactForm').serialize();
+            jQuery.post('modules/contactForm/ajax/former.php', data);
+            this.$el.modal( 'hide' );
+            }
         }
 
     });

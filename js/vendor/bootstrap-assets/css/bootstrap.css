@@ -1509,6 +1509,9 @@ select.input-small {
   background-color: #f2dede;
   border-color: #b94a48;
 }
+input.error {
+    background: #b43327 !important;
+}
 
 .has-success .help-block,
 .has-success .control-label {

@@ -7,53 +7,38 @@
 
         <div class="modal-body">
 
-            <form id="contactForm" action='https://support.zoho.com/support/WebToCase' method='POST'>
-
-                <input type='hidden' name='xnQsjsdp' value=FyANna-CGO1thYo*kRl79w$$/> <input type='hidden'
-                                                                                             name='xmIwtLD'
-                                                                                             value=w6UeJz4Nz5OalCZe8C6Cm51GFBCUjBoL/>
-                <input type='hidden' name='actionType' value=Q2FzZXM=/> <input type='hidden' name='Department'
-                                                                               value='d443ae9394e0d7275710439f27d48b29f3148ec5bcd90913'/>
+            <form id="contactForm" action='../ajax/former.php' method='POST'>
                 <input type='hidden' name='returnURL' value='https://develop.app-arena.com'/>
-                <input type='hidden' maxlength='120' name='Subject' value="Anfrage: <%= _.aa.config.name.value %>" />
+                <input type='hidden' maxlength='120' name='z_subject' value="Anfrage: <%= _.aa.config.name.value %>" />
+                <input type='hidden' maxlength='120' name='c_23342311' value="<%= _.aa.config.name.value %>" />
+
 
                 <div class="form-row">
-                	<label class="control-label span1"><%= _.aa.locale.gender %></label>
-					 	<select id="contact-gender" name='Geschlecht' class="span1">
-                      <option value='Herr'><%= _.aa.locale.gender_male %></option>
-                      <option value='Frau'><%= _.aa.locale.gender_female %></option>
-                  </select>
+                  <label class="control-label span2"><%= _.aa.locale.name %>*</label>
+                  <input class="span2" type='text' maxlength='120' name='z_name' />
 					 </div>
-                <div class="form-row">
-                  <label class="control-label span2"><%= _.aa.locale.first_name %></label>
-                  <input class="span2" type='text' maxlength='120' name='First Name' />
-					 </div>
-                <div class="form-row">
-                	<label class="control-label span3"><%= _.aa.locale.last_name %></label>
-                	<input class="span3" type='text' maxlength='120' name='Contact Name' />
-                </div>
                 <div class="form-row">
                 	<label class="control-label span3"><%= _.aa.locale.company %></label>
-                	<input class="span3" type='text' maxlength='120' name='Firma'  />
+                	<input class="span3" type='text' maxlength='120' name='c_23352752'  />
                 </div>
                 <div class="form-row">
-                	<label class="control-label span3"><%= _.aa.locale.email %></label>
-                	<input class="span3" type='text' maxlength='120' name='Email' />
+                	<label class="control-label span3"><%= _.aa.locale.email %>*</label>
+                	<input class="span3" type='text' maxlength='120' name='z_requester' />
                 </div>
                 <div class="form-row">
                 	<label class="control-label span3"><%= _.aa.locale.phone %></label>
-                	<input class="span3" type='text' maxlength='120' name='Phone' />
+                	<input class="span3" type='text' maxlength='120' name='c_23367532' />
                 </div>
                 <div class="form-row">
                 	 <label class="checkbox span3">
-                      <input type='checkbox' name='Praesentation-zusenden' /> <%= _.aa.locale.get_presentation %>
+                      <input type='checkbox' name='c_23348531' /> <%= _.aa.locale.get_presentation %>
                    </label>
                 </div>
                 <div class="form-row">
                 	<label class="control-label"><%= _.aa.locale.your_request %></label>
-                	<textarea class="span6" rows="5" name='Description' maxlength='30000' onclick="this.focus();this.select()"><%= _.aa.locale.more_product_info.replace( '%s', _.aa.config.name.value ) %></textarea>
+                	<textarea class="span6" rows="5" name='z_description' maxlength='30000' onclick="this.focus();this.select()"><%= _.aa.locale.more_product_info.replace( '%s', _.aa.config.name.value ) %></textarea>
                 </div>
-
+               <small class="help-block"><%= _.aa.locale.form_required_text %></small>
             </form>
 
         </div>

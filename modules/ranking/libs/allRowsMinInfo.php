@@ -33,6 +33,7 @@ $i = 0;
 
 foreach($aaFansPagesIdsAsArray as $id){
 
+
     //query fanpage_basic_data
     $query1 = "SELECT fb_page_id, name, description FROM fanpage_basic_data
             WHERE fb_page_id = '$id'";
