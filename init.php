@@ -56,6 +56,10 @@ if (!empty($_REQUEST['aa_inst_id']))
 {
     $aa_inst_id = $_REQUEST['aa_inst_id'];
 }
+if (!empty($_REQUEST['i_id']))
+{
+    $aa_inst_id = $_REQUEST['i_id'];
+}
 if (!empty($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'],'sparkasse') !== false)
 {
     $aa_inst_id = "7030";
