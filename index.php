@@ -104,9 +104,14 @@ if (isset($aaForJs['instance']['fb_app_secret']))
 	   </div>
 	</div>
 
- <div id="time_bar">
+  <div class="loading">
+  <div id="overlay"></div>
+  <div class="load_content"><i class='icon-refresh icon-spin icon-large'></i> <?php __p( 'load_fanpage_data' ); ?></div>
+  </div>
+
+  <div id="time_bar">
  	<div class="main_container">
-      <ul class="nav nav-pills">
+        <ul class="nav nav-pills">
          <li class="typeOfTime active" id="30days"><a href="#main_container"><?php __p( 'chooser_30_days' ); ?></a></li>
          <li class="typeOfTime" id="10weeks"><a href="#main_container"><?php __p( 'chooser_10_weeks' ); ?></a></li>
          <li class="typeOfTime" id="6months"><a href="#main_container"><?php __p( 'chooser_6_months' ); ?></a></li>
@@ -174,7 +179,7 @@ if (isset($aaForJs['instance']['fb_app_secret']))
             </div>
         </div>
     </div>
-    <div class='page-spinner'><i class='icon-spinner icon-spin icon-large'></i></div>
+<!--    <div class='page-spinner'><i class='icon-refresh icon-spin icon-large'></i></div>-->
 
 
 <div class="no_data_warning alert alert-warning hide"></div>

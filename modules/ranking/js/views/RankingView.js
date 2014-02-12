@@ -42,7 +42,7 @@ define([
             this.refreshRowsOnChangeMaxDisplayed();            // event require insertAllElements() occurred before
             this.updateTimeGraph();
             this.chooseItems();
-            $('.page-spinner').addClass('collapsed');
+            $('.loading').hide();
             this.collapseAll();
         },
 
@@ -70,7 +70,7 @@ define([
                 var item = 'item'+i;
                 if (obj[item] && obj['item0'] != "no_fanpages") {
                 var fieldsObj = obj[item];
-                console.log(fieldsObj);
+                //console.log(fieldsObj);
                 //add to collection
                 this.collection.add({
                     id: fieldsObj['fb_page_id'],
